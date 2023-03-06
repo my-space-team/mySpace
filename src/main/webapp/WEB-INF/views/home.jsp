@@ -326,7 +326,7 @@
         </div>
       </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="../../resources/vendor/jquery/jquery.min.js"></script>
     <div id="script"></div>
     <script>
       $(document).ready(function(){
