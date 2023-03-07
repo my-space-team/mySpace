@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <html lang="ko">
-<head id="head"></head>
+<head></head>
 <style type="text/css">
 *{
 background-color : white !important;
@@ -325,7 +325,7 @@ background-color : white !important;
   <div id="script"></div>
   <script>
     $(document).ready(function(){
-      $("#head").load("/resources/common/common_head.html");
+      $("head").load("/resources/common/common_head.html");
       $("#script").load("/resources/common/include_script.html");
     });
   </script>
