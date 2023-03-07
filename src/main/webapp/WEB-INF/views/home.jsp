@@ -63,7 +63,7 @@ background-color : white !important;
       <div class="col-lg-12">
         <div class="page-content">
           <!-- ***** Banner Start ***** -->
-          <div class="main-banner">
+<!--           <div class="main-banner">
             <div class="row">
               <div class="col-lg-7">
                 <div class="header-text">
@@ -75,7 +75,7 @@ background-color : white !important;
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <!-- ***** Banner End ***** -->
 
           <!-- ***** Most Popular Start ***** -->
@@ -83,7 +83,7 @@ background-color : white !important;
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
-                  <h4><em>Most Popular</em> Right Now</h4>
+                  <!-- <h4><em>Most Popular</em> Right Now</h4> -->
                 </div>
                 <div class="row">
                   <div class="col-lg-3 col-sm-6">
