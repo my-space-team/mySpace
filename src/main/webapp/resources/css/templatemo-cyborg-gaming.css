@@ -41,6 +41,11 @@ figure, header, nav, section, article, aside, footer, figcaption {
   outline: 0;
 }
 
+*{
+	
+	background: white !important;
+}
+
 .clearfix:after {
   content: ".";
   display: block;
@@ -142,12 +147,12 @@ p {
 }
 
 ::selection {
-  background: #e75e8d;
+  background: #1EDDFF;
   color: #fff;
 }
 
 ::-moz-selection {
-  background: #e75e8d;
+  background: #1EDDFF;
   color: #fff;
 }
 
@@ -159,7 +164,7 @@ p {
 .main-button a {
   font-size: 14px;
   color: #fff;
-  background-color: #e75e8d;
+  background-color: #1EDDFF;
   padding: 12px 30px;
   display: inline-block;
   border-radius: 25px;
@@ -173,7 +178,7 @@ p {
 
 .main-button a:hover {
   background-color: #fff;
-  color: #e75e8d;
+  color: #1EDDFF;
 }
 
 .main-border-button a {
@@ -195,7 +200,7 @@ p {
 .main-border-button a:hover {
   border-color: #fff;
   background-color: #fff;
-  color: #e75e8d;
+  color: #1EDDFF;
 }
 
 .border-no-active a {
@@ -299,7 +304,7 @@ Pre-loader Style
   height: 16px;
   top: 12px;
   left: 15px;
-  background: #e75e8d;
+  background: #1EDDFF;
   border-radius: 50%;
   -webkit-transform: translateX(0);
   transform: translateX(0);
@@ -322,7 +327,7 @@ Pre-loader Style
   width: 16px;
   height: 16px;
   margin-left: 16px;
-  background: #e75e8d;
+  background: #1EDDFF;
   border-radius: 50%;
 }
 
@@ -479,13 +484,13 @@ Header Style
 
 .header-area .main-nav .nav li:hover a,
 .header-area .main-nav .nav li a.active {
-  color: #e75e8d !important;
+  color: #1EDDFF !important;
 }
 
 .header-area .main-nav .nav li:last-child:hover a,
 .header-area .main-nav .nav li:last-child a.active {
   color: #fff !important;
-  background-color: #e75e8d !important;
+  background-color: #1EDDFF !important;
 }
 
 .background-header .main-nav .nav li:hover a,
@@ -523,7 +528,7 @@ Header Style
   -o-transition: all 0.4s;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  background-color: #e75e8d;
+  background-color: #1EDDFF;
   display: block;
   position: absolute;
   width: 30px;
@@ -534,7 +539,7 @@ Header Style
 .background-header .main-nav .menu-trigger span,
 .background-header .main-nav .menu-trigger span:before,
 .background-header .main-nav .menu-trigger span:after {
-  background-color: #e75e8d;
+  background-color: #1EDDFF;
 }
 
 .header-area .main-nav .menu-trigger span:before,
@@ -543,7 +548,7 @@ Header Style
   -o-transition: all 0.4s;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  background-color: #e75e8d;
+  background-color: #1EDDFF;
   display: block;
   position: absolute;
   width: 30px;
@@ -554,7 +559,7 @@ Header Style
 
 .background-header .main-nav .menu-trigger span:before,
 .background-header .main-nav .menu-trigger span:after {
-  background-color: #e75e8d;
+  background-color: #1EDDFF;
 }
 
 .header-area .main-nav .menu-trigger span:before,
@@ -595,11 +600,11 @@ Header Style
   -ms-transform: translateY(6px) translateX(1px) rotate(45deg);
   -webkit-transform: translateY(6px) translateX(1px) rotate(45deg);
   transform: translateY(6px) translateX(1px) rotate(45deg);
-  background-color: #e75e8d;
+  background-color: #1EDDFF;
 }
 
 .background-header .main-nav .menu-trigger.active span:before {
-  background-color: #e75e8d;
+  background-color: #1EDDFF;
 }
 
 .header-area .main-nav .menu-trigger.active span:after {
@@ -607,11 +612,11 @@ Header Style
   -ms-transform: translateY(-6px) translateX(1px) rotate(-45deg);
   -webkit-transform: translateY(-6px) translateX(1px) rotate(-45deg);
   transform: translateY(-6px) translateX(1px) rotate(-45deg);
-  background-color: #e75e8d;
+  background-color: #1EDDFF;
 }
 
 .background-header .main-nav .menu-trigger.active span:after {
-  background-color: #e75e8d;
+  background-color: #1EDDFF;
 }
 
 .header-area.header-sticky {
@@ -662,7 +667,7 @@ Header Style
   }
   .header-area.header-sticky .nav li a:hover,
   .header-area.header-sticky .nav li a.active {
-    color: #e75e8d!important;
+    color: #1EDDFF!important;
     opacity: 1;
   }
   .header-area.header-sticky .nav li.search-icon a {
@@ -724,7 +729,7 @@ Header Style
   }
   .header-area .main-nav .nav li a:hover {
     background: #fff !important;
-    color: #e75e8d!important;
+    color: #1EDDFF!important;
   }
   .header-area .main-nav .nav li:last-child a img {
     display: none;
@@ -1530,7 +1535,7 @@ Profile Style
 .main-profile .main-info span {
   font-size: 14px;
   color: #fff;
-  background-color: #e75e8d;
+  background-color: #1EDDFF;
   padding: 8px 20px;
   display: inline-block;
   border-radius: 25px;

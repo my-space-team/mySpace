@@ -4,6 +4,11 @@
 
 <html lang="ko">
 <head id="head"></head>
+<style type="text/css">
+*{
+background-color : white !important;
+}
+</style>
 <body>
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
@@ -13,7 +18,7 @@
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <a href="index.html" class="logo">
-              <img src="../../resources/asset/images/logo.png" alt="" />
+              <img src="../../resources/asset/images/myspace_logo.png" alt="" />
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Search End ***** -->
@@ -21,7 +26,7 @@
               <form id="search" action="#">
                 <input
                   type="text"
-                  placeholder="Type Something"
+                  placeholder="쇼핑검색"
                   id="searchText"
                   name="searchKeyword"
                   onkeypress="handle"
@@ -33,7 +38,7 @@
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li><a href="index.html" class="active">Home</a></li>
-              <li><a href="browse.html">Browse</a></li>
+              <li><a href="browse.html">Shopping</a></li>
               <li><a href="details.html">Details</a></li>
               <li><a href="streams.html">Streams</a></li>
               <li>
