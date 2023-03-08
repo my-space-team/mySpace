@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class CartProductVO {
 	private int idx;
-	private int product_idx;
+	private int productIdx;
 	private int amount;
 }

@@ -321,7 +321,7 @@ background-color : white !important;
       </div>
     </div>
   </footer>
-  <script src="../../resources/vendor/jquery/jquery.min.js"></script>
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
   <div id="script"></div>
   <script>
     $(document).ready(function(){

@@ -5,11 +5,9 @@ import lombok.Data;
 @Data
 public class ProductVO {
 	private int idx;
-	private int category_idx;
-	private int brand_idx;
+	private int categoryIdx;
+	private int brandIdx;
 	private String name;
 	private int price;
-	
-	
-	
+
 }
