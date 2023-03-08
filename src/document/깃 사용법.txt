@@ -1,0 +1,18 @@
+- 깃 사용법 -
+
+항상 자신의 브랜치에서 시작합니다.
+git branch -v : 현재 브랜치 확인
+
+sourceTree에서 페치를 받습니다. 
+페치 받고 origin/main 보다 자신의 로컬 브랜치가 높거나 같은 위치임을 확인합니다.
+
+자신의 로컬 브랜치가 낮다면
+git pull origin main
+git push origin (자신의 브랜치) : orgin 브랜치는 각자 push를 통해 최신화를 해줍니다.(origin main 에 push 하면 큰일나요!)
+
+작업을 한 후
+git add .
+git commit -m "커밋메시지"
+git push origin (자신의 브랜치)
+
+끝!
