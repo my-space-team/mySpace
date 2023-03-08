@@ -1,5 +1,9 @@
 package com.kosa.project.domain;
 
-public class CategoryVO {
+import lombok.Data;
 
+@Data
+public class CategoryVO {
+	private int idx;
+	private String name;
 }
