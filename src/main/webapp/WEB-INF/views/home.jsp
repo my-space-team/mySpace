@@ -211,6 +211,7 @@
     $(document).ready(function(){
       $("head").load("/resources/common/common_head.html");
       $("#script").load("/resources/common/include_script.html");
+      $("#header").load("/resources/common/header.html");
       
       $(".item").click(function(){
     	  let idx = $(this).find("input").val(); 
