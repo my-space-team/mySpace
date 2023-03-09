@@ -66,6 +66,9 @@
 
 					</div>
 				</div>
+				
+				<button type="button" class="btn btn-outline-primary">쇼핑 계속하기</button>
+				<button type="button" class="btn btn-outline-primary">주문현황 보기</button>
 
 				<!-- 주문결제내용 끝 -->
 
