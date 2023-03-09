@@ -12,13 +12,10 @@ public class OrderController {
 	public String pay() {
 		return "pay";
 	}
-<<<<<<< HEAD
 	
 	@GetMapping("/confirm")
 	public String confirm() {
 		return "confirm";
 	}
-=======
->>>>>>> origin/seyoung
 
 }
