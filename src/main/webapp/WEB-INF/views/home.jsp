@@ -29,12 +29,14 @@ background-color : white !important;
               </div>
             </div>
           </div> -->
-          <!-- ***** Banner End ***** -->				
+          <!-- ***** Banner End ***** -->
+          				
 			<ul class="category-list" style="display: flex; justify-content: space-between; font-size: 20px;">
 			<c:forEach var="category" items="${categoryList}">
-				<li><a href="/category=${category.idx}">${category.name}</a></li>
+				<li><a href="/category/${category.idx}">${category.name}</a></li>
 			</c:forEach>
 			</ul>
+			
           <!-- ***** Most Popular Start ***** -->
           <div class="most-popular">
             <div class="row">
