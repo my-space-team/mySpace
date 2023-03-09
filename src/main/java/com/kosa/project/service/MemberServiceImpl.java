@@ -20,12 +20,12 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public MemberVO find(Long idx) {
+	public MemberVO find(Integer idx) {
 		return memberMapper.find(idx);
 	}
 
 	@Override
-	public boolean remove(Long idx) {
+	public boolean remove(Integer idx) {
 		return memberMapper.delete(idx)==1;
 	}
 

@@ -3,7 +3,7 @@
 <mapper namespace="com.kosa.project.mapper.MemberMapper">
 
 
-	<select id="find">
+	<select id="find" resultType="int">
 		SELECT * FROM MEMBER WHERE IDX= #{idx}
 	</select>
 
