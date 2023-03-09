@@ -30,7 +30,6 @@
 	</select>
 	
 	
-=======
 	<select id="getProductList" resultType="com.kosa.project.domain.ProductVO">
 		SELECT * FROM product
 			<where>
@@ -40,9 +39,4 @@
 			</where>
 	</select>
 
-	<select id="getProduct" parameterType="int" resultType="com.kosa.project.domain.ProductVO">
-		SELECT * FROM product where idx=#{idx}
-	</select>
-
->>>>>>> origin/ohohoh
 </mapper>

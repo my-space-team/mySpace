@@ -17,41 +17,19 @@
 <table style="margin-top: 200px; margin-left: 500px;">
 
 	<tr>
-		<td style="float: right;">
+		<td>
+			<div style="float: left;">
 			<img src="../../resources/asset/images/profile.jpg">
 			
 			
 			${product.category.name }
 			${product.brand.name }
 			${product.name }
-		
-		
-		</td>
-	</tr>
-	
-	<tr>
-	<td >
-		
-	</td>
-	</tr>
-	
-	<tr>
-		<td>
-			${product.brand.name }
-		</td>
-	</tr>
-	
-	<tr>
-		<td>
-			${product.name }
-		</td>
-	</tr>
-	
-	<tr>
-		<td>
 			<fmt:formatNumber value="${product.price }" pattern="#,###원"/>
+			</div>
 		</td>
 	</tr>
+	
 	
 	<tr>
 		<td>
