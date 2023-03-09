@@ -15,8 +15,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ProductVO getProduct(int idx) {
-		// TODO Auto-generated method stub
 		return mapper.getProduct(idx);
 	}
+	
+	
 
 }

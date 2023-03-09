@@ -20,7 +20,7 @@
 	
 	<tr>
 		<td>
-			${product.brand }
+			${product.brand.name }
 		</td>
 	</tr>
 	
