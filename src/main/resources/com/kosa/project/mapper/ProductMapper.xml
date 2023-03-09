@@ -4,29 +4,32 @@
 
 	<resultMap type="com.kosa.project.domain.ProductVO" id="productMap">
 		<id column="idx" property="idx" />
-		<result column="name" property="name"/>
+		<result column="p.name1" property="name"/>
 		<result column="price" property="price"/>
 		<association property="category" resultMap="categoryMap"/>
 		<association property="brand" resultMap="brandMap"/>
 	</resultMap>
 	
 	<resultMap type="com.kosa.project.domain.CategoryVO" id="categoryMap">
-		<result column="idx" property="idx"/>
-		<result column="name" property="name"/>
+		<id column="category_idx" property="idx"/>
+		<result column="c.name1" property="name"/>
 	</resultMap>
 	
 	<resultMap type="com.kosa.project.domain.BrandVO" id="brandMap">
-		<result column="idx" property="idx"/>
-		<result column="name" property="name"/>
+		<id column="brand_idx" property="idx"/>
+		<result column="b.name1" property="name"/>
 		<result column="phone" property="phone"/>
 		<result column="manager" property="manager"/>
 	</resultMap>
 	
 	<select id="getProduct" parameterType="int" resultMap="productMap"> 
-		SELECT * FROM product p, category c, brand b
+		SELECT 
+		p.name as "p.name1", b.name as "b.name1", c.name as "c.name1",
+		p.price as "p.price1" FROM product p, category c, brand b
 		WHERE p.category_idx=c.idx and b.idx=p.brand_idx 
 		AND p.idx = #{idx}
 	</select>
+
 
 	<select id="getProductList" resultType="com.kosa.project.domain.ProductVO">
 		SELECT * FROM product
@@ -36,5 +39,5 @@
 				</if>
 			</where>
 	</select>
-	
+
 </mapper>
