@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class DeliveryVO {
     private int idx;
-    private int memberIdx;
+    private MemberVO member;
     private String addressName;
     private String deliveryName;
     private String address;

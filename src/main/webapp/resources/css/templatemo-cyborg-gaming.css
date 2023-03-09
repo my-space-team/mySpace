@@ -41,10 +41,7 @@ figure, header, nav, section, article, aside, footer, figcaption {
   outline: 0;
 }
 
-*{
-	
-	background: white !important;
-}
+
 
 .clearfix:after {
   content: ".";
@@ -78,13 +75,13 @@ header, nav, section, article, aside, footer, hgroup {
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
 
 html, body {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  background-color: #1e1e1e;
+  background-color: white;
   font-size: 16px;
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -128,20 +125,20 @@ Global Styles
 */
 html,
 body {
-  background: #1f2122;
+  background: white;
   font-family: 'Poppins', sans-serif;
 }
 
 body .page-content {
   margin-top: 110px;
-  background-color: #27292a;
+  background-color: white;
   padding: 60px;
   border-radius: 23px;
 }
 
 p {
   font-size: 15px;
-  color: #666;
+  color: white;
   line-height: 30px;
   margin-bottom: 0px;
 }
@@ -386,18 +383,18 @@ Header Style
 }
 
 .header-area .main-nav #search input {
-  background-color: #27292a;
+  background-color: white;
   height: 46px;
   border-radius: 23px;
   border: none;
-  color: #666;
+  color: white;
   font-size: 14px;
   padding: 0px 15px 0px 45px;
 }
 
 .header-area .main-nav #search i {
   position: absolute;
-  color: #666;
+  color: white;
   left: 20px;
   top: 16px;
   width: 18px;
@@ -454,7 +451,7 @@ Header Style
   font-weight: 400;
   font-size: 14px;
   text-transform: capitalize;
-  color: #666;
+  color: black;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -465,13 +462,13 @@ Header Style
   letter-spacing: .3px;
 }
 
-.header-area .main-nav .nav li:last-child a {
+/* .header-area .main-nav .nav li:last-child a {
   background-color: #27292a;
   padding: 8px 10px 8px 20px;
   border-radius: 23px;
-}
+} */
 
-.header-area .main-nav .nav li:last-child a img {
+ .header-area .main-nav .nav li:last-child a img {
   max-width: 30px;
   border-radius: 50%;
   margin-left: 5px;
@@ -813,12 +810,12 @@ Most Popular Style
 .most-popular {
   margin-top: 60px;
   padding: 30px;
-  background-color: #1f2122;
+  background-color: white;
   border-radius: 23px;
 }
 
 .most-popular .item {
-  background-color: #27292a;
+  background-color: white;
   padding: 30px 15px;
   border-radius: 23px;
   margin-bottom: 30px;
@@ -882,7 +879,7 @@ Gaming Library Style
 .gaming-library {
   margin-top: 60px;
   padding: 30px;
-  background-color: #1f2122;
+  background-color: white;
   border-radius: 23px;
 }
 
