@@ -10,7 +10,7 @@ background-color : white !important;
 }
 </style>
 <body>
-<%@ include file="/WEB-INF/views/header.jsp" %>
+<div id="header"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -284,6 +284,7 @@ background-color : white !important;
     $(document).ready(function(){
       $("head").load("/resources/common/common_head.html");
       $("#script").load("/resources/common/include_script.html");
+      $("#header").load("/resources/common/header.html");
     });
   </script>
 </body>
