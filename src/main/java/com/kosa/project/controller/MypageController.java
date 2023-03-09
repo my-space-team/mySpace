@@ -18,4 +18,19 @@ public class MypageController {
     public String shoppingPage() {
         return "shopping_page";
     }
+ 
+    @GetMapping("/order_list")
+    public String orderList() {
+        return "mypage/order_list";
+    }
+    
+    @GetMapping("/review")
+    public String review() {
+        return "mypage/review";
+    }
+    
+    @GetMapping("/review_insert")
+    public String reviewInsert() {
+        return "mypage/review_insert";
+    }
 }
