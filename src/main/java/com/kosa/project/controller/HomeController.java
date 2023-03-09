@@ -23,5 +23,4 @@ public class HomeController {
 		model.addAttribute("productList", productService.getProductList(0));
 		return "home";
 	}
-
 }
