@@ -83,6 +83,7 @@
 
 
 						<!-- 주문자정보가져오기 -->
+						<div style = "padding: 60px 0px;">  
 						<div class="col-8">
 							<p class="h5">주문자</p>
 							<hr style="border: solid 2px black;">
@@ -104,6 +105,7 @@
 										id="staticEmail" value="123456879">
 								</div>
 							</div>
+						</div>
 						</div>
 
 						<!-- 주문상품가져오기 -->
@@ -145,6 +147,7 @@
 						</div>
 
 						<!-- 결제수단 -->
+						<div style = "padding: 60px 0px;">
 						<div class="col-8">
 							<p class="h5">결제하기</p>
 							<hr style="border: solid 2px black;">
@@ -155,6 +158,7 @@
 									<option value="2">신용카드</option>
 								</select>
 							</div>
+						</div>
 						</div>
 
 
