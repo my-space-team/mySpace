@@ -28,9 +28,7 @@
 		WHERE p.category_idx=c.idx and b.idx=p.brand_idx 
 		AND p.idx = #{idx}
 	</select>
-	
-	
-=======
+
 	<select id="getProductList" resultType="com.kosa.project.domain.ProductVO">
 		SELECT * FROM product
 			<where>
@@ -39,10 +37,5 @@
 				</if>
 			</where>
 	</select>
-
-	<select id="getProduct" parameterType="int" resultType="com.kosa.project.domain.ProductVO">
-		SELECT * FROM product where idx=#{idx}
-	</select>
-
->>>>>>> origin/ohohoh
+	
 </mapper>
