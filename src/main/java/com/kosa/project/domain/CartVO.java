@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class CartVO {
 	private int idx;
-	private int memberIdx;
+	private MemberVO member;
 }
