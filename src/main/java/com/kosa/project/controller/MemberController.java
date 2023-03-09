@@ -11,11 +11,12 @@ import com.kosa.project.domain.MemberVO;
 import com.kosa.project.service.MemberService;
 
 @Controller
-@RequestMapping("/member/*")
+@RequestMapping("/member")
 public class MemberController {
+
 	@Autowired
 	private MemberService service;
-	
+
 	@GetMapping("/register")
 	public String insertMember() {
 		return "member/register";
@@ -26,5 +27,5 @@ public class MemberController {
 		System.out.println(vo);
 		service.insert(vo);
 		return "redirect:/";
-	}	
+	}
 }
