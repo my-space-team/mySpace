@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosa.project.mapper.ProductMapper">
 
-
 	<resultMap type="com.kosa.project.domain.ProductVO" id="productMap">
 		<id column="idx" property="idx" />
 		<result column="name" property="name"/>
@@ -29,7 +28,6 @@
 		AND p.idx = #{idx}
 	</select>
 	
-	
 	<select id="getProductList" resultType="com.kosa.project.domain.ProductVO">
 		SELECT * FROM product
 			<where>
@@ -38,5 +36,5 @@
 				</if>
 			</where>
 	</select>
-
+	
 </mapper>

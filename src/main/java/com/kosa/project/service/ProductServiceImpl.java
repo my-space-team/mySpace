@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
 	private ProductMapper productMapper;
-	
+
 	@Override
 	public List<ProductVO> getProductList(int category) {
 		return productMapper.getProductList(category);
@@ -21,10 +21,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ProductVO getProduct(int idx) {
-		// TODO Auto-generated method stub
 		return productMapper.getProduct(idx);
 	}
-	
-	
 
 }
