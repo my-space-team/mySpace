@@ -83,29 +83,29 @@
 
 
 						<!-- 주문자정보가져오기 -->
-						<div style = "padding: 60px 0px;">  
-						<div class="col-8">
-							<p class="h5">주문자</p>
-							<hr style="border: solid 2px black;">
-							<div class="mb-3 row">
+						<div style="padding: 60px 0px;">
+							<div class="col-8">
+								<p class="h5">주문자</p>
+								<hr style="border: solid 2px black;">
+								<div class="mb-3 row">
 
-								<label for="staticEmail" class="col-sm-2 col-form-label">이름</label>
-								<div class="col-sm-10">
-									<input type="text" readonly class="form-control-plaintext"
-										id="staticEmail" value="안세영">
-								</div>
-								<label for="staticEmail" class="col-sm-2 col-form-label">이메일</label>
-								<div class="col-sm-10">
-									<input type="text" readonly class="form-control-plaintext"
-										id="staticEmail" value="rapa0714@gmail.com">
-								</div>
-								<label for="staticEmail" class="col-sm-2 col-form-label">전화번호</label>
-								<div class="col-sm-10">
-									<input type="text" readonly class="form-control-plaintext"
-										id="staticEmail" value="123456879">
+									<label for="staticEmail" class="col-sm-2 col-form-label">이름</label>
+									<div class="col-sm-10">
+										<input type="text" readonly class="form-control-plaintext"
+											id="staticEmail" value="안세영">
+									</div>
+									<label for="staticEmail" class="col-sm-2 col-form-label">이메일</label>
+									<div class="col-sm-10">
+										<input type="text" readonly class="form-control-plaintext"
+											id="staticEmail" value="rapa0714@gmail.com">
+									</div>
+									<label for="staticEmail" class="col-sm-2 col-form-label">전화번호</label>
+									<div class="col-sm-10">
+										<input type="text" readonly class="form-control-plaintext"
+											id="staticEmail" value="123456879">
+									</div>
 								</div>
 							</div>
-						</div>
 						</div>
 
 						<!-- 주문상품가져오기 -->
@@ -147,34 +147,28 @@
 						</div>
 
 						<!-- 결제수단 -->
-						<div style = "padding: 60px 0px;">
-						<div class="col-8">
-							<p class="h5">결제하기</p>
-							<hr style="border: solid 2px black;">
-							<div class="mb-3 row">
-								<select class="form-select" aria-label="Default select example">
-									<option selected>결제수단 선택하기</option>
-									<option value="1">무통장입금</option>
-									<option value="2">신용카드</option>
-								</select>
+						<div style="padding: 60px 0px;">
+							<div class="col-8">
+								<p class="h5">결제하기</p>
+								<hr style="border: solid 2px black;">
+								<div class="mb-3 row">
+									<select class="form-select" aria-label="Default select example">
+										<option selected>결제수단 선택하기</option>
+										<option value="1">무통장입금</option>
+										<option value="2">신용카드</option>
+									</select>
+								</div>
 							</div>
 						</div>
-						</div>
-
-
-
-
-
-
 
 					</div>
 				</div>
 
 				<!-- 주문결제내용 끝 -->
 
-				</div>
 			</div>
 		</div>
+	</div>
 
 
 	<footer>
