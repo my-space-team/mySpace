@@ -6,4 +6,6 @@ import com.kosa.project.domain.ProductVO;
 
 public interface ProductService {
 	public List<ProductVO> getProductList(); 
+	public ProductVO getProduct(int idx);
+
 }

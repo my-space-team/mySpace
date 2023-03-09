@@ -12,12 +12,17 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class ProductServiceImpl implements ProductService {
-
 	private ProductMapper productMapper;
 	
 	@Override
 	public List<ProductVO> getProductList() {
 		return productMapper.getProductList();
+	}
+
+	@Override
+	public ProductVO getProduct(int idx) {
+		// TODO Auto-generated method stub
+		return productMapper.getProduct(idx);
 	}
 
 }
