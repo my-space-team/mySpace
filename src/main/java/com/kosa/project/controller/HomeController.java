@@ -19,5 +19,4 @@ public class HomeController {
 		model.addAttribute("categoryList", categoryService.getCategory());
 		return "home";
 	}
-
 }
