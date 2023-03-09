@@ -5,12 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kosa.project.service.MemberService;
+
 @Controller
 @RequestMapping("/members")
 public class MypageController {
 
-    @GetMapping("/_shopping_pages/order_list")
+    @Autowired
+    private MemberService memberService;
+
+    @GetMapping("/shopping_page")
     public String shoppingPage() {
-        return "shopping_pages";
+        return "shopping_page";
     }
 }

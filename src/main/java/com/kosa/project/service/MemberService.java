@@ -4,7 +4,10 @@ import com.kosa.project.domain.MemberVO;
 
 public interface MemberService {
 	public Integer insert(MemberVO vo);
+
 	public MemberVO find(Long idx);
-	public boolean remove(Long idx);
-    public boolean modify(MemberVO vo);
+
+	public int remove(Long idx);
+
+	public int modify(MemberVO vo);
 }
