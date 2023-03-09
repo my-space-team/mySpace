@@ -6,7 +6,7 @@
 <head></head>
 
 <body>
-<%@ include file="/WEB-INF/views/header.jsp" %>
+<div id="header"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">

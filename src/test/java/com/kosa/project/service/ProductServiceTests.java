@@ -1,5 +1,7 @@
 package com.kosa.project.service;
 
+import javax.swing.text.AbstractDocument.BranchElement;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +18,15 @@ import lombok.extern.log4j.Log4j;
 public class ProductServiceTests {
 	@Autowired
 	private ProductService service;
-	
+
 	@Test
 	public void getProduct() {
 		ProductVO findProduct = service.getProduct(1);
-		log.info(findProduct);
+		String brandName = findProduct.getBrand().getName();
+		String categoryName = findProduct.getCategory().getName();
+
+		log.info("------------------ LOG START -----------------------");
+		log.info("Product : " + findProduct);
+		log.info("brandName : " + brandName + "   categoryName : " + categoryName);
 	}
 }
