@@ -1,5 +1,9 @@
 package com.kosa.project.domain;
 
-public class CartVO {
+import lombok.Data;
 
+@Data
+public class CartVO {
+	private int idx;
+	private int memberIdx;
 }

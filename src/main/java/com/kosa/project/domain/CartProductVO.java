@@ -1,5 +1,10 @@
 package com.kosa.project.domain;
 
-public class CartProductVO {
+import lombok.Data;
 
+@Data
+public class CartProductVO {
+	private int idx;
+	private int productIdx;
+	private int amount;
 }
