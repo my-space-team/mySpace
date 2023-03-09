@@ -30,4 +30,19 @@
 	</select>
 	
 	
+=======
+	<select id="getProductList" resultType="com.kosa.project.domain.ProductVO">
+		SELECT * FROM product
+			<where>
+				<if test="value != null and value != 0">
+					category_idx = #{category}
+				</if>
+			</where>
+	</select>
+
+	<select id="getProduct" parameterType="int" resultType="com.kosa.project.domain.ProductVO">
+		SELECT * FROM product where idx=#{idx}
+	</select>
+
+>>>>>>> origin/ohohoh
 </mapper>
