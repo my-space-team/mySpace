@@ -4,17 +4,13 @@
 
 <html lang="ko">
 <head></head>
-<style type="text/css">
-*{
-background-color : white !important;
-}
-</style>
+
 <body>
 <div id="header"></div>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <div class="page-content">
+        <div class="page-content" style="background-color: white;">
           <!-- ***** Banner Start ***** -->
 <!--           <div class="main-banner">
             <div class="row">
