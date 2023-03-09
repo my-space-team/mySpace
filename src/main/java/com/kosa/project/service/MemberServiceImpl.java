@@ -7,6 +7,7 @@ import com.kosa.project.mapper.MemberMapper;
 
 import lombok.AllArgsConstructor;
 
+<<<<<<< HEAD
 @Service
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService{
@@ -35,3 +36,33 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 }
+=======
+// @Service
+// @AllArgsConstructor
+// public class MemberServiceImpl implements MemberService {
+
+// private MemberMapper memberMapper;
+
+// @Override
+// public Integer insert(MemberVO vo) {
+// Integer result = memberMapper.insert(vo);
+// return result == null ? null : result;
+// }
+
+// @Override
+// public MemberVO find() {
+// return memberMapper.find(idx);
+// }
+
+// @Override
+// public int remove(Long idx) {
+// return memberMapper.delete(idx);
+// }
+
+// @Override
+// public int modify(MemberVO vo) {
+// return memberMapper.update(vo);
+// }
+
+// }
+>>>>>>> main
