@@ -9,4 +9,6 @@ public class ScoreVO {
 	private int durability;
 	private int design;
 	private int delivery;
+	private int price;
+	private int total;
 }
