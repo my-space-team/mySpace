@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.kosa.project.domain.ReviewVO;
+import com.kosa.project.domain.ScoreVO;
 import com.kosa.project.mapper.ReviewMapper;
 
 import lombok.AllArgsConstructor;
@@ -16,35 +17,35 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewMapper reviewMapper;
 	
 	@Override
-	public int insertReview(ReviewVO vo) {		
+	public int insertReview(ScoreVO vo) {		
 		
 		return reviewMapper.insertReview(vo)==1 && reviewMapper.insertScore(vo)==1 
 				? 1 : 0 ;
 	}
 
 	@Override
-	public List<ReviewVO> getMemberReviewList(int memberIdx) {
+	public List<ScoreVO> getMemberReviewList(int memberIdx) {
 		
 		return reviewMapper.getMemberReviewList(memberIdx);
 	}
 
 	@Override
-	public ReviewVO get(int idx) {
+	public ScoreVO get(int idx) {
 		
 		return reviewMapper.get(idx);
 	}
 
 	@Override
-	public int update(ReviewVO vo) {
+	public int update(ScoreVO vo) {
 		
 		return reviewMapper.updateReview(vo)==1 && reviewMapper.updateScore(vo)==1 
 				? 1 : 0 ;
 	}
 
 	@Override
-	public int delete(int idx, int score_idx) {
+	public int delete(int idx, int scoreidx) {
 		
-		return reviewMapper.deleteReview(idx)==1 && reviewMapper.deleteScore(score_idx)==1 
+		return reviewMapper.deleteReview(idx)==1 && reviewMapper.deleteScore(idx)==1 
 				? 1 : 0 ;
 	}
 

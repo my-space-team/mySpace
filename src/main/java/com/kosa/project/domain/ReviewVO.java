@@ -9,5 +9,4 @@ public class ReviewVO {
 	private MemberVO member;
 	private ProductVO product;
 	private OrderVO order;
-	private ScoreVO score;
 }

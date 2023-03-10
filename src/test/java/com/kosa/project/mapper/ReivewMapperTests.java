@@ -18,6 +18,23 @@ public class ReivewMapperTests {
 	@Autowired
 	private ReviewMapper reviewMapper;
 	
+	@Test
+	public void getList() {
+		System.out.println(reviewMapper.get(1));
+		
+	}
+	
+//	@Test
+//	public void get() {
+//		ScoreVO svo = new ScoreVO();
+//		ReviewVO rvo = new ReviewVO();
+//		rvo.setContent("11141241");
+//		rvo.setIdx(1);
+//		svo.setReview(rvo);
+//		svo.setIdx(1);
+//		System.out.println(reviewMapper.updateScore(svo));
+//	}
+//	
 //	@Test
 //	public void testInsert() {
 //		ReviewVO vo = new ReviewVO();

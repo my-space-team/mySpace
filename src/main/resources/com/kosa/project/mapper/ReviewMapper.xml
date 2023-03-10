@@ -2,14 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosa.project.mapper.ReviewMapper">
 
+	<resultMap type="com.kosa.project.domain.ScoreVO" id="scoreMap">
+		<id property="idx" column="s.idx"/>
+		<result property="idx" column="s.idx"/>
+		<result property="durability" column="s.durability"/>
+		<result property="design" column="s.design"/>
+		<result property="price" column="s.price"/>
+		<result property="delivery" column="s.delivery"/>
+		<association property="review" resultMap="reviewMap" />
+	</resultMap>
+
 	<resultMap type="com.kosa.project.domain.ReviewVO" id="reviewMap">
-		<id property="idx" column="r.idx"/>
 		<result property="idx" column="r.idx"/>
 		<result property="content" column="content"/>
 		<association property="member" resultMap="memberMap"/>
 		<association property="product" resultMap="productMap"/>
-		<association property="order" resultMap="orderMap"/>
-		<association property="score" resultMap="scoreMap"/>	
+		<association property="order" resultMap="orderMap"/>	
 	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.MemberVO" id="memberMap">
@@ -25,66 +33,58 @@
 	<resultMap type="com.kosa.project.domain.OrderVO" id="orderMap">
 		<result property="idx" column="o.idx"/>
 	</resultMap>
-	
-	<resultMap type="com.kosa.project.domain.ScoreVO" id="scoreMap">
-		<result property="idx" column="s.idx"/>
-		<result property="durability" column="s.durability"/>
-		<result property="design" column="s.design"/>
-		<result property="price" column="s.price"/>
-		<result property="delivery" column="s.delivery"/>
 
-	</resultMap>
 	
 	<insert id="insertReview"> 
 		INSERT INTO review
-    		VALUES(#{idx}, #{member.idx}, #{product.idx}, #{order.idx}, #{content});
+    		VALUES(#{review.idx}, #{review.member.idx}, #{review.product.idx}, #{review.order.idx}, #{review.content});
 	</insert>
 	
 	<insert id="insertScore"> 
 		INSERT INTO score
-    		VALUES(#{score.idx}, #{score.durability}, #{score.design}, #{score.price}, #{score.delivery});
+    		VALUES(#{idx}, #{durability}, #{design}, #{price}, #{delivery});
 	</insert>
 	
-	<select id="getMemberReviewList" resultMap="reviewMap">
+	<select id="getMemberReviewList" resultMap="scoreMap">
 		SELECT r.idx AS "r.idx", m.idx AS "m.idx", p.idx AS "p.idx", o.idx AS "o.idx", s.idx AS "s.idx", 
 				content, p.name AS "p.name", p.price AS "p.price", 
 				s.durability AS "s.durability", s.design AS "s.design", s.price AS "s.price", s.delivery AS "s.delivery"
-			FROM review r, member m, product p, order2 o, score s
+			FROM score s, review r, member m, product p, order2 o
 				WHERE 
-					m.idx = r.member_idx AND p.idx = r.product_idx AND s.idx = r.score_idx AND o.idx = r.order_idx
-					AND m.idx = #{idx}
+					m.idx = r.member_idx AND p.idx = r.product_idx AND o.idx = r.order_idx AND r.idx = s.review_idx 
+					AND m.idx = #{review.member.idx}
 	</select>
 	
-	<select id="get" resultMap="reviewMap">
-		SELECT r.idx AS "r.idx", m.idx AS "m.idx", p.idx AS "p.idx", o.idx AS "o.idx", s.idx AS "s.idx",
-				content, p.name AS "p.name", p.price AS "p.price",
+	<select id="get" resultMap="scoreMap">
+		SELECT r.idx AS "r.idx", m.idx AS "m.idx", p.idx AS "p.idx", o.idx AS "o.idx", s.idx AS "s.idx", 
+				content, p.name AS "p.name", p.price AS "p.price", 
 				s.durability AS "s.durability", s.design AS "s.design", s.price AS "s.price", s.delivery AS "s.delivery"
-			FROM review r, member m, product p, order2 o, score s
+			FROM score s, review r, member m, product p, order2 o
 				WHERE 
-					m.idx = r.member_idx AND p.idx = r.product_idx AND s.idx = r.score_idx AND o.idx = r.order_idx
-					AND r.idx = #{idx}
+					m.idx = r.member_idx AND p.idx = r.product_idx AND o.idx = r.order_idx AND r.idx = s.review_idx 
+					AND r.idx = #{review.idx}
 	</select>
 	
 	<update id="updateReview">
 		UPDATE review 
-			SET content = #{content} 
-				WHERE idx = #{idx}
+			SET content = #{review.content} 
+				WHERE idx = #{review.idx}
 	</update>
 
 	<update id="updateScore">
 		UPDATE score 
-			SET durability = #{score.durability}, design = #{score.design}, price = #{score.price}, delivery = #{score.delivery} 
-				WHERE idx = #{score.idx}
+			SET durability = #{durability}, design = #{design}, price = #{price}, delivery = #{delivery} 
+				WHERE idx = #{idx}
 	</update>
 
 
 	<delete id="deleteReview">
 		DELETE FROM review 
-			WHERE idx = #{idx} 
+			WHERE idx = #{review.idx} 
 	</delete>
 	
 	<delete id="deleteScore">
 		DELETE FROM score
-			WHERE idx = #{score_idx}
+			WHERE idx = #{idx}
 	</delete>
 </mapper>

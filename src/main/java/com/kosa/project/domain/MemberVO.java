@@ -8,12 +8,8 @@ import lombok.Data;
 
 @Data
 public class MemberVO {
-<<<<<<< HEAD
-    private Integer idx;
-=======
     private int idx;
-
->>>>>>> main
+    
     private String loginId;
 
     private String password;

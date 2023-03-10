@@ -1,6 +1,5 @@
 package com.kosa.project.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -9,8 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kosa.project.domain.ReviewVO;
-import com.kosa.project.service.MemberService;
+import com.kosa.project.domain.ScoreVO;
 import com.kosa.project.service.ReviewService;
 
 import lombok.AllArgsConstructor;
@@ -20,7 +18,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class MypageController {
 
-    private MemberService memberService;
     private ReviewService reviewService;
     
     
@@ -46,11 +43,11 @@ public class MypageController {
     }
     
     @PostMapping("/review/isert")
-    public ResponseEntity<String> reviewInsert(ReviewVO vo){
+    public ResponseEntity<String> reviewInsert(ScoreVO vo){
     	;
     	return reviewService.insertReview(vo)==1 
     			? new ResponseEntity<>("success", HttpStatus.OK) 
-				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR); ;
+				: new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
     
 }

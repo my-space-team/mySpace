@@ -73,16 +73,6 @@
 		and m.idx=#{idx}
 	</select>
 	
-	<select id="getOrderInfo" resultMap="orderMap">
-		select
-		d.addressName, d.deliveryName, d.address,
-		m.name, m.email, m.phone,
-		p.name, p.price, b.name, cp.amount
-		o.payment
-		where
-		and m.idx=#{idx}
-	</select>
-
 	
 
 

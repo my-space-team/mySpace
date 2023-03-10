@@ -86,7 +86,6 @@ create table REVIEW(
     member_idx number constraint member_idx_review_fk references member(idx),
     product_idx number constraint product_idx_review_fk references product(idx),
     order_idx number constraint order_idx_reveiw_fk references ORDER2(idx),
-    score_idx number constraint score_idx_review_fk references score(idx),
     content varchar2(100) not null,
     image varchar2(200)
 );
@@ -94,6 +93,7 @@ create table REVIEW(
 --리뷰점수
 create table score (
     idx number PRIMARY KEY,    
+    review_idx number constraint review_idx_score_fk references review(idx),
     durability number not null,
     price number not null,
     design number not null,
