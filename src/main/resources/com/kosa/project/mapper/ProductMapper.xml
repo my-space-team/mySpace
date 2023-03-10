@@ -22,6 +22,8 @@
 		<result column="MANAGER" property="manager"/>
 	</resultMap>
 	
+	
+	<!-- 상품 상세정보 -->
 	<select id="getProduct" parameterType="int" resultMap="productMap"> 
 		 SELECT 
 		p.idx as "p.id",c.idx as "c.id", b.idx as "b.id",
@@ -39,5 +41,64 @@
 				</if>
 			</where>
 	</select>
+	
+	
+	<!-- 리뷰리스트 매핑 -->
+	<resultMap type="com.kosa.project.domain.ScoreVO" id="scoreMap">
+		<id column="c.id" property="idx"/>
+		<result column="durability" property="durability"/>
+		<result column="design" property="design"/>
+		<result column="delivery" property="delivery"/>
+		<result column="price" property="price"/>
+		<association property="review" resultMap="reviewMap"/>
+	</resultMap>
+	
+	
+	<resultMap type="com.kosa.project.domain.ReviewVO" id="reviewMap">
+		<id column="r.id" property="idx" />
+		<result column="content" property="content"/>
+		<result column="r.image" property="image"/>
+		<collection property="product" resultMap="productMap"/>
+		<collection property="member" resultMap="memberMap"/>
+	</resultMap>
+	
 
+	
+	<resultMap type="com.kosa.project.domain.MemberVO" id="memberMap">
+		<id column="m.id" property="idx"/>
+		<result column="loginId" property="loginId"/>
+		<result column="password" property="password"/>
+		<result column="m.name" property="name"/>
+		<result column="email" property="email"/>
+		<result column="phone" property="phone"/>
+		<result column="birth" property="birth"/>
+	</resultMap>
+	
+	<!-- 리뷰전체 리스트 -->
+	<select id="getReviewList" resultMap="scoreMap" parameterType="int">
+	select 
+		p.name as "p.name1",
+		m.name as "m.name",
+		s.durability,
+		s.price,
+		s.design,
+		s.delivery,
+		r.image as "r.image",
+		r.content 
+			FROM review r 
+				LEFT OUTER JOIN score s 
+				ON r.idx=review_idx 
+				LEFT OUTER JOIN member m
+				ON m.idx=r.member_idx
+				LEFT OUTER JOIN product p
+				ON r.product_idx=p.idx
+					WHERE p.idx=#{product_idx} 
+						ORDER BY r.idx desc
+	</select>
+	
+	<select id="getTotalReviewList" resultType="int">
+		select count(*) from review where product_idx=#{product_idx}
+	</select>
+
+	
 </mapper>
