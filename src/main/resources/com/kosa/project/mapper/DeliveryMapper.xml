@@ -4,6 +4,7 @@
 
 <resultMap id="deliveryMap" type="com.kosa.project.domain.DeliveryVO">
 	<id column = "idx" property = "idx"/>
+	<result column = "idx" property = "idx"/>
 	<result column = "address_name" property = "addressName"/>
 	<result column = "delivery_name" property = "deliveryName"/>
 	<result column = "address" property = "address"/>
@@ -13,7 +14,7 @@
 </resultMap>
 
 <resultMap id="memberMap" type="com.kosa.project.domain.MemberVO">
-	<id column="idx" property="idx" />
+	<result column="idx" property="idx" />
 	<result column="login_id" property="loginId" />
 </resultMap>
 
@@ -42,7 +43,6 @@
 
 <select id="getList" resultMap = "deliveryMap">
 	select *
-	from member m, delivery d
-	where m.idx = d.member_idx
+		from delivery
 </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.kosa.project.mapper;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,18 +52,27 @@ public class DeliveryMapperTest {
 //		log.info("count : "+mapper.delete(6));
 //	}
 	
+//	@Test
+//	public void updateTest() {
+//		DeliveryVO delivery = new DeliveryVO();
+//		delivery.setIdx(9);
+//		delivery.setMember(memberMapper.find(10));
+//		delivery.setAddressName("강남구");
+//		delivery.setDeliveryName("ohohohohohohoh");
+//		delivery.setAddress("종로 메타넷");
+//		delivery.setDeliveryPhone("010/1223");
+//		delivery.setDeliveryRequest("문 앞");
+//		
+//		int count = mapper.update(delivery);
+//		log.info("Update count : "+count);
+//	}
+	
 	@Test
-	public void updateTest() {
-		DeliveryVO delivery = new DeliveryVO();
-		delivery.setIdx(9);
-		delivery.setMember(memberMapper.find(10));
-		delivery.setAddressName("강남구");
-		delivery.setDeliveryName("ohohohohohohoh");
-		delivery.setAddress("종로 메타넷");
-		delivery.setDeliveryPhone("010/1223");
-		delivery.setDeliveryRequest("문 앞");
+	public void getListTest() {
+		List<DeliveryVO> list = mapper.getList();
 		
-		int count = mapper.update(delivery);
-		log.info("Update count : "+count);
+		log.info(list);
+		list.forEach(delivery -> System.out.println(delivery));
 	}
+	
 }
