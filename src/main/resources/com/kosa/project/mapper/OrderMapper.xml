@@ -2,89 +2,95 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosa.project.mapper.OrderMapper">
 
-	<resultMap type="com.kosa.project.domain.OrderVO" id="orderMap">
+	<resultMap type="com.kosa.project.domain.OrderVO"
+		id="orderMap">
 		<id column="o.id" property="idx" />
-		<result column="o.price" property="price"/>
-		<result column="o.deliveryPrice" property="deliveryPrice"/>
-		<result column="o.payment" property="payment"/>
-		<result column="o.state" property="state"/>
-		<collection property="member" resultMap="memberMap"/>
-		<collection property="cart" resultMap="cartMap"/>
-		<collection property="delivery" resultMap="deliveryMap"/>
-		<collection property="cartProduct" resultMap="cartProductMap"></collection>
+		<result column="o.price" property="price" />
+		<result column="o.deliveryPrice" property="deliveryPrice" />
+		<result column="o.payment" property="payment" />
+		<result column="o.state" property="state" />
+		<collection property="member" resultMap="memberMap" />
+		<collection property="cart" resultMap="cartMap" />
+		<collection property="delivery" resultMap="deliveryMap" />
+		<collection property="cartProduct"
+			resultMap="cartProductMap"></collection>
 	</resultMap>
-	
-	<resultMap type="com.kosa.project.domain.MemberVO" id="memberMap">
+
+	<resultMap type="com.kosa.project.domain.MemberVO"
+		id="memberMap">
 		<id column="m.id" property="idx" />
-		<result column="m.loginId" property="loginId"/>
-		<result column="m.password" property="password"/>
-		<result column="m.name" property="name"/>
-		<result column="m.email" property="email"/>
-		<result column="m.phone" property="phone"/>
-		<result column="m.birth" property="birth"/>
+		<result column="m.loginId" property="loginId" />
+		<result column="m.password" property="password" />
+		<result column="m.name" property="name" />
+		<result column="m.email" property="email" />
+		<result column="m.phone" property="phone" />
+		<result column="m.birth" property="birth" />
 	</resultMap>
-	
+
 	<resultMap type="com.kosa.project.domain.CartVO" id="cartMap">
 		<id column="c.id" property="idx" />
-		<collection property="member" resultMap="memberMap"/>
+		<collection property="member" resultMap="memberMap" />
 	</resultMap>
-	
-	<resultMap type="com.kosa.project.domain.DeliveryVO" id="deliveryMap">
+
+	<resultMap type="com.kosa.project.domain.DeliveryVO"
+		id="deliveryMap">
 		<id column="d.id" property="idx" />
-		<result column="d.addressName" property="addressName"/>
-		<result column="d.deliveryName" property="deliveryName"/>
-		<result column="d.address" property="address"/>
-		<result column="d.deliveryPhone" property="deliveryPhone"/>
-		<result column="d.deliveryRequest" property="deliveryRequest"/>
-		<collection property="member" resultMap="memberMap"/>
+		<result column="d.addressName" property="addressName" />
+		<result column="d.deliveryName" property="deliveryName" />
+		<result column="d.address" property="address" />
+		<result column="d.deliveryPhone" property="deliveryPhone" />
+		<result column="d.deliveryRequest" property="deliveryRequest" />
+		<collection property="member" resultMap="memberMap" />
 	</resultMap>
-	
-	<resultMap type="com.kosa.project.domain.CartProductVO" id="cartProductMap">
+
+	<resultMap type="com.kosa.project.domain.CartProductVO"
+		id="cartProductMap">
 		<id column="cp.id" property="idx" />
-		<result column="cp.amount" property="amount"/>
-		<collection property="product" resultMap="productMap"/>
+		<result column="cp.amount" property="amount" />
+		<collection property="product" resultMap="productMap" />
 	</resultMap>
-	
-	<resultMap type="com.kosa.project.domain.ProductVO" id="productMap">
+
+	<resultMap type="com.kosa.project.domain.ProductVO"
+		id="productMap">
 		<id column="p.id" property="idx" />
-		<result column="p.name" property="name"/>
-		<result column="p.price" property="price"/>
+		<result column="p.name" property="name" />
+		<result column="p.price" property="price" />
+		<collection property="category" resultMap="categoryMap" />
+		<collection property="brand" resultMap="brandMap" />
 	</resultMap>
-	
-	<resultMap type="com.kosa.project.domain.CategoryVO" id="categoryMap">
+
+	<resultMap type="com.kosa.project.domain.CategoryVO"
+		id="categoryMap">
 		<id column="ca.id" property="idx" />
-		<result column="ca.name" property="name"/>
+		<result column="ca.name" property="name" />
 	</resultMap>
-	
-	<resultMap type="com.kosa.project.domain.BrandVO" id="brandMap">
+
+	<resultMap type="com.kosa.project.domain.BrandVO"
+		id="brandMap">
 		<id column="br.id" property="idx" />
-		<result column="br.name" property="name"/>
-		<result column="br.phone" property="phone"/>
-		<result column="br.manager" property="manager"/>
+		<result column="br.name" property="name" />
+		<result column="br.phone" property="phone" />
+		<result column="br.manager" property="manager" />
 	</resultMap>
-	
-	<select id="getOrderInfo" resultMap="orderMap">
+
+	<select id="read" parameterType="int" resultMap="orderMap">
 		select
-		d.addressName, d.deliveryName, d.address,
+		m.idx,
+		d.address_name, d.delivery_name, d.address,
 		m.name, m.email, m.phone,
-		p.name, p.price, b.name, cp.amount
+		p.name, p.price, br.name, cp.amount,
 		o.payment
+		from order2 o, cart c, delivery d, cart_product cp, product p, brand br, member m
 		where
-		and m.idx=#{idx}
-	</select>
-	
-	<select id="getOrderInfo" resultMap="orderMap">
-		select
-		d.addressName, d.deliveryName, d.address,
-		m.name, m.email, m.phone,
-		p.name, p.price, b.name, cp.amount
-		o.payment
-		where
-		and m.idx=#{idx}
+		o.cart_idx = c.idx
+		and o.delivery_idx = d.idx
+		and c.idx = cp.cart_idx
+		and c.member_idx = m.idx
+		and cp.product_idx = p.idx
+		and	p.brand_idx=br.idx
+		and c.idx=#{idx}
 	</select>
 
-	
 
 
-	
 </mapper>
