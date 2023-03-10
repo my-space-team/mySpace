@@ -8,7 +8,6 @@
 
 .review-container h2 {
   color: #ec6090;
-  font-size: 20px;
   font-weight: 700;
 }
 
@@ -74,6 +73,8 @@
 }
 
 .review-content textarea{
+  width:750px;
+  height: 150px;
   resize: none;
 }
 

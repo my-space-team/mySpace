@@ -21,11 +21,5 @@ public class MemberController {
 	public String insertMember() {
 		return "member/register";
 	}
-
-	@PostMapping("/register")
-	public String insertMember(MemberVO vo, RedirectAttributes rttr) {
-		System.out.println(vo);
-		service.insert(vo);
-		return "redirect:/";
-	}
+	
 }

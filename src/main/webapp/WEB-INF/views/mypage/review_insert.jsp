@@ -2,16 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/resources/css/review_insert.css">
 </head>
+
 <body>
+<div id="header"></div>
+
   <div class="review-container">
     <h2>리뷰 작성</h2>
     <form action="" method="post">
@@ -80,5 +78,15 @@
     </form>
 
   </div>
+  <script src="/resources/vendor/jquery/jquery.min.js"></script>
+  <div id="script"></div>
+  	<script>
+	    $(document).ready(function(){
+	      $("head").load("/resources/mypage/review_insert.html");
+	      $("#script").load("/resources/common/include_script.html");
+	      $("#header").load("/resources/common/header.html");
+	      
+	    });
+	  </script>
 </body>
 </html>
