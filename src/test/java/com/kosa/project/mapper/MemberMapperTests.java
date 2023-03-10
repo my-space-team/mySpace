@@ -20,32 +20,42 @@ public class MemberMapperTests {
     @Autowired
     private MemberMapper mapper;
 
-    @Test
-    public void insertAndFind() {
-        MemberVO member = new MemberVO();
-        member.setName("김영오");
-        member.setBirth(new Date());
-        member.setEmail("leej1102");
-        member.setLoginId("leej24224dd24230");
-        member.setPassword("ddddfdfd");
-        member.setPhone("12321421");
-        mapper.insert(member);
+//    @Test
+//    public void insertAndFind() {
+//        MemberVO member = new MemberVO();
+//        member.setName("김영오");
+//        member.setBirth(new Date());
+//        member.setEmail("leej1102");
+//        member.setLoginId("leej24224dd24230");
+//        member.setPassword("ddddfdfd");
+//        member.setPhone("12321421");
+//        mapper.insert(member);
+//
+//        log.info("--------------------->" + member.getIdx());
+//        mapper.find(member.getIdx());
+//
+//        log.info("<----------------------------->");
+//        log.info(member);
+//
+//    }
 
-        log.info("--------------------->" + member.getIdx());
-        mapper.find(member.getIdx());
-
-        log.info("<----------------------------->");
-        log.info(member);
-
-    }
-
-    @Test
-    public void delete() {
-
-    }
-
-    @Test
-    public void update() {
-
-    }
+//    @Test
+//    public void delete() {
+//    	log.info("Delete : "+mapper.delete(9));
+//    }
+    
+//    @Test
+//    public void update() {
+//    	MemberVO member = new MemberVO();	
+//    	member.setIdx(7);
+//    	member.setName("김영오");
+//        member.setBirth(new Date());
+//        member.setEmail("leej1102");
+//        member.setLoginId("leej24224dd24230");
+//        member.setPassword("ddddfdfd");
+//        member.setPhone("12321421");
+//        
+//        int count = mapper.update(member);
+//        log.info("update count : "+count);
+//    }
 }
