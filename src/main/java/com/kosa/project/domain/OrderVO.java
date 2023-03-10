@@ -14,4 +14,5 @@ public class OrderVO {
     private MemberVO member;
     private CartVO cart;
     private DeliveryVO delivery;
+    private CartProductVO cartProduct;
 }
