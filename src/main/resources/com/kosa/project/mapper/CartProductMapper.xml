@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosa.project.mapper.CartProductMapper">
+
+	<select id="getList" resultType="com.kosa.project.domain.CartProductVO"> 
+		SELECT * FROM cart_product
+	</select>
+	
+	
+	
+	<insert id="addProduct">
+		insert into cart_product(idx, cart_idx, product_idx, amount) 
+		values(#{idx},#{cart_idx},#{product_idx},#{amount})
+	</insert>
+	
+	<delete id="delete">
+		delete from cart_product where idx = #{idx}</delete>
+		
+	<update id="update">
+		update cart_product set amount = #{amount} 
+		where idx = #{idx}</update>
+</mapper>
