@@ -10,4 +10,5 @@ public interface MemberMapper {
     public int delete(int idx);
 
     public int update(MemberVO vo);
+    
 }
