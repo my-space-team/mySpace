@@ -6,7 +6,6 @@
  * Updated : 2023-03-10
  * 
  */
-
 var $member = {
     init: function(){
         $member.bindHandler();
@@ -16,11 +15,15 @@ var $member = {
         $(document).on("click", ".js-add", $member.add);
     },
 
-    add : function(){
+    add : function(event){
+        event.preventDefault();
         var ajaxParam = {
             url: "/REST/member/add",
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+              },
             data: $("form[name='form-member-register']").serialize(),
-            method: "POST",
+            type: "POST",
             success: function(result){
                 if(result == null){
                     alert("회원등록에 실패하였습니다.");
@@ -30,9 +33,11 @@ var $member = {
                 }
             },
             error: function(){
-                alert("error");
+                console.log(data + "저장되지 못함");
             }
         };
         $.ajax(ajaxParam);
     }
 }
+
+$member.init();

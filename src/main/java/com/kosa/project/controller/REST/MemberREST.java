@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.kosa.project.domain.MemberVO;
 import com.kosa.project.service.MemberService;
 
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j;
 
-@Slf4j
+@Log4j
 @RestController
 @RequestMapping("/REST/member")
 public class MemberREST {
@@ -31,10 +31,10 @@ public class MemberREST {
     @PostMapping("/add")
     public ResponseEntity<MemberVO> add(MemberVO member) {
         try {
-            int dbMemberIdx = memberService.insert(member);
-            log.info("-----------> 등록된 회원: ", memberService.find(dbMemberIdx));
-            if (memberService.find(dbMemberIdx) != null) {
-                return new ResponseEntity<MemberVO>(memberService.find(dbMemberIdx), HttpStatus.OK);
+            MemberVO dbMember = memberService.insert(member);
+            log.info("----------> /REST/member method:add = " + dbMember);
+            if (dbMember != null) {
+                return new ResponseEntity<MemberVO>(dbMember, HttpStatus.OK);
             }
 
         } catch (Exception e) {

@@ -23,11 +23,11 @@
 	</select>
 
 	<insert id ="insert">
-		<selectKey resultType = "int" order = "BEFORE" keyProperty = "idx">
+		<selectKey keyProperty = "idx" resultType = "int" order = "BEFORE">
 			SELECT member_seq.nextval FROM DUAL		
 		</selectKey>
 		insert into member (idx, login_id, password, name, email, phone, birth)
-		values (#{idx},#{loginId},#{password},#{name},#{email},#{phone}, #{birth})		
+		values (#{idx},#{loginId},#{password},#{name},#{email},#{phone}, #{birth})	
 	</insert>
 	
 	<delete id="delete">

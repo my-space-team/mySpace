@@ -6,17 +6,12 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/member/**" access="hasRole('MEMBER')" />
+        <intercept-url pattern="/admin/**" access="hasRole('MEMBER')" />
         <intercept-url pattern="/user/**" access="hasAnyRole('USER', 'ADMIN')" />
         <intercept-url pattern="/**" access="permitAll" />
-        <!-- <intercept-url pattern="/**" access="authenticated" /> -->
         <form-login />
         <logout />
-        <csrf disabled="false">
-            <ignoring pattern="/REST/**" />
-            <ignoring pattern="/APP/**" />
-            <ignoring pattern="/attach/**" />
-        </csrf>
+
     </http>
 
     <authentication-manager>
