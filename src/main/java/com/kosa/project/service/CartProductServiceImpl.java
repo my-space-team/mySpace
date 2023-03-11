@@ -2,6 +2,7 @@ package com.kosa.project.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosa.project.domain.CartProductVO;
@@ -15,6 +16,7 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class CartProductServiceImpl implements CartProductService {
 	
+	@Autowired
 	private CartProductMapper mapper;
 
 	@Override
@@ -25,20 +27,34 @@ public class CartProductServiceImpl implements CartProductService {
 
 	@Override
 	public boolean update(CartProductVO cartProduct) {
-		// TODO Auto-generated method stub
-		return false;
+		log.info("modify...." + cartProduct);
+		
+		return mapper.update(cartProduct) == 1;
 	}
 
 	@Override
 	public boolean delete(int idx) {
-		// TODO Auto-generated method stub
-		return false;
+
+		log.info("remove....." + idx);
+		
+		return mapper.delete(idx) == 1;
 	}
 
 	@Override
 	public List<CartProductVO> getList() {
-		// TODO Auto-generated method stub
-		return null;
+	
+		log.info("getList............");
+		
+		return mapper.getList();
 	}
+
+	@Override
+	public CartProductVO get(int idx) {
+		
+		log.info("get........." + idx);
+		return mapper.read(idx);
+	}
+	
+	
 
 }
