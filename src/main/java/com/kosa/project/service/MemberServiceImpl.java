@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 import com.kosa.project.domain.MemberVO;
 import com.kosa.project.mapper.MemberMapper;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
 
 	private MemberMapper memberMapper;
