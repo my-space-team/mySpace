@@ -22,12 +22,11 @@
 										<input class="register-input" type="text" placeholder="이름을 입력하세요" name="name">
 										<input class="register-input" type="text" placeholder="이메일을 입력하세요" name="email">
 										<input class="register-input" type="text" placeholder="전화번호를 입력하세요" name="phone">
-										<!-- <input class="register-input" type="date" placeholder="생년월일을 입력하세요" name="birth"> -->
+										<input class="register-input" type="date" placeholder="생년월일을 입력하세요" name="birth">
 								</form>
 							</div>
 							<div class="main-button">
-								<a href="/hello" class="js-add">회원가입</a>
-								<button class="btn btn-primary js-add">회원가입</button>
+								<a class="js-add">회원가입</a>
 							</div>
 						</div>
 					</div>
@@ -42,6 +41,38 @@
 		$("head").load("/resources/common/common_head.html");
 		$("#script").load("/resources/common/include_script.html");
 		$("#header").load("/resources/common/header.html");
+
+		var $member = {
+			init: function(){
+				$member.bindHandler();
+			},
+
+			bindHandler : function(){
+				$(document).on("click", ".js-add", $member.add);
+			},
+
+			add : function(event){
+				event.preventDefault();
+				var ajaxParam = {
+					url: "/REST/member/add",
+					data: $("form[name='form-member-register']").serialize(),
+					method: "POST",
+					success: function(result){
+						if(result == null){
+							alert("회원등록에 실패하였습니다.");
+							return false;
+						} else{
+							location.href ="/";
+						}
+					},
+					error: function(){
+						alert("error");
+					}
+				};
+				$.ajax(ajaxParam);
+			}
+		}
+
 		$member.init();
 	  });
 	</script>
