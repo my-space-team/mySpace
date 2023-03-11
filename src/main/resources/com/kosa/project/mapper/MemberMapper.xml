@@ -2,8 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosa.project.mapper.MemberMapper">
 
-	<select id="find" resultType="com.kosa.project.domain.MemberVO">
+	<resultMap id="memberMap" type="com.kosa.project.domain.MemberVO">
+		<id property="idx" column="idx"/>
+		<result property="loginId" column="login_id"/>
+		<result property="password" column="password"/>
+		<result property="name" column="name"/>
+		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="birth" column="birth"/>
+	</resultMap>
+
+	<select id="find" resultMap="memberMap">
 		SELECT * FROM MEMBER WHERE IDX= #{idx}
+	</select>
+
+	<select id="getList" resultMap="memberMap">
+		<![CDATA[ 
+			SELECT * FROM member WHERE idx > 0
+		]]>
 	</select>
 
 	<insert id ="insert">
@@ -20,17 +36,12 @@
 	
 	<update id="update">
 		UPDATE MEMBER SET
-		login_id = #{loginID},
+		login_id = #{loginId},
 		password = #{password},
 		name= #{name},
 		email = #{email},
 		phone = #{phone},
 		birth = sysdate
-		WHERE idx = #{idx};
-		
+		WHERE idx = #{idx}
 	</update>
-
-
-
-	
 </mapper>

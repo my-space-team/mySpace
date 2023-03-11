@@ -1,6 +1,7 @@
 package com.kosa.project.mapper;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,31 +22,40 @@ public class MemberMapperTests {
     private MemberMapper mapper;
 
     @Test
-    public void insertAndFind() {
+    public void insert() {
         MemberVO member = new MemberVO();
-        member.setName("김영오");
+        member.setName("김재우");
         member.setBirth(new Date());
-        member.setEmail("leej1102");
-        member.setLoginId("leej24224dd24230");
-        member.setPassword("ddddfdfd");
-        member.setPhone("12321421");
+        member.setEmail("evisahah@gmail.com");
+        member.setLoginId("evisahha");
+        member.setPassword("1234");
+        member.setPhone("010-9122-6389");
         mapper.insert(member);
-
-        log.info("--------------------->" + member.getIdx());
-        mapper.find(member.getIdx());
-
-        log.info("<----------------------------->");
         log.info(member);
-
     }
 
     @Test
     public void delete() {
+        mapper.delete(mapper.find(1).getIdx());
+
+        List<MemberVO> members = mapper.getList();
+        members.forEach(member -> log.info(member));
 
     }
 
     @Test
     public void update() {
+        MemberVO findMember = mapper.find(10);
+        log.info(findMember);
+        findMember.setName("이재우");
+        mapper.update(findMember);
 
+        log.info(mapper.find(10));
+    }
+
+    @Test
+    public void getList() {
+        List<MemberVO> members = mapper.getList();
+        members.forEach(member -> log.info(member));
     }
 }
