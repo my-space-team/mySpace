@@ -15,4 +15,6 @@ public interface CartProductService {
 	public boolean delete(int idx);
 	
 	public List<CartProductVO> getList();
+	
+	public CartProductVO get(int idx);
 }
