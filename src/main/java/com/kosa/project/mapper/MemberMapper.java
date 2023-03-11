@@ -9,9 +9,9 @@ public interface MemberMapper {
 
     public MemberVO find(int idx);
 
-    public List<MemberVO> getList();
-
     public int delete(int idx);
 
     public int update(MemberVO vo);
+
+    public List<MemberVO> getList();
 }

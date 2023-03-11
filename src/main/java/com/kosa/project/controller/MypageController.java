@@ -1,28 +1,52 @@
 package com.kosa.project.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kosa.project.domain.MemberVO;
-import com.kosa.project.service.MemberService;
+import com.kosa.project.domain.ScoreVO;
+import com.kosa.project.service.ReviewService;
+
+import lombok.AllArgsConstructor;
 
 @Controller
 @RequestMapping("/mypage")
+@AllArgsConstructor
 public class MypageController {
 
-    @Autowired
-    private MemberService memberService;
+    private ReviewService reviewService;
 
-    @GetMapping("/{idx}/order_list_page")
-    public String shoppingPage(@PathVariable int idx, MemberVO member, Model model) {
-        if (member.getIdx() == idx) {
-            // orderService를 이용해서 orderList를 불러와야함
-            return "order_list_page";
-        }
-        return "/home";
+    @GetMapping("/shopping_page")
+    public String shoppingPage() {
+        return "shopping_page";
     }
+
+    @GetMapping("/order_list")
+    public String orderList() {
+        return "mypage/order_list";
+    }
+
+    @GetMapping("/review")
+    public String review(Model model) {
+        model.addAttribute("List", reviewService.getMemberReviewList(1));
+        return "mypage/review";
+    }
+
+    @GetMapping("/review/insert")
+    public String reviewInsert() {
+        return "mypage/review_insert";
+    }
+
+    @PostMapping("/review/isert")
+    public ResponseEntity<String> reviewInsert(ScoreVO vo) {
+        ;
+        return reviewService.insertReview(vo) == 1
+                ? new ResponseEntity<>("success", HttpStatus.OK)
+                : new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }

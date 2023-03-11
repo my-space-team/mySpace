@@ -8,5 +8,9 @@ public class ScoreVO {
 	private ReviewVO review;
 	private int durability;
 	private int design;
+	private int price;
 	private int delivery;
+	
+	private int total;
+	
 }

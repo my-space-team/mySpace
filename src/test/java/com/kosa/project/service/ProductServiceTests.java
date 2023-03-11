@@ -1,5 +1,7 @@
 package com.kosa.project.service;
 
+import java.util.List;
+
 import javax.swing.text.AbstractDocument.BranchElement;
 
 import org.junit.Test;
@@ -9,6 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.kosa.project.domain.ProductVO;
+import com.kosa.project.domain.ReviewVO;
+import com.kosa.project.domain.ScoreVO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -19,14 +23,22 @@ public class ProductServiceTests {
 	@Autowired
 	private ProductService service;
 
+//	@Test
+//	public void getProduct() {
+//		ProductVO findProduct = service.getProduct(1);
+//		String brandName = findProduct.getBrand().getName();
+//		String categoryName = findProduct.getCategory().getName();
+//
+//		log.info("------------------ LOG START -----------------------");
+//		log.info("Product : " + findProduct);
+//		log.info("brandName : " + brandName + "   categoryName : " + categoryName);
+//	}
+	
+	
 	@Test
-	public void getProduct() {
-		ProductVO findProduct = service.getProduct(1);
-		String brandName = findProduct.getBrand().getName();
-		String categoryName = findProduct.getCategory().getName();
-
-		log.info("------------------ LOG START -----------------------");
-		log.info("Product : " + findProduct);
-		log.info("brandName : " + brandName + "   categoryName : " + categoryName);
+	public void getReviewList() {
+		List<ScoreVO> list=service.getReviewList(1);
+		
+		log.info(list);
 	}
 }

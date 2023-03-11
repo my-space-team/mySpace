@@ -92,8 +92,8 @@ create table REVIEW(
 
 --리뷰점수
 create table score (
-    idx number PRIMARY KEY,
-    review_idx number constraint review_idx_score_fk references REVIEW(idx),
+    idx number PRIMARY KEY,    
+    review_idx number constraint review_idx_score_fk references review(idx),
     durability number not null,
     price number not null,
     design number not null,
