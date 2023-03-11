@@ -33,7 +33,7 @@ var $member = {
                 }
             },
             error: function(){
-                console.log(data + "저장되지 못함");
+                console.log(data + "오류 발생");
             }
         };
         $.ajax(ajaxParam);

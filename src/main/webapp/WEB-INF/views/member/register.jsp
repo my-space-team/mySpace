@@ -38,42 +38,41 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<%@ include file="/resources/common/include_script.jsp" %>
 	<script>
-		$(document).ready(function(){
-			var $member = {
-			init: function(){
-				$member.bindHandler();
-			},
+		var $member = {
+		init: function(){
+			$member.bindHandler();
+		},
 
-			bindHandler : function(){
-				$(document).on("click", ".js-add", $member.add);
-			},
+		bindHandler : function(){
+			$(document).on("click", ".js-add", $member.add);
+		},
 
-			add : function(event){
-				event.preventDefault();
-				var ajaxParam = {
-					url: "/REST/member/add",
-					beforeSend: function(xhr) {
-						xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-					},
-					data: $("form[name='form-member-register']").serialize(),
-					type: "POST",
-					success: function(result){
-						if(result == null){
-							alert("회원등록에 실패하였습니다.");
-							return false;
-						} else{
-							location.href ="/";
-						}
-					},
-					error: function(){
-						console.log(data + "오류 발생");
+		add : function(event){
+			event.preventDefault();
+			var ajaxParam = {
+				url: "/REST/member/add",
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+				},
+				data: $("form[name='form-member-register']").serialize(),
+				type: "POST",
+				success: function(result){
+					if(result == null){
+						alert("회원등록에 실패하였습니다.");
+						return false;
+					} else{
+						location.href ="/";
 					}
-				};
-				$.ajax(ajaxParam);
-			}
+				},
+				error: function(){
+					console.log(data + "오류 발생");
+				}
+			};
+			$.ajax(ajaxParam);
 		}
-		$member.init();
-		});
+	}
+	
+	$member.init();
 	</script>
 </body>
 </html>
