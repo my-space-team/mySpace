@@ -21,127 +21,112 @@
 						<h4>장바구니</h4>
 					</div>
 					<div>
-						<div style="display: flex;">
-							<div class="col-8">
-								<table class="table">
-									<thead>
-										<tr>
-											<th scope="col"></th>
-											<th scope="col">번호</th>
-											<th scope="col">이미지</th>
-											<th scope="col">상품</th>
-											<th scope="col">수량</th>
-											<th scope="col">가격</th>
-											<th scope="col">삭제</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><input class="form-check-input" type="checkbox"
-												value="" id="flexCheckDefault"> <label
-												class="form-check-label" for="flexCheckDefault"> </label></td>
-											<th scope="row">1</th>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td><button type="button" class="btn btn-outline-danger">삭제</button></td>
-										</tr>
-										<tr>
-											<td><input class="form-check-input" type="checkbox"
-												value="" id="flexCheckDefault"> <label
-												class="form-check-label" for="flexCheckDefault"> </label></td>
-											<th scope="row">2</th>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td><button type="button" class="btn btn-outline-danger">삭제</button></td>
-										</tr>
-										<tr>
-											<td><input class="form-check-input" type="checkbox"
-												value="" id="flexCheckDefault"> <label
-												class="form-check-label" for="flexCheckDefault"> </label></td>
-											<th scope="row">3</th>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td><button type="button" class="btn btn-outline-danger">삭제</button></td>
-										</tr>
-										<tr>
-											<td><input class="form-check-input" type="checkbox"
-												value="" id="flexCheckDefault"> <label
-												class="form-check-label" for="flexCheckDefault"> </label></td>
-											<th scope="row">4</th>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td><button type="button" class="btn btn-outline-danger">삭제</button></td>
-										</tr>
-										<tr>
-											<td><input class="form-check-input" type="checkbox"
-												value="" id="flexCheckDefault"> <label
-												class="form-check-label" for="flexCheckDefault"> </label></td>
-											<th scope="row">5</th>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td><button type="button" class="btn btn-outline-danger">삭제</button></td>
-										</tr>
+						<div class="row">
+							<div style="display: flex;">
+								<div class="col-8">
+									<table class="table">
+										<thead>
+											<tr>
+												<th scope="col">번호</th>
+												<!-- <th scope="col">이미지</th> -->
+												<th scope="col">상품</th>
+												<th scope="col">가격</th>
+												<th scope="col">수량</th>
+												<th scope="col">삭제</th>
+											</tr>
+										</thead>
 
-									</tbody>
+										<c:forEach items="${list }" var="cartProduct">
+											<tr>
+												<td><c:out value="${cartProduct.idx }" /></td>
+												<%-- <td><c:out value="${이미지 }" /></td> --%>
+												<td><c:out value="${cartProduct.product.name}" /></td>
+												<td><c:out value="${cartProduct.product.price }" /></td>
+												<td><select class="form-select"
+													aria-label="Default select example" style="width: 30px;">
+														<c:forEach var="i" begin="1" end="10">
+															<option value="${i}"
+																<c:if test="${cartProduct.amount eq i}">selected</c:if>>${i}</option>
+														</c:forEach>
+												</select></td>
+												<td>
+													<form method="post" action="/cart/delete">
+														<input type="hidden" name="idx" value="${cartProduct.idx}" />
+														<button type="submit" class="btn btn-outline-danger">삭제</button>
+													</form>
+												</td>
+										</c:forEach>
+									</table>
+									<div class="order_btn_area">
+										<button type="button" class="btn btn-outline-Secondary"
+											name="partOrderBtn">선택주문</button>
+										<button type="button" class="btn btn-outline-Secondary"
+											name="allOrderBtn">전체주문</button>
 
-								</table>
-								<div class="order_btn_area">
-									<button type="button" class="btn btn-outline-primary"
-										name="partOrderBtn">선택주문</button>
-									<button type="button" class="btn btn-outline-primary"
-										name="allOrderBtn">전체주문</button>
+									</div>
+
 
 								</div>
 
 
-							</div>
+
+								<div class="col-4" style="float: right">
+									<div style="">
+										<div class="row mb-3">
+											<label for="colFormLabelSm"
+												class="col-sm-4 col-form-label col-form-label-sm">총
+												상품금액</label>
+											<div class="col-sm-5">
+												<c:set var="totalPrice" value="0" />
+												<c:forEach items="${list}" var="cartProduct">
+													<c:set var="price"
+														value="${cartProduct.product.price * cartProduct.amount}" />
+													<c:set var="totalPrice" value="${totalPrice + price}" />
+												</c:forEach>
+												<input type="text" readonly
+													class="form-control form-control-sm" id="colFormLabelSm"
+													value=${totalPrice }>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<label for="colFormLabelSm"
+												class="col-sm-4 col-form-label col-form-label-sm">배송비</label>
+											<div class="col-sm-5">
 
 
+												<c:set var="totalPrice" value="0" />
+												<c:forEach items="${list}" var="cartProduct">
+													<c:set var="price"
+														value="${cartProduct.product.price * cartProduct.amount}" />
+													<c:set var="totalPrice" value="${totalPrice + price}" />
+												</c:forEach>
+												<c:set var="deliveryPrice"
+													value="${totalPrice < 30000 ? 2500 : 0}" />
+												<input type="text" readonly
+													class="form-control form-control-sm" id="colFormLabelSm"
+													value=${deliveryPrice }>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<label for="colFormLabelSm"
+												class="col-sm-4 col-form-label col-form-label-sm">총
+												결제금액</label>
+											<div class="col-sm-5">
+												<c:set var="totalPayment"
+													value="${totalPrice + deliveryPrice}" />
+												<input type="text" readonly
+													class="form-control form-control-sm" id="colFormLabelSm"
+													value=${totalPayment} >
+											</div>
+										</div>
 
-							<div class="col-4" style="float: right;">
-								<div style="" >
-									<div class="row mb-3">
-										<label for="colFormLabelSm"
-											class="col-sm-4 col-form-label col-form-label-sm">총 상품금액</label>
-										<div class="col-sm-5">
-											<input type="email" class="form-control form-control-sm"
-												id="colFormLabelSm" >
+										<div class="d-grid gap-2 col-10 ">
+											<button type="button" class="btn btn-primary"
+												name="allOrderBtn">구매하기</button>
 										</div>
 									</div>
-									<div class="row mb-3">
-										<label for="colFormLabelSm"
-											class="col-sm-4 col-form-label col-form-label-sm">배송비</label>
-										<div class="col-sm-5">
-											<input type="email" class="form-control form-control-sm"
-												id="colFormLabelSm" >
-										</div>
-									</div>
-									<div class="row mb-3">
-										<label for="colFormLabelSm"
-											class="col-sm-4 col-form-label col-form-label-sm">총 결제금액</label>
-										<div class="col-sm-5">
-											<input type="email" class="form-control form-control-sm"
-												id="colFormLabelSm" >
-										</div>
-									</div>
-									
-									<div class="d-grid gap-2 col-9 ">
-									<button type="button" class="btn btn-outline-primary"
-										name="allOrderBtn">구매하기</button>
-									</div>
+
 								</div>
-
-
 
 							</div>
 						</div>
@@ -149,12 +134,12 @@
 				</div>
 			</div>
 		</div>
+	</div>
 
 
-
-		<script src="/resources/vendor/jquery/jquery.min.js"></script>
-		<div id="script"></div>
-		<script>
+	<script src="/resources/vendor/jquery/jquery.min.js"></script>
+	<div id="script"></div>
+	<script>
 			$(document).ready(function() {
 				$("head").load("/resources/common/common_head.html");
 				$("#script").load("/resources/common/include_script.html");

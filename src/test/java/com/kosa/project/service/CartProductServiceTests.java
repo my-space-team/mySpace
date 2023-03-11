@@ -29,7 +29,7 @@ public class CartProductServiceTests {
 	@Test
 	public void testGetList() {
 		
-		service.getList().forEach(cartProduct -> log.info(cartProduct));
+		service.getList(1).forEach(cartProduct -> log.info(cartProduct));
 	}
 	
 //	@Test
