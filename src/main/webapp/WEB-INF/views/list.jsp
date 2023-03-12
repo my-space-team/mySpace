@@ -50,14 +50,11 @@
 														</c:forEach>
 												</select></td>
 												<td>
-													<form method="post" action="/delete">
+													
+													<form method="post" action="/cart/delete">
 														<input type="hidden" name="idx" value="${cartProduct.idx}" />
 														<button type="submit" class="btn btn-outline-danger">삭제</button>
-													</form>
-													<%-- <form method="post" action="/cart/delete">
-														<input type="hidden" name="idx" value="${cartProduct.idx}" />
-														<button type="submit" class="btn btn-outline-danger">삭제</button>
-													</form> --%>
+													</form> 
 												</td>
 										</c:forEach>
 									</table>
