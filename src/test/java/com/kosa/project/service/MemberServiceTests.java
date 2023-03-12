@@ -23,10 +23,10 @@ public class MemberServiceTests {
     @Test
     public void insert() {
         MemberVO member = new MemberVO();
-        member.setName("insert-service-test");
+        member.setName("오경훈");
         member.setBirth(new Date());
-        member.setEmail("thisisemail.com");
-        member.setLoginId("service-test");
+        member.setEmail("evisahah@gmail.com");
+        member.setLoginId("evisahah");
         member.setPassword("1234");
         member.setPhone("010-xxxx-xxxx");
 
@@ -35,12 +35,17 @@ public class MemberServiceTests {
 
     @Test
     public void find() {
-        log.info(service.find(27));
+        log.info(service.find(61));
+    }
+
+    @Test
+    public void findMemberByLoginId() {
+        log.info(service.findMemberByLoginId("leej1120"));
     }
 
     @Test
     public void remove() {
-        service.remove(21);
+        service.remove(26);
     }
 
     @Test

@@ -8,6 +8,8 @@ public interface MemberService {
 
 	public MemberVO find(int idx);
 
+	public MemberVO findMemberByLoginId(String loginId);
+
 	public int remove(int idx);
 
 	public int modify(MemberVO vo);

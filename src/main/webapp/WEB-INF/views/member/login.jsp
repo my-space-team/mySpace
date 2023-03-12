@@ -27,7 +27,7 @@
                                         <input class="form-control"style="text-align: center; margin: auto; width: 50%;" type="text"
                                         placeholder="비밀번호를 입력하세요" name="password" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력하세요'" />
                                         <br>
-                                        <button type="submit">로그인</button>
+                                        <button type="submit" class="btn btn-primary">로그인</button>
                                     </form>
 								</div>
                                 <br>

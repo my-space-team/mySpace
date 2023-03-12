@@ -10,10 +10,24 @@
 		<result property="email" column="email"/>
 		<result property="phone" column="phone"/>
 		<result property="birth" column="birth"/>
+		<collection property="authList" resultMap="authMap"></collection>
+	</resultMap>
+	
+	<resultMap id="authMap" type="com.kosa.project.domain.AuthVO">
+		<result property="userId" column="user_id"/>
+		<result property="auth" column="auth"/>
 	</resultMap>
 
 	<select id="find" resultMap="memberMap">
-		SELECT * FROM MEMBER WHERE IDX= #{idx}
+		SELECT idx, login_id, password, name, email, phone, birth, auth
+		FROM member LEFT OUTER JOIN auth ON member.login_id = auth.user_id
+		WHERE idx = #{idx}
+	</select>
+
+	<select id="findMemberByLoginId" resultMap="memberMap">
+		SELECT idx, login_id, password, name, email, phone, birth, auth
+		FROM member LEFT OUTER JOIN auth ON member.login_id = auth.user_id
+		WHERE login_id = #{loginId}
 	</select>
 
 	<select id="getList" resultMap="memberMap">

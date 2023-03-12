@@ -15,7 +15,14 @@ create table member (
     name varchar2(20) not null,
     email varchar2(20) not null,
     phone varchar2(30) not null,
-    birth date not null
+    birth date not null,
+);
+
+--권한
+create table auth (
+    user_id varchar(50) PRIMARY KEY,
+    auth varchar(50) not null,
+    constraint fk_member_auth foreign key(user_id) references member(login_id)
 );
 
 --브랜드
