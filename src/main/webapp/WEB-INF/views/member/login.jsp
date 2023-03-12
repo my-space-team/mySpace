@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>로그인 페이지</title>
+
 
 <script>
 
@@ -13,6 +14,8 @@
 
 </head>
 <body>
-
+아무거나 출력
 </body>
 </html>
+
+

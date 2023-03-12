@@ -12,6 +12,7 @@
         <!-- <intercept-url pattern="/**" access="authenticated" /> -->
         <form-login />
         <logout />
+        <access-denied-handler error-page = "/accessError"/>
     </http>
 
     <authentication-manager>
