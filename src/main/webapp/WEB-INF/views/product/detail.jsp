@@ -122,7 +122,7 @@
       $("#header").load("../../resources/common/header.html");
       
       $("#cart").click(function(){
-      	location.href="../cart/list";
+      	location.href="../cart/list?idx=1"; //cart_idx = 1 말하는 건데 수정해야함
       })
     });
     

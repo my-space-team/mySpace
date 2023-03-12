@@ -8,13 +8,13 @@ import com.kosa.project.domain.CartProductVO;
 
 
 public interface CartProductService {
-	public void addProduct(CartProductVO cartProduct); //지금 안 할거임
+	public void addProduct(CartProductVO cartProduct); 
 	
 	public boolean update(CartProductVO cartProduct);
 	
 	public boolean delete(int idx);
 	
-	public List<CartProductVO> getList();
+	public List<CartProductVO> getList(int idx);
 	
 	public CartProductVO get(int idx);
 }

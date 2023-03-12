@@ -27,11 +27,19 @@ public class MemberMapperTests {
         member.setName("김재우");
         member.setBirth(new Date());
         member.setEmail("evisahah@gmail.com");
-        member.setLoginId("evisahha");
+        member.setLoginId("eafffffha");
         member.setPassword("1234");
-        member.setPhone("010-9122-6389");
-        mapper.insert(member);
+        member.setPhone("010-xxxx-xxxx");
+        int result = mapper.insert(member);
+        log.info("------------>" + member.getIdx());
         log.info(member);
+    }
+
+    @Test
+    public void find() {
+        MemberVO member = mapper.find(26);
+        log.info(member);
+
     }
 
     @Test

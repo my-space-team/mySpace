@@ -3,8 +3,8 @@ package com.kosa.project.service;
 import com.kosa.project.domain.MemberVO;
 
 public interface MemberService {
-	// 지우지 마셈
-	public Integer insert(MemberVO vo);
+
+	public MemberVO insert(MemberVO vo);
 
 	public MemberVO find(int idx);
 

@@ -1,22 +1,28 @@
 package com.kosa.project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosa.project.domain.MemberVO;
 import com.kosa.project.mapper.MemberMapper;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Service
+@Log4j
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
 
+	@Autowired
 	private MemberMapper memberMapper;
 
 	@Override
-	public Integer insert(MemberVO vo) {
-		Integer result = memberMapper.insert(vo);
-		return result == null ? null : result;
+	public MemberVO insert(MemberVO vo) {
+		memberMapper.insert(vo);
+		MemberVO dbMember = memberMapper.find(vo.getIdx());
+		log.info("------>service----->insert" + dbMember);
+		return dbMember;
 	}
 
 	@Override
