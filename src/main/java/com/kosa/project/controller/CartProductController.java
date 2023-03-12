@@ -38,9 +38,17 @@ public class CartProductController {
 	    return "list"; 
 	}
 	
+//	@PostMapping("/add")
+//	public void addProduct(@RequestBody CartProductVO cartProduct) {
+//		service.addProduct(cartProduct);
+//		
+//		
+//	}
+	
 	@PostMapping("/add")
-	public void addProduct(@RequestBody CartProductVO cartProduct) {
-		service.addProduct(cartProduct);
+	public String addProduct(CartProductVO cartProduct, Model model, @RequestParam("idx") int idx) {
+	    service.addProduct(cartProduct);
+	    return "redirect:/detail?idx=" + idx;
 	}
 	
 	
@@ -51,6 +59,14 @@ public class CartProductController {
 		model.addAttribute("cartProduct", service.get(idx));
 	}
 	
+	
+	
+	@PostMapping("/update")
+	public String update(CartProductVO cartProduct) {
+	    service.update(cartProduct);
+	    return "redirect:/cart/list?idx=" + 1;
+	}
+	
 	@PostMapping("/delete")
 	public String delete(@RequestParam("idx") int idx
 			//,RedirectAttributes rttr
@@ -59,7 +75,7 @@ public class CartProductController {
 //		if (service.delete(idx)) {
 //			rttr.addFlashAttribute("result", "success");
 //		}
-		return "redirect:/cart/list?idx=" + idx;
+		return "redirect:/cart/list?idx=" +1 ;
 	}
 
 

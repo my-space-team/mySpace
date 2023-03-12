@@ -33,9 +33,17 @@
 				<span>${reviewTotal }개 리뷰</span><br>
 				<span style="font-size: 1.7em;"><fmt:formatNumber value="${product.price }" pattern="#,###원"/></span><br><br>
 				
-				<button id="cart" style="width: 150px; height: 30px;" type="button"
-				 class="btn btn-info">장바구니</button>
-				<button id="purchase" style="width: 150px; height: 30px;"
+				<!-- <button id="cart" style="width: 150px; height: 30px;" type="button"
+				 class="btn btn-info">장바구니</button> -->
+				 
+						<form method="post" action="../cart/add">
+							<input type="hidden" name="idx" value="${product.idx}" /> <input
+								type="hidden" name="${_csrf.parameterName }"
+								value="${_csrf.token }" />
+							<button id="cart" style="width: 150px; height: 30px;" type="submit" class="btn btn-info">장바구니</button>
+						</form> 
+						
+						<button id="purchase" style="width: 150px; height: 30px;"
 				 class="btn btn-light">구매하기</button><hr>
 				 <div style="background-color: lightgray; height: 80px; border-radius: 15%; width: 280px;">
 				 ${product.name }
@@ -121,9 +129,9 @@
       $("#script").load("../../resources/common/include_script.html");
       $("#header").load("../../resources/common/header.html");
       
-      $("#cart").click(function(){
+      /* $("#cart").click(function(){
       	location.href="../cart/list?idx=1"; //cart_idx = 1 말하는 건데 수정해야함
-      })
+      }) */
     });
     
     

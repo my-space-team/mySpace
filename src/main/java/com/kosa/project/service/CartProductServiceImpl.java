@@ -2,6 +2,7 @@ package com.kosa.project.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,7 @@ public class CartProductServiceImpl implements CartProductService {
 
 	@Override
 	public boolean update(CartProductVO cartProduct) {
-		log.info("modify...." + cartProduct);
+		log.info("update...." + cartProduct);
 		
 		return mapper.update(cartProduct) == 1;
 	}
@@ -35,7 +36,7 @@ public class CartProductServiceImpl implements CartProductService {
 	@Override
 	public boolean delete(int idx) {
 
-		log.info("remove....." + idx);
+		log.info("delete....." + idx);
 		
 		return mapper.delete(idx) == 1;
 	}
@@ -54,6 +55,14 @@ public class CartProductServiceImpl implements CartProductService {
 		log.info("get........." + idx);
 		return mapper.read(idx);
 	}
+
+	
+
+//	@Override
+//	public void update(@Param("idx") int idx, @Param("amount") int amount) {
+//		mapper.update(idx, amount);
+//		
+//	}
 	
 	
 

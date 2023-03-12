@@ -42,26 +42,34 @@
 												<%-- <td><c:out value="${이미지 }" /></td> --%>
 												<td><c:out value="${cartProduct.product.name}" /></td>
 												<td><c:out value="${cartProduct.product.price }" /></td>
-												<td><select class="form-select"
-													aria-label="Default select example" style="width: 30px;">
-														<c:forEach var="i" begin="1" end="10">
-															<option value="${i}"
-																<c:if test="${cartProduct.amount eq i}">selected</c:if>>${i}</option>
-														</c:forEach>
-												</select></td>
+												<td>
+													<form method="post" action="/cart/update">
+														<input type="hidden" name="idx" value="${cartProduct.idx}" /> <input type="hidden" name="${_csrf.parameterName }"
+															value="${_csrf.token }" />
+														<div class="d-flex align-items-center">
+															<input type="text" class="form-control form-control-sm"
+																id="colFormLabelSm" value="${cartProduct.amount}"
+																name="amount" style="width: 20px;">
+															<button type="submit"
+																class="btn btn-outline-warning ms-1">변경</button>
+														</div>
+													</form>
+												</td>
+
 												<td>
 													
 													<form method="post" action="/cart/delete">
 														<input type="hidden" name="idx" value="${cartProduct.idx}" />
+														<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
 														<button type="submit" class="btn btn-outline-danger">삭제</button>
 													</form> 
 												</td>
 										</c:forEach>
 									</table>
 									<div class="order_btn_area">
-										<button type="button" class="btn btn-outline-Secondary"
+										<button type="button" class="btn btn-outline-Secondary btn-sm"
 											name="partOrderBtn">선택주문</button>
-										<button type="button" class="btn btn-outline-Secondary"
+										<button type="button" class="btn btn-outline-Secondary btn-sm"
 											name="allOrderBtn">전체주문</button>
 
 									</div>
@@ -102,7 +110,7 @@
 													<c:set var="totalPrice" value="${totalPrice + price}" />
 												</c:forEach>
 												<c:set var="deliveryPrice"
-													value="${totalPrice < 30000 ? 2500 : 0}" />
+													value="${totalPrice == 0 ? 0 : totalPrice < 30000 ? 2500 : 0}" />
 												<input type="text" readonly
 													class="form-control form-control-sm" id="colFormLabelSm"
 													value=${deliveryPrice }>
@@ -145,6 +153,7 @@
 				$("head").load("/resources/common/common_head.html");
 				$("#script").load("/resources/common/include_script.html");
 			});
+			
 		</script>
 </body>
 </html>
