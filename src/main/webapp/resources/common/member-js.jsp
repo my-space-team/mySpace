@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+<!-- member.js / @author jaewoo -->
 <script>
     var $member = {
         init: function(){
@@ -36,6 +37,5 @@
             $.ajax(ajaxParam);
         }
     }
-    
     $member.init();
 </script>
