@@ -1,16 +1,21 @@
 package com.kosa.project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosa.project.domain.MemberVO;
+import com.kosa.project.mapper.CategoryMapper;
 import com.kosa.project.mapper.MemberMapper;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
 
+	@Autowired
 	private MemberMapper memberMapper;
 
 	@Override

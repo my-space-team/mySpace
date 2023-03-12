@@ -27,26 +27,23 @@
 
 						<!-- 배송지가져오기 -->
 						<div class="col-7">
-							<p class="h5">배송지</p>
+							<h5 style="color: #404040;" >배송지</h5>
 							<hr style="border: solid 2px black;">
 							<div class="mb-3 row">
 
 								<label for="staticEmail" class="col-sm-2 col-form-label">이름</label>
 								<div class="col-sm-8">
-									<input type="text" readonly class="form-control-plaintext"
-										id="staticEmail" value="이름">
+									<input type="text" class="form-control" placeholder="이름" aria-label="이름" aria-describedby="basic-addon1">
 								</div>
 								<label for="staticEmail" class="col-sm-2 col-form-label">배송지명</label>
 								<div class="col-sm-8">
-									<input type="text" readonly class="form-control-plaintext"
-										id="staticEmail" value="배송지명">
+								<input type="text" class="form-control" placeholder="배송지명" aria-label="Username" aria-describedby="basic-addon1">
 								</div>
 								<label for="staticEmail" class="col-sm-2 col-form-label">주소</label>
 								<div class="col-sm-8">
-									<input type="text" readonly class="form-control-plaintext"
-										id="staticEmail" value="주소">
+								<input type="text" class="form-control" placeholder="주소" aria-label="Username" aria-describedby="basic-addon1">
 								</div>
-								<select class="form-select" aria-label="Default select example" style="width:500px">
+								<select class="form-select" aria-label="Default select example" style="width:90%">
 									<option selected>배송지 요청사항을 입력하세요</option>
 									<option value="1">부재시 문앞에 놓아주세요</option>
 									<option value="2">배송전에 미리 연락주세요</option>
@@ -57,7 +54,7 @@
 
 						<!-- 결제금액 -->
 						<div class="col-4">
-							<p class="h5">결제금액</p>
+							<h5 style="color: #404040;">결제금액</h5>
 							<hr style="border: solid 2px black;">
 							<div class="mb-3 row">
 								<label for="staticEmail" class="col-sm-5 col-form-label">총상품금액</label>
@@ -85,24 +82,21 @@
 						<!-- 주문자정보가져오기 -->
 						<div style="padding: 60px 0px;">
 							<div class="col-7">
-								<p class="h5">주문자</p>
+								<h5 style="color: #404040;">주문자</h5>
 								<hr style="border: solid 2px black;">
 								<div class="mb-3 row">
 
-									<label for="staticEmail" class="col-sm-2 col-form-label">이름</label>
+									<label for="staticEmail" class="col-sm-2 col-form-label">주문자명 </label>
 									<div class="col-sm-8">
-										<input type="text" readonly class="form-control-plaintext"
-											id="staticEmail" value="안세영">
+									<span>${member.name }</span>
 									</div>
 									<label for="staticEmail" class="col-sm-2 col-form-label">이메일</label>
 									<div class="col-sm-8">
-										<input type="text" readonly class="form-control-plaintext"
-											id="staticEmail" value="rapa0714@gmail.com">
+										<span>${member.email }</span>
 									</div>
 									<label for="staticEmail" class="col-sm-2 col-form-label">전화번호</label>
 									<div class="col-sm-8">
-										<input type="text" readonly class="form-control-plaintext"
-											id="staticEmail" value="123456879">
+										<span>${member.phone }</span>
 									</div>
 								</div>
 							</div>
@@ -110,7 +104,7 @@
 
 						<!-- 주문상품가져오기 -->
 						<div class="col-7">
-							<p class="h5">주문상품</p>
+							<h5 style="color: #404040;">주문상품</h5>
 							<hr style="border: solid 2px black;">
 							<div class="mb-3 row">
 								<table class="table table-bordered">
@@ -120,13 +114,15 @@
 											<th scope="col">상품명</th>
 											<th scope="col">브랜드명</th>
 											<th scope="col">상품가격</th>
+											<th scope="col">수량</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<th scope="row">1</th>
-											<td>Mark</td>
+											<%-- <td>${cartProduct.product.name}</td> --%>
 											<td>Otto</td>
+											<td>@mdo</td>
 											<td>@mdo</td>
 										</tr>
 										<tr>
@@ -134,12 +130,14 @@
 											<td>Jacob</td>
 											<td>Thornton</td>
 											<td>@fat</td>
+											<td>@mdo</td>
 										</tr>
 										<tr>
 											<th scope="row">3</th>
 											<td>Jacob</td>
 											<td>Thornton</td>
 											<td>@fat</td>
+											<td>@mdo</td>
 										</tr>
 									</tbody>
 								</table>
@@ -149,10 +147,10 @@
 						<!-- 결제수단 -->
 						<div style="padding: 60px 0px;">
 							<div class="col-7">
-								<p class="h5">결제하기</p>
+								<h5 style="color: #404040;">결제하기</h5>
 								<hr style="border: solid 2px black;">
 								<div class="mb-3 row">
-									<select class="form-select" aria-label="Default select example" style="width:500px">
+									<select class="form-select" aria-label="Default select example" style="width:90%">
 										<option selected>결제수단 선택하기</option>
 										<option value="1">무통장입금</option>
 										<option value="2">신용카드</option>
