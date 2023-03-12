@@ -6,10 +6,9 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/admin/**" access="hasRole('MEMBER')" />
-        <intercept-url pattern="/user/**" access="hasAnyRole('USER', 'ADMIN')" />
+        <intercept-url pattern="/mypage/**" access="hasRole('MEMBER')" />
         <intercept-url pattern="/**" access="permitAll" />
-        <form-login />
+        <form-login login-page="/memberLogin" />
         <logout />
 
     </http>
@@ -17,8 +16,8 @@
     <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="user" password="{noop}password" authorities="ROLE_USER" />
-                <user name="admin" password="{noop}password" authorities="ROLE_ADMIN" />
+                <user name="member" password="{noop}password" authorities="MEMBER" />
+
             </user-service>
         </authentication-provider>
     </authentication-manager>

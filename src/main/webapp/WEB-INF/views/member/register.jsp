@@ -21,17 +21,22 @@
 								<div class="register-div">
 									<form name="form-member-register" onsubmit="return false;">
 											<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-											<input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="text" placeholder="아이디를 입력하세요" name="loginId">
+											<input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="text" 
+											placeholder="아이디를입력하세요" name="loginId" onfocus="this.placeholder=''" onblur="this.placeholder='아이디를 입력하세요'"/>
 											<br>
-											<input class="form-control"style="text-align: center; margin: auto; width: 50%;" type="text" placeholder="비밀번호를 입력하세요" name="password">
+											<input class="form-control"style="text-align: center; margin: auto; width: 50%;" type="text" 
+											placeholder="비밀번호를 입력하세요" name="password" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력하세요'" />
 											<br>
-											<input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="text" placeholder="이름을 입력하세요" name="name">
+											<input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="text" 
+											placeholder="이름을 입력하세요" name="name" onfocus="this.placeholder=''" onblur="this.placeholder='이름을 입력하세요'" />
 											<br>
-											<input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="text" placeholder="이메일을 입력하세요" name="email">
+											<input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="text" 
+											placeholder="이메일을 입력하세요" name="email" onfocus="this.placeholder=''" onblur="this.placeholder='이메일을 입력하세요'" />
 											<br>
-											<input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="text" placeholder="전화번호를 입력하세요" name="phone">
+											<input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="text" 
+											placeholder="전화번호를 입력하세요" name="phone" onfocus="this.placeholder=''" onblur="this.placeholder='전화번호를 입력하세요'" />
 											<br>
-											<input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="date" placeholder="생년월일을 입력하세요" name="birth">
+											<input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="date" name="birth" />
 											<br>
 									</form>
 								</div>
