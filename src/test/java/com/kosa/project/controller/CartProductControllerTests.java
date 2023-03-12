@@ -34,16 +34,16 @@ public class CartProductControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 	
-	@Test
-	public void testList() throws Exception {
-		
-		log.info(
-			mockMvc.perform(MockMvcRequestBuilders.get("/cart/list")
-					.param("idx", "1"))
-			.andReturn()
-			.getModelAndView()
-			.getModelMap());
-	}
+//	@Test
+//	public void testList() throws Exception {
+//		
+//		log.info(
+//			mockMvc.perform(MockMvcRequestBuilders.get("/cart/list")
+//					.param("idx", "1"))
+//			.andReturn()
+//			.getModelAndView()
+//			.getModelMap());
+//	}
 	
 //	@Test
 //	public void testGet() throws Exception {
@@ -55,14 +55,14 @@ public class CartProductControllerTests {
 //				.getModelAndView().getModelMap());
 //	}
 //	
-//	@Test
-//	public void testDelete() throws Exception{
-//		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/cart/delete")
-//				.param("idx", "5")
-//				).andReturn().getModelAndView().getViewName();
-//		
-//		log.info(resultPage);
-//	}
+	@Test
+	public void testDelete() throws Exception{
+		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/cart/delete")
+				.param("idx", "3")
+				).andReturn().getModelAndView().getViewName();
+		
+		log.info(resultPage);
+	}
 //	
 	
 

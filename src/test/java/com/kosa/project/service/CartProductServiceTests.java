@@ -25,33 +25,33 @@ public class CartProductServiceTests {
 //		log.info(service);
 //		assertNotNull(service);
 //	}
-//
-	@Test
-	public void testGetList() {
-		
-		service.getList(1).forEach(cartProduct -> log.info(cartProduct));
-	}
-	
+
+//	@Test
+//	public void testGetList() {
+//		
+//		service.getList(1).forEach(cartProduct -> log.info(cartProduct));
+//	}
+//	
 //	@Test
 //	public void testDelete() {
 //		
-//		log.info("REMOVE RESULT: " + service.delete(2));
+//		log.info("REMOVE RESULT: " + service.delete(4));
 //	}
-	
-//	@Test
-//	public void testUpdate() {
-//		
-//		CartProductVO cartProduct = service.get(1);
-//		
-//		if (cartProduct == null) {
-//			return;
-//			
-//		}
-//		
-//		cartProduct.setAmount(17);
-//		log.info("MODIFY RESULT : " + service.update(cartProduct));
-//		
-//	}
+//	
+	@Test
+	public void testUpdate() {
+		
+		CartProductVO cartProduct = service.get(1);
+		
+		if (cartProduct == null) {
+			return;
+			
+		}
+		
+		cartProduct.setAmount(7);
+		log.info("MODIFY RESULT : " + service.update(cartProduct));
+		
+	}
 	
 
 }
