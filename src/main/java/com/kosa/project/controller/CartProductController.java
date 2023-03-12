@@ -52,12 +52,14 @@ public class CartProductController {
 	}
 	
 	@PostMapping("/delete")
-	public String delete(@RequestParam("idx") int idx, RedirectAttributes rttr) {
-		log.info("delete..." + idx);
-		if (service.delete(idx)) {
-			rttr.addFlashAttribute("result", "success");
-		}
-		return "redirect:/cart/list";
+	public String delete(@RequestParam("idx") int idx
+			//,RedirectAttributes rttr
+			) {
+		service.delete(idx);
+//		if (service.delete(idx)) {
+//			rttr.addFlashAttribute("result", "success");
+//		}
+		return "redirect:/cart/list?idx=" + idx;
 	}
 
 

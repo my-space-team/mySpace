@@ -50,10 +50,14 @@
 														</c:forEach>
 												</select></td>
 												<td>
-													<form method="post" action="/cart/delete">
+													<form method="post" action="/delete">
 														<input type="hidden" name="idx" value="${cartProduct.idx}" />
 														<button type="submit" class="btn btn-outline-danger">삭제</button>
 													</form>
+													<%-- <form method="post" action="/cart/delete">
+														<input type="hidden" name="idx" value="${cartProduct.idx}" />
+														<button type="submit" class="btn btn-outline-danger">삭제</button>
+													</form> --%>
 												</td>
 										</c:forEach>
 									</table>
@@ -135,8 +139,8 @@
 			</div>
 		</div>
 	</div>
-
-
+	<!-- footer 삽입 -->
+	<%@ include file="/resources/common/footer.jsp" %>
 	<script src="/resources/vendor/jquery/jquery.min.js"></script>
 	<div id="script"></div>
 	<script>
