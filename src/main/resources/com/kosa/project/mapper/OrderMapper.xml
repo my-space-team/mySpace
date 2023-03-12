@@ -9,9 +9,12 @@
 		<result column="delivery_price" property="deliveryPrice" />
 		<result column="payment" property="payment" />
 		<result column="regdate" property="state" />
+		<result column="delivery_name" property="deliveryName" />
+		<result column="address_name" property="addressName" />
+		<result column="address" property="address" />
+		<result column="delivery_request" property="deliveryRequest" />
 		<collection property="member" resultMap="memberMap" />
 		<collection property="cart" resultMap="cartMap" />
-		<collection property="delivery" resultMap="deliveryMap" />
 		<collection property="cartProduct"
 			resultMap="cartProductMap" />
 	</resultMap>
@@ -29,17 +32,6 @@
 
 	<resultMap type="com.kosa.project.domain.CartVO" id="cartMap">
 		<id column="idx" property="idx" />
-		<collection property="member" resultMap="memberMap" />
-	</resultMap>
-
-	<resultMap type="com.kosa.project.domain.DeliveryVO"
-		id="deliveryMap">
-		<id column="idx" property="idx" />
-		<result column="address_name" property="addressName" />
-		<result column="delivery_name" property="deliveryName" />
-		<result column="address" property="address" />
-		<result column="delivery_phone" property="deliveryPhone" />
-		<result column="delivery_request" property="deliveryRequest" />
 		<collection property="member" resultMap="memberMap" />
 	</resultMap>
 
@@ -89,7 +81,28 @@
 		and p.brand_idx=br.idx 
 		and m.idx=#{idx} 
 	</select> 
-
+	
+	<insert id="insert" parameterType="map" >
+		
+		insert into order2 (idx,  member_idx, cart_idx, payment, price, delivery_price, regdate, delivery_name, address_name, address, delivery_request)
+		values(order2_seq.nextval, #{memberIdx},#{cartIdx},#{payment},#{totalPrice},#{dilPrice}, sysdate,#{dilName}, #{dilPlace},#{dilAddress},#{dilSelect}  )
+					
+	</insert>
+	
+	<select id="read" parameterType="int" resultMap="orderMap">
+	<!-- select 
+	member_idx, cart_idx, payment, price, regdate, delivery_name, address
+	from order2 -->
+	select 
+		m.name, price, payment, regdate, address
+		from order2 o, member m 
+		where o.member_idx = m.idx
+		and o.idx=#{idx}
+	</select>
+	
+	
+	
+	
 	<!-- 총상품금액, 배송비, 총결제금액 계산하기 이건 굳이 여기서 안해도 된다고 함 -->
 	<!-- <select id="read" parameterType="int" resultMap="orderMap">
 		

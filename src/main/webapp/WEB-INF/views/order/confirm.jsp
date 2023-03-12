@@ -33,7 +33,7 @@
 							<tbody>
 								<tr>
 									<th scope="col">배송지</th>
-									<th scope="col">First</th>
+									<th scope="col">${order2.address}</th>
 								</tr>
 								<tr>
 									<th scope="row">주문자</th>

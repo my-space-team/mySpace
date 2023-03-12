@@ -1,5 +1,8 @@
 package com.kosa.project.service;
 
-public interface DeliveryService {
+import java.util.Map;
 
+import com.kosa.project.domain.DeliveryVO;
+
+public interface DeliveryService {
 }
