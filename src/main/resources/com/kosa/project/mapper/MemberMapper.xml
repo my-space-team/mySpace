@@ -14,7 +14,7 @@
 	</resultMap>
 	
 	<resultMap id="authMap" type="com.kosa.project.domain.AuthVO">
-		<result property="userId" column="user_id"/>
+		<id property="userId" column="login_id"/>
 		<result property="auth" column="auth"/>
 	</resultMap>
 

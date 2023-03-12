@@ -23,10 +23,10 @@ public class MemberServiceTests {
     @Test
     public void insert() {
         MemberVO member = new MemberVO();
-        member.setName("오경훈");
+        member.setName("tester");
         member.setBirth(new Date());
         member.setEmail("evisahah@gmail.com");
-        member.setLoginId("evisahah");
+        member.setLoginId("tester2");
         member.setPassword("1234");
         member.setPhone("010-xxxx-xxxx");
 
@@ -40,7 +40,8 @@ public class MemberServiceTests {
 
     @Test
     public void findMemberByLoginId() {
-        log.info(service.findMemberByLoginId("leej1120"));
+        MemberVO vo = service.findMemberByLoginId("leej1120");
+        vo.getAuthList().forEach(auth -> log.info(auth));
     }
 
     @Test
