@@ -21,7 +21,7 @@ public class CartProductServiceImpl implements CartProductService {
 
 	@Override
 	public void addProduct(CartProductVO cartProduct) {
-		// TODO Auto-generated method stub
+		mapper.addProduct(cartProduct);
 
 	}
 
@@ -41,11 +41,11 @@ public class CartProductServiceImpl implements CartProductService {
 	}
 
 	@Override
-	public List<CartProductVO> getList() {
+	public List<CartProductVO> getList(int idx) {
 	
 		log.info("getList............");
 		
-		return mapper.getList();
+		return mapper.getList(idx);
 	}
 
 	@Override
