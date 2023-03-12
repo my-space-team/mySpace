@@ -9,8 +9,10 @@ import com.kosa.project.mapper.MemberMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
 @Service
+@Log4j
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
@@ -19,9 +21,11 @@ public class MemberServiceImpl implements MemberService {
 	private MemberMapper memberMapper;
 
 	@Override
-	public Integer insert(MemberVO vo) {
-		Integer result = memberMapper.insert(vo);
-		return result == null ? null : result;
+	public MemberVO insert(MemberVO vo) {
+		memberMapper.insert(vo);
+		MemberVO dbMember = memberMapper.find(vo.getIdx());
+		log.info("------>service----->insert" + dbMember);
+		return dbMember;
 	}
 
 	@Override

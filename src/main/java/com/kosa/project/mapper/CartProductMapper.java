@@ -7,7 +7,7 @@ import com.kosa.project.domain.CartProductVO;
 public interface CartProductMapper {
 	
 	//@Select("select * from cart_product where idx > 0")
-	public List<CartProductVO> getList();
+	public List<CartProductVO> getList(int idx);
 	
 	public void addProduct(CartProductVO cartProduct); 
 	
