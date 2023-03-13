@@ -40,4 +40,14 @@ public class MemberController {
         }
         return "member/register";
     }
+    
+   
+    
+    @GetMapping("/login")
+    public String showLoginForm() {
+    	return "member/login"; // 로그인 페이지의 이름
+    }
+        
+    
+    
 }

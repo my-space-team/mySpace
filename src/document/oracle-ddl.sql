@@ -13,17 +13,24 @@ create table member (
     login_id varchar2(20) unique not null,
     password varchar2(200) not null,
     name varchar2(20) not null,
-    email varchar2(20) not null,
+    email varchar2(50) not null,
     phone varchar2(30) not null,
-    birth date not null
+    birth date not null,
+);
+
+--권한
+create table auth (
+    user_id varchar(50) PRIMARY KEY,
+    auth varchar(50) not null,
+    constraint fk_member_auth foreign key(user_id) references member(login_id)
 );
 
 --브랜드
 create table brand (
     idx number PRIMARY KEY,
-    name varchar2(20) not null,
+    name varchar2(200) not null,
     phone varchar2(20) not null,
-    manager varchar2(20) not null
+    manager varchar2(200) not null
 );
 
 --카테고리
@@ -37,22 +44,22 @@ create table product (
     idx number PRIMARY KEY,
     category_idx number CONSTRAINT category_idx_product_fk references category(idx),
     brand_idx number constraint brand_idx_product_fk references brand(idx),
-    name varchar2(50) not null,
+    name varchar2(200) not null,
     price number not null,
-    image_url varchar2(100),
+    image_url varchar2(200),
     image varchar2(200)
 );
 
---배송지
-CREATE TABLE delivery (
-    idx number PRIMARY KEY,
-    member_idx number constraint member_idx_delivery_fk references member(idx),
-    address_name varchar2(50) NOT NULL,
-    delivery_name varchar2(20) NOT NULL,
-    address varchar2(50) NOT NULL,
-    delivery_phone varchar2(30) NOT NULL,
-    delivery_request varchar2(20)
-);
+-- --배송지
+-- CREATE TABLE delivery (
+--     idx number PRIMARY KEY,
+--     member_idx number constraint member_idx_delivery_fk references member(idx),
+--     address_name varchar2(50) NOT NULL,
+--     delivery_name varchar2(20) NOT NULL,
+--     address varchar2(50) NOT NULL,
+--     delivery_phone varchar2(30) NOT NULL,
+--     delivery_request varchar2(20)
+-- );
 
 --장바구니
 create table cart (
@@ -73,11 +80,14 @@ CREATE TABLE ORDER2 (
     idx number PRIMARY KEY,
     member_idx number constraint member_idx_order_fk references member(idx),
     cart_idx number constraint cart_idx_order_fk references cart(idx),
-    delivery_idx number constraint delivery_idx_order_fk references delivery(idx),
-    payment varchar2(20) NOT NULL,
-    price number NOT NULL,
+    payment varchar2(20),
+    price number,
     delivery_price NUMBER DEFAULT 0,
-    regdate date NOT NULL
+    regdate date,
+    delivery_name varchar2(20),
+    address_name varchar2(50),
+    address varchar2(70),
+    delivery_request varchar2(70)
 );
 
 --상품리뷰
