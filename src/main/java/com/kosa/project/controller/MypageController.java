@@ -61,7 +61,7 @@ public class MypageController {
 
         model.addAttribute("member", findMember);
 
-        return "mypage/order_list";
+        return "mypage/home";
     }
 
     @GetMapping("/review")
