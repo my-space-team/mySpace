@@ -450,43 +450,6 @@ INSERT INTO product (idx, category_idx, brand_idx, name, price, image_url)
 INSERT INTO product (idx, category_idx, brand_idx, name, price, image_url) 
 	VALUES ( product_seq.nextval, 8, 5, '팔레트 옷장 01', 2340000, 'https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/163763293333359177.jpg?gif=1&w=850&h=850&c=c&webp=1');
 
--- 회원
-INSERT INTO member (idx, login_id, password, name, email, phone, birth)
-VALUES (member_seq.nextval, 'dhrudgns', '1234', '오경훈', 'dhrudgns@naver.com', '010-4562-7890', TO_DATE('1911-01-01', 'YYYY-MM-DD'));
-
-INSERT INTO auth (user_id, auth)
-VALUES ('dhrudgns', 'MEMBER');
-
-INSERT INTO member (idx, login_id, password, name, email, phone, birth)
-VALUES (member_seq.nextval, 'dlwodn', '1234', '이재우', 'dlwodn@naver.com', '010-1223-4567', TO_DATE('1911-01-01', 'YYYY-MM-DD'));
-
-INSERT INTO auth (user_id, auth)
-VALUES ('dlwodn', 'MEMBER');
-
-INSERT INTO member (idx, login_id, password, name, email, phone, birth)
-VALUES (member_seq.nextval, 'rladuddh', '1234', '김영오', 'rladuddh@example.com', '010-4523-3256', TO_DATE('1911-01-01', 'YYYY-MM-DD'));
-
-INSERT INTO auth (user_id, auth)
-VALUES ('rladuddh', 'MEMBER');
-
-INSERT INTO member (idx, login_id, password, name, email, phone, birth)
-VALUES (member_seq.nextval, 'dlawlsdk', '1234', '임진아', 'dlawlsdk@naver.com', '010-3122-6845', TO_DATE('1911-01-01', 'YYYY-MM-DD'));
-
-INSERT INTO auth (user_id, auth)
-VALUES ('dlawlsdk', 'MEMBER');
-
-INSERT INTO member (idx, login_id, password, name, email, phone, birth)
-VALUES (member_seq.nextval, 'tlsthgml', '1234', '신소희', 'tlsthgml@naver.com', '010-4561-7890', TO_DATE('1911-01-01', 'YYYY-MM-DD'));
-
-INSERT INTO auth (user_id, auth)
-VALUES ('tlsthgml', 'MEMBER');
-
-INSERT INTO member (idx, login_id, password, name, email, phone, birth)
-VALUES (member_seq.nextval, 'dkstpdud', '1234', '안세영', 'dkstpdud@naver.com', '010-4526-8630', TO_DATE('1911-01-01', 'YYYY-MM-DD'));
-
-INSERT INTO auth (user_id, auth)
-VALUES ('dkstpdud', 'MEMBER');
-
 commit;
 
 ------------------------------------------------------------------------------------------
