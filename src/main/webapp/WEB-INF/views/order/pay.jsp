@@ -11,7 +11,11 @@
 }
 </style>
 <body>
+<<<<<<< HEAD
 	<%@ include file="/resources/common/header.jsp"%>
+=======
+	<%@ include file="/resources/common/header.jsp" %>
+>>>>>>> origin/youngoh
 
 	<div class="container">
 		<div class="col-lg-12">

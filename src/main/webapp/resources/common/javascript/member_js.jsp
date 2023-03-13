@@ -17,9 +17,15 @@
             event.preventDefault();
             var ajaxParam = {
                 url: "/REST/member/add",
+<<<<<<< HEAD
 /*                 beforeSend: function(xhr) {
                     xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
                   }, */
+=======
+               /*  beforeSend: function(xhr) {
+                    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+                  } ,*/
+>>>>>>> origin/youngoh
                 data: $("form[name='form-member-register']").serialize(),
                 type: "POST",
                 success: function(result){
@@ -30,7 +36,8 @@
                         location.href ="/";
                     }
                 },
-                error: function(){
+                error: function(error){
+                	console.log(error);
                     console.log("오류 발생");
                 }
             };

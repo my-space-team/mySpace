@@ -6,7 +6,7 @@ import com.kosa.project.domain.DeliveryVO;
 
 public interface DeliveryMapper {
 	
-	public void insert(DeliveryVO delivery);
+	public int insert(DeliveryVO delivery);
 	
 	public DeliveryVO read(int idx);
 	
