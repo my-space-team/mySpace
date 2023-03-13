@@ -15,7 +15,7 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 public class ProductController {
-<<<<<<< HEAD
+
 	
 	@Autowired
 	private ProductService productService;
@@ -24,11 +24,8 @@ public class ProductController {
 	private ReviewService rservice;
 	
 	
-=======
 
-	private ProductService productService;
 
->>>>>>> 37fe8dd835ffd3094321a44c044542e0672093a3
 	@GetMapping("/product/detail")
 	public ModelAndView godetail(int idx) {
 		ModelAndView mv = new ModelAndView();
@@ -37,10 +34,7 @@ public class ProductController {
 		mv.addObject("reviewTotal", productService.getTotalReviewList(idx));
 		mv.setViewName("product/detail");
 
-<<<<<<< HEAD
-		
-=======
->>>>>>> 37fe8dd835ffd3094321a44c044542e0672093a3
+
 		return mv;
 	}
 
