@@ -61,6 +61,7 @@
 		
 		<association property="category" resultMap="categoryMap" />
 		<association property="brand" resultMap="brandMap" />
+		
 	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.CategoryVO"
@@ -77,9 +78,52 @@
 		<result column="manager" property="manager" />
 	</resultMap>
 	
-	<resultMap type="com.kosa.project.domain.OrderVO" id =""></resultMap>
+<!-- 	<resultMap type="com.kosa.project.domain.OrderVO"
+		id="orderMap">
+		<id column="idx" property="idx" />
+		<result column="payment" property="payment" />
+		<result column="price" property="price" />
+		<result column="delivery_price" property="deliveryPrice" />
+		<result column="regdate" property="state" />
+		<collection property="member" resultMap="memberMap" />
+		<collection property="cart" resultMap="cartMap" />
+	</resultMap>
+	 -->
 	
 	
+<!-- 	<resultMap type="com.kosa.project.domain.CartVO" id="cartMap">
+		<id column="idx" property="idx" />
+		<association property="member" resultMap="memberMap"/>
+		<association property="cartProduct" resultMap="cartProductMap"/>
+	</resultMap> -->
+	
+	
+	<!-- <resultMap type="com.kosa.project.domain.MemberVO" id="memberMap">
+		<id column="idx" property="idx" />
+		<result column="login_id" property="loginId" />
+		<result column="password" property="password" />
+		<result column="name1" property="name" />
+		<result column="email" property="email" />
+		<result column="phone" property="phone" />
+		<result column="birth" property="birth" />
+	</resultMap> -->
+	
+	<!-- <resultMap type ="com.kosa.project.domain.CartProductVO" id="cartProductMap">
+		<id column = "idx" property = "idx"/>
+		<result column = "amount" property = "aamount"/>
+		<collection property="cart" resultMap ="cartMap"/>
+		<collection property="product" resultMap ="productMap"/>
+	</resultMap> -->
+	
+<!-- 	<resultMap type = "com.kosa.project.domain.ProductVO" id = "productMap">
+		<id column="idx" property="idx" />
+		<result column="name" property="name" />
+		<result column="price" property="price" />
+		<result column="image_url" property="imageURL" />
+		<result column="image" property="imageUpload" />
+		<association property="category" resultMap="categoryMap" />
+		<association property="brand" resultMap="brandMap" />
+	</resultMap> -->
 	
 	
 	
@@ -110,6 +154,19 @@
 	    GROUP BY m.idx
 	  ]]>
 	</select> -->
+	
+	<!-- 구매 후 주문한 리스트에 보여질 정보들 : 제품정보, 날짜 -->
+	
+	<!-- member, cart안의 cart_product안의 product --> 
+	<select id="getOrderList" parameterType = "int" resultMap="orderMap">
+	select o.idx
+	from order2 o, cart c, member m, cart_product cp, product p
+	where o.idx = m.idx 
+	and o.idx = c.idx
+	and c.idx = cp.idx
+	and cp.idx = p.idx
+	and o.idx=#{idx}
+	</select>
 
 
 

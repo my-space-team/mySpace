@@ -28,8 +28,8 @@ public class OrderMapperTests {
 		log.info(order);*/
 		//MemberVO member = membermapper.read();
 		
-		mapper.orderProductList(1).forEach(order -> log.info(order));
-
+	//mapper.orderProductList().forEach(order -> log.info(order));
+		mapper.getOrderList(1);
 	}
 	
 }

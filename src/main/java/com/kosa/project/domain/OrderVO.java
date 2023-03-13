@@ -1,6 +1,7 @@
 package com.kosa.project.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -19,5 +20,5 @@ public class OrderVO {
     private String deliveryRequest;
     private MemberVO member;
     private CartVO cart;
-    private CartProductVO cartProduct;
+    
 }
