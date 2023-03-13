@@ -20,11 +20,11 @@ public class HomeController {
 
 	private CategoryService categoryService;
 	private ProductService productService;
-	
+
 	@GetMapping("/")
-	public String home(@RequestParam(value="category", required = false)String category, 
-						@RequestParam(value = "pageNum", defaultValue="1")int pageNum, 
-						@RequestParam(value = "amount", defaultValue="16")int amount, Model model) {
+	public String home(@RequestParam(value = "category", required = false) String category,
+			@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+			@RequestParam(value = "amount", defaultValue = "16") int amount, Model model) {
 		Criteria cri = new Criteria(pageNum, amount);
 		System.out.println(cri);
 		model.addAttribute("category", category);

@@ -20,7 +20,7 @@
 								<h4><em>MY SPACE </em> 로그인</h4>
 								<div class="register-div">
 									<form method="POST" action="/login">
-                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+										<!-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.tokzen}"/> -->
                                         <input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="text"
                                         placeholder="아이디를입력하세요" name="username" onfocus="this.placeholder=''" onblur="this.placeholder='아이디를 입력하세요'"/>
                                         <br>
