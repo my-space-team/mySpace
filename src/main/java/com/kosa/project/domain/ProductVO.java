@@ -10,8 +10,8 @@ public class ProductVO {
 	private String name;
 	private int price;
 	
-	//³ªÁß¿¡
+	//ï¿½ï¿½ï¿½ß¿ï¿½
 	private String contents;
-	private String imageURl;
+	private String imageURL;
 	private String imageUpload;
 }

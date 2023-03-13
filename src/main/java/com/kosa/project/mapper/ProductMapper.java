@@ -14,3 +14,4 @@ public interface ProductMapper {
     public ProductVO getProduct(int idx);
     public List<ScoreVO> getReviewList(int product_idx);
     public int getTotalReviewList(int product_idx);
+}
