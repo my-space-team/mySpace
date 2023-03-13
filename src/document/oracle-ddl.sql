@@ -50,16 +50,16 @@ create table product (
     image varchar2(200)
 );
 
---배송지
-CREATE TABLE delivery (
-    idx number PRIMARY KEY,
-    member_idx number constraint member_idx_delivery_fk references member(idx),
-    address_name varchar2(50) NOT NULL,
-    delivery_name varchar2(20) NOT NULL,
-    address varchar2(50) NOT NULL,
-    delivery_phone varchar2(30) NOT NULL,
-    delivery_request varchar2(20)
-);
+-- --배송지
+-- CREATE TABLE delivery (
+--     idx number PRIMARY KEY,
+--     member_idx number constraint member_idx_delivery_fk references member(idx),
+--     address_name varchar2(50) NOT NULL,
+--     delivery_name varchar2(20) NOT NULL,
+--     address varchar2(50) NOT NULL,
+--     delivery_phone varchar2(30) NOT NULL,
+--     delivery_request varchar2(20)
+-- );
 
 --장바구니
 create table cart (
@@ -80,11 +80,14 @@ CREATE TABLE ORDER2 (
     idx number PRIMARY KEY,
     member_idx number constraint member_idx_order_fk references member(idx),
     cart_idx number constraint cart_idx_order_fk references cart(idx),
-    delivery_idx number constraint delivery_idx_order_fk references delivery(idx),
-    payment varchar2(20) NOT NULL,
-    price number NOT NULL,
+    payment varchar2(20),
+    price number,
     delivery_price NUMBER DEFAULT 0,
-    regdate date NOT NULL
+    regdate date,
+    delivery_name varchar2(20),
+    address_name varchar2(50),
+    address varchar2(70),
+    delivery_request varchar2(70)
 );
 
 --상품리뷰
