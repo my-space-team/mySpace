@@ -28,6 +28,7 @@
 	<resultMap type="com.kosa.project.domain.ProductVO" id="productMap">
 		<result property="idx" column="p.idx"/>
 		<result property="name" column="p.name"/>
+		<result property="imageURL" column="p.imageURL"/>
 	</resultMap>
 	
 	<resultMap type="com.kosa.project.domain.OrderVO" id="orderMap">
@@ -51,7 +52,7 @@
 	
 	<select id="getMemberReviewList" resultMap="scoreMap">
 		SELECT r.idx AS "r.idx", m.idx AS "m.idx", p.idx AS "p.idx", o.idx AS "o.idx", s.idx AS "s.idx", 
-				content, p.name AS "p.name", p.price AS "p.price", 
+				content, p.name AS "p.name", p.price AS "p.price", p.image_URL AS "p.imageURL",
 				s.durability AS "s.durability", s.design AS "s.design", s.price AS "s.price", s.delivery AS "s.delivery"
 			FROM score s, review r, member m, product p, order2 o
 				WHERE 
@@ -61,30 +62,30 @@
 	
 	<select id="get" resultMap="scoreMap">
 		SELECT r.idx AS "r.idx", m.idx AS "m.idx", p.idx AS "p.idx", o.idx AS "o.idx", s.idx AS "s.idx", 
-				content, p.name AS "p.name", p.price AS "p.price", 
+				content, p.name AS "p.name", p.price AS "p.price", p.image_URL AS "p.imageURL",
 				s.durability AS "s.durability", s.design AS "s.design", s.price AS "s.price", s.delivery AS "s.delivery"
 			FROM score s, review r, member m, product p, order2 o
 				WHERE 
 					m.idx = r.member_idx AND p.idx = r.product_idx AND o.idx = r.order_idx AND r.idx = s.review_idx 
-					AND r.idx = #{review.idx}
+					AND r.idx = #{reviewIdx}
 	</select>
 	
 	<update id="updateReview">
 		UPDATE review 
-			SET content = #{review.content} 
-				WHERE idx = #{review.idx}
+			SET content = #{content} 
+				WHERE idx = #{reviewIdx}
 	</update>
 
 	<update id="updateScore">
 		UPDATE score 
 			SET durability = #{durability}, design = #{design}, price = #{price}, delivery = #{delivery} 
-				WHERE idx = #{idx}
+				WHERE idx = #{reviewIdx}
 	</update>
 
 
 	<delete id="deleteReview">
 		DELETE FROM review 
-			WHERE idx = #{review.idx} 
+			WHERE idx = #{idx} 
 	</delete>
 	
 	<delete id="deleteScore">

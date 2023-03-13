@@ -30,22 +30,22 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 	@Override
-	public ScoreVO get(int idx) {
+	public ScoreVO get(int reviewIdx) {
 		
-		return reviewMapper.get(idx);
+		return reviewMapper.get(reviewIdx);
 	}
 
 	@Override
-	public int update(ScoreVO vo) {
+	public int update(HashMap reviewForm) {
 		
-		return reviewMapper.updateReview(vo)==1 && reviewMapper.updateScore(vo)==1 
+		return reviewMapper.updateReview(reviewForm)==1 && reviewMapper.updateScore(reviewForm)==1 
 				? 1 : 0 ;
 	}
 
 	@Override
 	public int delete(int idx, int scoreidx) {
 		
-		return reviewMapper.deleteReview(idx)==1 && reviewMapper.deleteScore(idx)==1 
+		return reviewMapper.deleteScore(idx)==1 && reviewMapper.deleteReview(idx)==1 
 				? 1 : 0 ;
 	}
 

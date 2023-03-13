@@ -103,7 +103,7 @@
 					dataType:'html',
 					success : function(data){ 
 						alert("리뷰 등록이 완료되었습니다.");
-						location.href = "/mypage/home";
+						location.replace("/mypage/home");
 					}
 				});
 	  		});

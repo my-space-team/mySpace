@@ -10,6 +10,6 @@ public interface ReviewService {
 	public int insertReview(HashMap reviewForm);
 	public List<ScoreVO> getMemberReviewList(int memberIdx);
 	public ScoreVO get(int idx);
-	public int update(ScoreVO vo);
+	public int update(HashMap reviewForm);
 	public int delete(int idx, int score_idx);
 }

@@ -11,10 +11,10 @@ public interface ReviewMapper {
 	public int insertScore(HashMap reviewForm);
 	
 	public List<ScoreVO> getMemberReviewList(int memberIdx);
-	public ScoreVO get(int idx);
+	public ScoreVO get(int reviewIdx);
 	
-	public int updateReview(ScoreVO vo);
-	public int updateScore(ScoreVO vo);
+	public int updateReview(HashMap reviewForm);
+	public int updateScore(HashMap reviewForm);
 	
 	public int deleteReview(int review_idx);
 	public int deleteScore(int score_idx);

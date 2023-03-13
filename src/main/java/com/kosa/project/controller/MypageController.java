@@ -50,7 +50,6 @@ public class MypageController {
     private ProductService productService;
 
     @GetMapping("/home")
-
     public String orderList(Principal principal, Model model) {
 
         if (principal == null) {
@@ -69,8 +68,14 @@ public class MypageController {
     }
 
     @GetMapping("/review")
-    public String review(Model model) {
-        model.addAttribute("List", reviewService.getMemberReviewList(1));
+    public String review(Principal principal, Model model) {
+    	if (principal == null) {
+            return "redirect:/memberLogin";
+        }
+    	MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
+    	
+    	model.addAttribute("member", findMember);
+        model.addAttribute("List", reviewService.getMemberReviewList(findMember.getIdx()));
         return "mypage/review";
     }
 
@@ -85,6 +90,16 @@ public class MypageController {
         model.addAttribute("productIdx", productIdx);
         model.addAttribute("product", productService.getProduct(productIdx));
         return "mypage/review_insert";
+    }
+    
+    @GetMapping("/review/update")
+    public String reviewUpdate(Principal principal, @RequestParam("reviewIdx") int reviewIdx, Model model) {
+    	if (principal == null) {
+            return "redirect:/memberLogin";
+        }
+        model.addAttribute("reviewIdx", reviewIdx);
+        model.addAttribute("reviewScore", reviewService.get(reviewIdx));
+        return "mypage/review_update";
     }
 
 }

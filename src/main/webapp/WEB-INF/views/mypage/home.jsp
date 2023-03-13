@@ -66,7 +66,7 @@
                     <div class="col-lg-4 align-self-center">
                         <ul>
                         <li>나의주문내역<span>32건</span></li>
-                        <li>내가 작성한 리뷰 <span>16건</span></li>
+                        <li><a href="/mypage/review">내가 작성한 리뷰</a> <span>16건</span></li>
                         <li>질문과 답변<span>0건</span></li>
                         <li>내 장바구니<span>5건</span></li>
                         </ul>
