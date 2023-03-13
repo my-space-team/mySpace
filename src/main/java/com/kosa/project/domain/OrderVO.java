@@ -13,6 +13,5 @@ public class OrderVO {
     private Date state;
     private MemberVO member;
     private CartVO cart;
-    private DeliveryVO delivery;
     private CartProductVO cartProduct;
 }

@@ -15,16 +15,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ProductController {
 	
-	private CategoryService categoryService;
 	private ProductService productService;
-
-	@GetMapping("/category/{category}")
-	public String getProductList(@PathVariable(value = "category") int category, Model model) {
-		model.addAttribute("categoryList", categoryService.getCategory());
-		model.addAttribute("productList", productService.getProductList(category));
-		return "home";
-	}
-	
 	
 	@GetMapping("/product/detail")
 	public ModelAndView godetail(int idx) {
