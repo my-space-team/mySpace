@@ -52,28 +52,32 @@
 		SELECT 
 		cp.idx as "cp.id", p.name as "p.name1", cp.amount as "cp.amount1", p.price as "p.price1"
 		FROM product p, cart_product cp
-		WHERE p.idx = cp.idx 
+		WHERE p.idx = cp.product_idx  
 		AND cp.cart_idx = #{idx}
 	</select>
 
 
 	<!-- 장바구니 담기 -->
 	<insert id="addProduct" parameterType="com.kosa.project.domain.CartProductVO">
-		INSERT INTO cart_product (id, cart_idx, idx, amount) 
+		<selectKey keyProperty = "idx" resultType = "int" order = "BEFORE">
+			SELECT cart_product_seq.nextval FROM DUAL		
+		</selectKey>   
+		INSERT INTO cart_product 
+		(idx, cart_idx, product_idx, amount)  
 		VALUES (
-		#{idx},
+		 #{idx},
 		<!-- #{cart.idx} -->1,
-		#{product.idx},
-		#{amount})
-</insert>
+		<!-- #{cartProduct.product.idx} -->#{product.idx},
+		<!-- #{amount} -->1)
+		
+	</insert>
 
-
-
-
+	<!-- 장바구니 상품 삭제 -->
 	<delete id="delete">
 		delete from cart_product where idx = #{idx}
 	</delete>
-
+	
+	<!-- 상품 수량 변경 -->
 	<update id="update">
 		update cart_product set amount = #{amount}
 		where idx = #{idx}

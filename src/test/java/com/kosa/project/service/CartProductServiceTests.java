@@ -49,7 +49,7 @@ public class CartProductServiceTests {
 		}
 		
 		cartProduct.setAmount(7);
-		log.info("MODIFY RESULT : " + service.update(cartProduct));
+		log.info("UPDATE RESULT : " + service.update(cartProduct));
 		
 	}
 	

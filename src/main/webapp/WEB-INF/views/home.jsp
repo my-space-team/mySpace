@@ -7,7 +7,7 @@
 <head></head>
 
 <body>
-<div id="header"></div>
+	<%@ include file="/resources/common/header.jsp" %>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -240,7 +240,6 @@
     $(document).ready(function(){
       $("head").load("/resources/common/common_head.html");
       $("#script").load("/resources/common/include_script.html");
-      $("#header").load("/resources/common/header.html");
       
       $(".item").click(function(){
     	  let idx = $(this).find("input").val(); 
