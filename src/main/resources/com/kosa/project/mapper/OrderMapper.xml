@@ -76,6 +76,13 @@
 		<result column="phone" property="phone" />
 		<result column="manager" property="manager" />
 	</resultMap>
+	
+	<resultMap type="com.kosa.project.domain.OrderVO" id =""></resultMap>
+	
+	
+	
+	
+	
 
 	<!-- 주문내역에 보여질 정보들 : 주문자정보, 카트상품정보 -->
 	<select id="getcartList" parameterType="int" resultMap="orderMap"> 

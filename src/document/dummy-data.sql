@@ -450,62 +450,45 @@ INSERT INTO product (idx, category_idx, brand_idx, name, price, image_url)
 INSERT INTO product (idx, category_idx, brand_idx, name, price, image_url) 
 	VALUES ( product_seq.nextval, 8, 5, '팔레트 옷장 01', 2340000, 'https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/163763293333359177.jpg?gif=1&w=850&h=850&c=c&webp=1');
 
+commit;
+
 ------------------------------------------------------------------------------------------
 
--- 회원
-INSERT INTO member (idx, login_id, password, name, email, phone, birth)
-VALUES (member_seq.nextval, 'dhrudgns', '1234', '오경훈', 'dhrudgns@naver.com', '010-4562-7890', TO_DATE('1911-01-01', 'YYYY-MM-DD'));
+-- -- 배송지 데이터
+-- INSERT INTO delivery (idx, member_idx, address_name, delivery_name, address, delivery_phone, delivery_request)
+-- VALUES (delivery_seq.nextval, 1, 'Home', 'John Doe', '123 Main St', '123-456-7890', 'Leave package at front door');
 
-INSERT INTO member (idx, login_id, password, name, email, phone, birth)
-VALUES (member_seq.nextval, 'dlwodn', '1234', '이재우', 'dlwodn@naver.com', '010-1223-4567', TO_DATE('1911-01-01', 'YYYY-MM-DD'));
+-- INSERT INTO delivery (idx, member_idx, address_name, delivery_name, address, delivery_phone, delivery_request)
+-- VALUES (delivery_seq.nextval, 2, 'Office', 'Jane Doe', '456 Office Ave', '987-654-3210', 'Call when arriving');
 
-INSERT INTO member (idx, login_id, password, name, email, phone, birth)
-VALUES (member_seq.nextval, 'rladuddh', '1234', '김영오', 'rladuddh@example.com', '010-4523-3256', TO_DATE('1911-01-01', 'YYYY-MM-DD'));
+-- -- 장바구니 데이터
+-- INSERT INTO cart (idx, member_idx)
+-- VALUES (cart_seq.nextval, 1);
 
-INSERT INTO member (idx, login_id, password, name, email, phone, birth)
-VALUES (member_seq.nextval, 'dlawlsdk', '1234', '임진아', 'dlawlsdk@naver.com', '010-3122-6845', TO_DATE('1911-01-01', 'YYYY-MM-DD'));
+-- INSERT INTO cart (idx, member_idx)
+-- VALUES (cart_seq.nextval, 2);
 
-INSERT INTO member (idx, login_id, password, name, email, phone, birth)
-VALUES (member_seq.nextval, 'tlsthgml', '1234', '신소희', 'tlsthgml@naver.com', '010-4561-7890', TO_DATE('1911-01-01', 'YYYY-MM-DD'));
+-- -- 장바구니 상품 데이터
+-- INSERT INTO cart_product (idx, cart_idx, product_idx, amount)
+-- VALUES (cart_product_seq.nextval, 1, 1, 1);
 
-INSERT INTO member (idx, login_id, password, name, email, phone, birth)
-VALUES (member_seq.nextval, 'dkstpdud', '1234', '안세영', 'dkstpdud@naver.com', '010-4526-8630', TO_DATE('1911-01-01', 'YYYY-MM-DD'));
+-- INSERT INTO cart_product (idx, cart_idx, product_idx, amount)
+-- VALUES (cart_product_seq.nextval, 2, 2, 2);
 
--- 배송지 데이터
-INSERT INTO delivery (idx, member_idx, address_name, delivery_name, address, delivery_phone, delivery_request)
-VALUES (delivery_seq.nextval, 1, 'Home', 'John Doe', '123 Main St', '123-456-7890', 'Leave package at front door');
+-- -- 주문 데이터
+-- INSERT INTO ORDER2 (idx, member_idx, cart_idx, delivery_idx, payment, price, delivery_price, regdate)
+-- VALUES (order2_seq.nextval, 1, 1, 1, 'Credit Card', 120, 5, SYSDATE);
+-- INSERT INTO order2 VALUES(order2_seq.nextval, 1, 1, 1, '신용카드', 50000, 2500, to_date('2022-02-14', 'YYYY-MM-DD'));
+-- INSERT INTO order2 VALUES(order2_seq.nextval, 1, 2, 2, '계좌이체', 20000, 0, to_date('2022-03-01', 'YYYY-MM-DD'));
+-- INSERT INTO order2 VALUES(order2_seq.nextval, 2, 3, 3, '페이팔', 150000, 0, to_date('2022-03-08', 'YYYY-MM-DD'));
 
-INSERT INTO delivery (idx, member_idx, address_name, delivery_name, address, delivery_phone, delivery_request)
-VALUES (delivery_seq.nextval, 2, 'Office', 'Jane Doe', '456 Office Ave', '987-654-3210', 'Call when arriving');
+-- -- 상품리뷰 데이터
+-- INSERT INTO review VALUES(review_seq.nextval, 1, 1, 1, '제품이 생각보다 훨씬 좋았습니다', null);
+-- INSERT INTO review VALUES(review_seq.nextval, 2, 3, 2, '가격대비 성능이 좋은 제품이네요.', null);
+-- INSERT INTO review VALUES(review_seq.nextval, 1, 2, 3, '배송이 빠르고 제품도 만족합니다.', null);
 
--- 장바구니 데이터
-INSERT INTO cart (idx, member_idx)
-VALUES (cart_seq.nextval, 1);
-
-INSERT INTO cart (idx, member_idx)
-VALUES (cart_seq.nextval, 2);
-
--- 장바구니 상품 데이터
-INSERT INTO cart_product (idx, cart_idx, product_idx, amount)
-VALUES (cart_product_seq.nextval, 1, 1, 1);
-
-INSERT INTO cart_product (idx, cart_idx, product_idx, amount)
-VALUES (cart_product_seq.nextval, 2, 2, 2);
-
--- 주문 데이터
-INSERT INTO ORDER2 (idx, member_idx, cart_idx, delivery_idx, payment, price, delivery_price, regdate)
-VALUES (order2_seq.nextval, 1, 1, 1, 'Credit Card', 120, 5, SYSDATE);
-INSERT INTO order2 VALUES(order2_seq.nextval, 1, 1, 1, '신용카드', 50000, 2500, to_date('2022-02-14', 'YYYY-MM-DD'));
-INSERT INTO order2 VALUES(order2_seq.nextval, 1, 2, 2, '계좌이체', 20000, 0, to_date('2022-03-01', 'YYYY-MM-DD'));
-INSERT INTO order2 VALUES(order2_seq.nextval, 2, 3, 3, '페이팔', 150000, 0, to_date('2022-03-08', 'YYYY-MM-DD'));
-
--- 상품리뷰 데이터
-INSERT INTO review VALUES(review_seq.nextval, 1, 1, 1, '제품이 생각보다 훨씬 좋았습니다', null);
-INSERT INTO review VALUES(review_seq.nextval, 2, 3, 2, '가격대비 성능이 좋은 제품이네요.', null);
-INSERT INTO review VALUES(review_seq.nextval, 1, 2, 3, '배송이 빠르고 제품도 만족합니다.', null);
-
--- 리뷰점수 데이터
-INSERT INTO score VALUES(score_seq.nextval, 1, 4, 5, 5, 4);
-INSERT INTO score VALUES(score_seq.nextval, 2, 3, 4, 3, 5);
-INSERT INTO score VALUES(score_seq.nextval, 3, 5, 4, 4, 5);
+-- -- 리뷰점수 데이터
+-- INSERT INTO score VALUES(score_seq.nextval, 1, 4, 5, 5, 4);
+-- INSERT INTO score VALUES(score_seq.nextval, 2, 3, 4, 3, 5);
+-- INSERT INTO score VALUES(score_seq.nextval, 3, 5, 4, 4, 5);
 

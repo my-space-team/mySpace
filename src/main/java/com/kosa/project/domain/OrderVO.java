@@ -11,6 +11,12 @@ public class OrderVO {
     private int deliveryPrice;
     private String payment;
     private Date state;
+    private int memberIdx;
+    private int cartIdx;
+    private String deliveryName;
+    private String addressName;
+    private String address;
+    private String deliveryRequest;
     private MemberVO member;
     private CartVO cart;
     private CartProductVO cartProduct;

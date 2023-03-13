@@ -31,11 +31,12 @@
                     }
                 },
                 error: function(){
-                    console.log(data + "오류 발생");
+                    console.log("오류 발생");
                 }
             };
             $.ajax(ajaxParam);
         }
     }
+    
     $member.init();
 </script>

@@ -16,16 +16,17 @@ import lombok.AllArgsConstructor;
 public class ProductController {
 	
 	private ProductService productService;
+
 	
 	@GetMapping("/product/detail")
 	public ModelAndView godetail(int idx) {
-		ModelAndView mv=new ModelAndView();
-		mv.addObject("product",  productService.getProduct(idx));
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("product", productService.getProduct(idx));
 		mv.addObject("reviewlist", productService.getReviewList(idx));
 		mv.addObject("reviewTotal", productService.getTotalReviewList(idx));
 		mv.setViewName("product/detail");
-		
+
 		return mv;
 	}
-	
+
 }
