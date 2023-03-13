@@ -18,6 +18,9 @@ public interface CartProductMapper {
 	//public int update(int idx, int amount);
 	
 	public CartProductVO read(int idx);
+	
+	public CartProductVO getCartProduct(CartProductVO cartProduct); //추가하려는 상품이 장바구니에 있는 상품인지 검사하기 위해서 
 
+	public void updateProduct(CartProductVO cartProduct);
 
 }

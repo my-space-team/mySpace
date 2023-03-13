@@ -60,7 +60,9 @@ public class CartProductController {
 		pvo.setIdx(productIdx);
 		CartProductVO cvo = new CartProductVO();
 		cvo.setProduct(pvo);
+		
 		service.addProduct(cvo);
+		
 	    return "redirect:/product/detail?idx=" + productIdx;
 	}
 	

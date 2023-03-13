@@ -20,10 +20,23 @@ public class CartProductServiceImpl implements CartProductService {
 	@Autowired
 	private CartProductMapper mapper;
 
+//	@Override
+//	public void addProduct(CartProductVO cartProduct) {
+//		mapper.addProduct(cartProduct);
+//
+//	}
+	
 	@Override
 	public void addProduct(CartProductVO cartProduct) {
-		mapper.addProduct(cartProduct);
-
+	    CartProductVO existingProduct = mapper.getCartProduct(cartProduct);
+	    if (existingProduct == null) {
+	        // 장바구니에 새로운 상품을 추가합니다.
+	        mapper.addProduct(cartProduct);
+	    } else {
+	        // 이미 장바구니에 담겨있는 상품의 수량을 증가시킵니다.
+	        existingProduct.setAmount(existingProduct.getAmount() + 1);
+	        mapper.updateProduct(existingProduct);
+	    }
 	}
 
 	@Override
