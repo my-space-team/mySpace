@@ -36,7 +36,7 @@
               <li><a href="#">Details</a></li>
               <li><a href="/member/register">회원가입</a></li>
               <li>
-                <a href="/mypage/home">프로필 <img src="../../resources/asset/images/profile-header.jpg" alt=""/></a>
+                <a href="/mypage/home">프로필 <img src="/resources/asset/images/profile_images.webp" alt=""/></a>
               </li>
             </ul>
             <a class="menu-trigger">
