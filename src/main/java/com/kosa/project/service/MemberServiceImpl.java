@@ -2,7 +2,6 @@ package com.kosa.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kosa.project.domain.AuthVO;
@@ -10,13 +9,14 @@ import com.kosa.project.domain.MemberVO;
 import com.kosa.project.mapper.AuthMapper;
 import com.kosa.project.mapper.MemberMapper;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Service
 @Log4j
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired

@@ -4,92 +4,105 @@
 
 	<resultMap type="com.kosa.project.domain.OrderVO"
 		id="orderMap">
-		<id column="o.id" property="idx" />
-		<result column="o.price" property="price" />
-		<result column="o.deliveryPrice" property="deliveryPrice" />
-		<result column="o.payment" property="payment" />
-		<result column="o.state" property="state" />
+		<id column="idx" property="idx" />
+		<result column="price" property="price" />
+		<result column="delivery_price" property="deliveryPrice" />
+		<result column="payment" property="payment" />
+		<result column="regdate" property="state" />
 		<collection property="member" resultMap="memberMap" />
 		<collection property="cart" resultMap="cartMap" />
 		<collection property="delivery" resultMap="deliveryMap" />
 		<collection property="cartProduct"
-			resultMap="cartProductMap"></collection>
+			resultMap="cartProductMap" />
 	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.MemberVO"
 		id="memberMap">
-		<id column="m.id" property="idx" />
-		<result column="m.loginId" property="loginId" />
-		<result column="m.password" property="password" />
-		<result column="m.name" property="name" />
-		<result column="m.email" property="email" />
-		<result column="m.phone" property="phone" />
-		<result column="m.birth" property="birth" />
+		<id column="idx" property="idx" />
+		<result column="login_id" property="loginId" />
+		<result column="password" property="password" />
+		<result column="name1" property="name" />
+		<result column="email" property="email" />
+		<result column="phone" property="phone" />
+		<result column="birth" property="birth" />
 	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.CartVO" id="cartMap">
-		<id column="c.id" property="idx" />
+		<id column="idx" property="idx" />
 		<collection property="member" resultMap="memberMap" />
 	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.DeliveryVO"
 		id="deliveryMap">
-		<id column="d.id" property="idx" />
-		<result column="d.addressName" property="addressName" />
-		<result column="d.deliveryName" property="deliveryName" />
-		<result column="d.address" property="address" />
-		<result column="d.deliveryPhone" property="deliveryPhone" />
-		<result column="d.deliveryRequest" property="deliveryRequest" />
+		<id column="idx" property="idx" />
+		<result column="address_name" property="addressName" />
+		<result column="delivery_name" property="deliveryName" />
+		<result column="address" property="address" />
+		<result column="delivery_phone" property="deliveryPhone" />
+		<result column="delivery_request" property="deliveryRequest" />
 		<collection property="member" resultMap="memberMap" />
 	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.CartProductVO"
 		id="cartProductMap">
-		<id column="cp.id" property="idx" />
-		<result column="cp.amount" property="amount" />
+		<id column="idx" property="idx" />
+		<result column="amount" property="amount" />
+		 <result property="sumAmount" column="sum_amount" />
+		<collection property="cart" resultMap="cartMap" />
 		<collection property="product" resultMap="productMap" />
 	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.ProductVO"
 		id="productMap">
-		<id column="p.id" property="idx" />
-		<result column="p.name" property="name" />
-		<result column="p.price" property="price" />
-		<collection property="category" resultMap="categoryMap" />
-		<collection property="brand" resultMap="brandMap" />
+		<id column="idx" property="idx" />
+		<result column="name2" property="name" />
+		<result column="price" property="price" />
+		 <result property="sumPrice" column="sum_price" />
+		
+		<association property="category" resultMap="categoryMap" />
+		<association property="brand" resultMap="brandMap" />
 	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.CategoryVO"
 		id="categoryMap">
-		<id column="ca.id" property="idx" />
-		<result column="ca.name" property="name" />
+		<id column="idx" property="idx" />
+		<result column="name" property="name" />
 	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.BrandVO"
 		id="brandMap">
-		<id column="br.id" property="idx" />
-		<result column="br.name" property="name" />
-		<result column="br.phone" property="phone" />
-		<result column="br.manager" property="manager" />
+		<id column="idx" property="idx" />
+		<result column="name3" property="name" />
+		<result column="phone" property="phone" />
+		<result column="manager" property="manager" />
 	</resultMap>
 
-	<select id="read" parameterType="int" resultMap="orderMap">
-		select
-		m.idx,
-		d.address_name, d.delivery_name, d.address,
-		m.name, m.email, m.phone,
-		p.name, p.price, br.name, cp.amount,
-		o.payment
-		from order2 o, cart c, delivery d, cart_product cp, product p, brand br, member m
-		where
-		o.cart_idx = c.idx
-		and o.delivery_idx = d.idx
-		and c.idx = cp.cart_idx
-		and c.member_idx = m.idx
-		and cp.product_idx = p.idx
-		and	p.brand_idx=br.idx
-		and c.idx=#{idx}
-	</select>
+	<!-- 주문내역에 보여질 정보들 : 주문자정보, 카트상품정보 -->
+	<select id="getcartList" parameterType="int" resultMap="orderMap"> 
+	select 
+		m.name as name1, m.email , m.phone , 
+		p.name as name2, p.price, br.name as name3, cp.amount 
+		from cart c, cart_product cp, product p, brand br, member m 
+		where c.idx = cp.cart_idx 
+		and c.member_idx = m.idx 
+		and cp.product_idx = p.idx 
+		and p.brand_idx=br.idx 
+		and m.idx=#{idx} 
+	</select> 
+
+	<!-- 총상품금액, 배송비, 총결제금액 계산하기 이건 굳이 여기서 안해도 된다고 함 -->
+	<!-- <select id="read" parameterType="int" resultMap="orderMap">
+		
+	  <![CDATA[
+	    SELECT m.idx, sum(p.price) AS sum_price, sum(cp.amount) AS sum_amount
+	    FROM cart c
+	    JOIN cart_product cp ON c.idx = cp.cart_idx
+	    JOIN product p ON cp.product_idx = p.idx
+	    JOIN member m ON c.member_idx = m.idx
+	    WHERE m.idx = #{idx}
+	    GROUP BY m.idx
+	  ]]>
+	</select> -->
 
 
 

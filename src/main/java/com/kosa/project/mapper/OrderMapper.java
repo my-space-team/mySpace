@@ -1,7 +1,8 @@
 package com.kosa.project.mapper;
 
-import com.kosa.project.domain.OrderVO;
+import java.util.List;
 
+import com.kosa.project.domain.CartProductVO;
 public interface OrderMapper {
-	public OrderVO read(int cart);
+	public List<CartProductVO> getcartList(int member);
 }
