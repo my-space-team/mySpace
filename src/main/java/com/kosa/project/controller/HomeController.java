@@ -20,16 +20,11 @@ public class HomeController {
 	private ProductService productService;
 
 	@GetMapping("/")
-<<<<<<< HEAD
+
 	public String home(@RequestParam(value="category", defaultValue = "0")String category, 
 						@RequestParam(value = "pageNum", defaultValue = "1")int pageNum, 
 						@RequestParam(value = "amount", defaultValue = "16")int amount,
 						@RequestParam(value = "searchKeyword", defaultValue = "") String searchKeyword, Model model) {
-=======
-	public String home(@RequestParam(value = "category", required = false) String category,
-			@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
-			@RequestParam(value = "amount", defaultValue = "16") int amount, Model model) {
->>>>>>> main
 		Criteria cri = new Criteria(pageNum, amount);
 		String search = "%" + searchKeyword + "%";
 		model.addAttribute("searchKeyword", searchKeyword);
