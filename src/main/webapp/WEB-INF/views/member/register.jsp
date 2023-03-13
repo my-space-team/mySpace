@@ -24,7 +24,7 @@
 											<input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="text" 
 											placeholder="아이디를입력하세요" name="loginId" onfocus="this.placeholder=''" onblur="this.placeholder='아이디를 입력하세요'"/>
 											<br>
-											<input class="form-control"style="text-align: center; margin: auto; width: 50%;" type="text" 
+											<input class="form-control"style="text-align: center; margin: auto; width: 50%;" type="password" 
 											placeholder="비밀번호를 입력하세요" name="password" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력하세요'" />
 											<br>
 											<input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="text" 

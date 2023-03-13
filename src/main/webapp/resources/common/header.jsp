@@ -29,12 +29,12 @@
             <!-- ***** Search End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li><a href="index.html" class="active">Home</a></li>
-              <li><a href="browse.html">Shopping</a></li>
-              <li><a href="details.html">Details</a></li>
+              <li><a href="#" class="active">Home</a></li>
+              <li><a href="#">Shopping</a></li>
+              <li><a href="#">Details</a></li>
               <li><a href="/member/register">회원가입</a></li>
               <li>
-                <a href="/memberLogin">프로필 <img src="../../resources/asset/images/profile-header.jpg" alt=""/></a>
+                <a href="/mypage/home">프로필 <img src="../../resources/asset/images/profile-header.jpg" alt=""/></a>
               </li>
             </ul>
             <a class="menu-trigger">

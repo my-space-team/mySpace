@@ -28,7 +28,7 @@ public class MypageController {
         return "a";
     }
 
-    @GetMapping("/order_list")
+    @GetMapping("/home")
     public String orderList() {
         return "mypage/order_list";
     }
