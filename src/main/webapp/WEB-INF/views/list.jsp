@@ -10,7 +10,7 @@
 }
 </style>
 <body>
-	<%-- <%@ include file="/WEB-INF/views/header.jsp"%> --%>
+	<%@ include file="/resources/common/header.jsp" %>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -30,8 +30,9 @@
 												<th scope="col">번호</th>
 												<!-- <th scope="col">이미지</th> -->
 												<th scope="col">상품</th>
-												<th scope="col">가격</th>
+												<th scope="col">판매가</th>
 												<th scope="col">수량</th>
+												<th scope="col">구매가</th>
 												<th scope="col">삭제</th>
 											</tr>
 										</thead>
@@ -55,7 +56,7 @@
 														</div>
 													</form>
 												</td>
-
+												<td><c:out value="${cartProduct.product.price * cartProduct.amount}" /></td>
 												<td>
 													
 													<form method="post" action="/cart/delete">

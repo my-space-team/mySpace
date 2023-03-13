@@ -67,12 +67,12 @@ public class CartProductController {
 	}
 	
 	
-	@GetMapping("/get")
-	public void get(@RequestParam("idx") int idx, Model model) {
-		
-		log.info("/get");
-		model.addAttribute("cartProduct", service.get(idx));
-	}
+//	@GetMapping("/get")
+//	public void get(@RequestParam("idx") int idx, Model model) {
+//		
+//		log.info("/get");
+//		model.addAttribute("cartProduct", service.get(idx));
+//	}
 	
 	
 	
