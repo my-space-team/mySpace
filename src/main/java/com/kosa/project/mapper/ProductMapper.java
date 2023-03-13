@@ -7,7 +7,6 @@ import com.kosa.project.domain.ProductVO;
 import com.kosa.project.domain.ScoreVO;
 
 public interface ProductMapper {
-    public List<ProductVO> getProductList(int category);
 
     public List<ProductVO> getProductList(Map<String, Object> map);
 
