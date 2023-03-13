@@ -1,35 +1,47 @@
 package com.kosa.project.controller;
 
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.kosa.project.domain.MemberVO;
 import com.kosa.project.domain.ScoreVO;
+import com.kosa.project.service.MemberService;
+import com.kosa.project.service.OrderService;
 import com.kosa.project.service.ReviewService;
 
-import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Controller
 @RequestMapping("/mypage")
-@AllArgsConstructor
 public class MypageController {
 
+    @Autowired
     private ReviewService reviewService;
 
-    @GetMapping("/shopping_page")
-    public String shoppingPage() {
-        System.out.println("aaaaaaaa");
-        // return "shopping_page";
-        return "a";
-    }
+    @Autowired
+    private MemberService memberService;
 
-    @GetMapping("/order_list")
-    public String orderList() {
+    @Autowired
+    private OrderService orderService;
+
+    @GetMapping("/home")
+    public String orderList(Principal principal, Model model) {
+        if (principal == null) {
+            return "redirect:/memberLogin";
+        }
+        MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
+        orderService.getcartList(findMember.getIdx());
+        model.addAttribute("member", findMember);
+        model.addAttribute(null, findMember);
         return "mypage/order_list";
     }
 

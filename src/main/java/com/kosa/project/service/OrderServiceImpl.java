@@ -19,9 +19,10 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor
 public class OrderServiceImpl implements OrderService {
-	@Autowired
+	
 	private OrderMapper ordermapper;
 	private MemberMapper memberMapper;
+
 	
 	
 	public void insert(Map orderVo) {
@@ -42,5 +43,13 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 
-	
+	@Override
+	public List<CartProductVO> getcartList(int member) {
+
+		log.info("getList............");
+
+		return ordermapper.getcartList(member);
+	}
+
+
 }

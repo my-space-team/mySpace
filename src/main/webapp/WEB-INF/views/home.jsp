@@ -7,7 +7,7 @@
 <head></head>
 
 <body>
-<div id="header"></div>
+	<%@ include file="/resources/common/header.jsp" %>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -28,7 +28,7 @@
           </div> -->
           <!-- ***** Banner End ***** -->
           				
-			<ul class="category-list" style="display: flex; justify-content: space-between; font-size: 20px;">
+			<ul class="category-list" style="display: flex; justify-content: space-between; font-size: 20px; border-top: 1px solid #CCC; border-bottom: 1px solid #CCC; padding: 10px 0 15px 0;">
 			<c:forEach var="category" items="${categoryList}">
 				<li><a href="/?category=${category.idx}&pageNum=${pageNum}&amount=${amount}">${category.name}</a></li>
 			</c:forEach>
@@ -72,6 +72,7 @@
          
           <!-- ***** Most Popular End ***** -->
           <form id='actionForm' action="/" method='get'>
+          	<input type="hidden" name="searchKeyword" value="${searchKeyword}">
           	<input type="hidden" name="category" value="${category}">
           	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
           	<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
@@ -85,7 +86,7 @@
           	</c:if>
           </ul>
           	<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-          		<li>
+          		<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":""} ">
           			<a href="${num }">${num }</a>
           		</li>
           	</c:forEach>
@@ -240,24 +241,24 @@
     $(document).ready(function(){
       $("head").load("/resources/common/common_head.html");
       $("#script").load("/resources/common/include_script.html");
-      $("#header").load("/resources/common/header.html");
       
       $(".item").click(function(){
-    	  let idx = $(this).find("input").val(); 
-    	  location.href = '/product/detail?idx=' + idx;
-      });
+    	  let idx = $(this).find("input").val();
+    	  location.href ='/product/detail?idx=' + idx;
+      })
       
-	  var actionForm = $("#actionForm");      
+      
+      var actionForm = $("#actionForm");      
       
       $(".paginate_button a").on("click", function(e) {
     	  e.preventDefault();
     	  console.log('click');
     	  actionForm.find('input[name="pageNum"]').val($(this).attr("href"));
     	  actionForm.submit();
+
       });
     });
+    
   </script>
-
-    <p><sec:authentication property="principal" /></p>
 </body>
 </html>

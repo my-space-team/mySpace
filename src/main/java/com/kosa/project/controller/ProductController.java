@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kosa.project.service.CategoryService;
 import com.kosa.project.service.ProductService;
 
 import lombok.AllArgsConstructor;
