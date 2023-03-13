@@ -30,7 +30,9 @@
                     </div>
                     <div class="col-lg-4 align-self-center">
                         <div class="main-info header-text">
-                        <span>접속중</span>
+                        <div class="main-button" style="margin-bottom: 20px;">
+                            <a href="/logout">로그아웃</a>
+                        </div>
                         <h4>${member.name}님, 환영합니다.</h4>
                         <p>자기소개를 입력해주세요.</p>
                         <div class="main-border-button">
@@ -39,13 +41,15 @@
                                 <h4>회원정보수정</h4>
                                 <form name="form-member-update" onsubmit="return false;">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                                    <input type="hidden" name="idx" value=<c:out value="${member.idx}"/>>
-                                    <input type="hidden" name="loginId" value=<c:out value="${member.loginId}"/>>
-                                    <label for="name">이름</label>
-                                    <input class="form-control" type="text" id="name" name="name" value=<c:out value="${member.name}"/>>
+                                    <input type="hidden" class="form-control" name="idx" value=<c:out value="${member.idx}"/>>
+                                    <label for="loginId">로그인ID</label>
+                                    <input type="text" class="form-control" readonly id="loginId" name="loginId" value=<c:out value="${member.loginId}"/>>
                                     <br>
                                     <label for="password">비밀번호</label>
                                     <input class="form-control" type="password" id="password" name="password" />>
+                                    <br>
+                                    <label for="name">이름</label>
+                                    <input class="form-control" type="text" id="name" name="name" value=<c:out value="${member.name}"/>>
                                     <br>
                                     <label for="name">이메일</label>
                                     <input class="form-control" type="text" name="email"value=<c:out value="${member.email}"/>>

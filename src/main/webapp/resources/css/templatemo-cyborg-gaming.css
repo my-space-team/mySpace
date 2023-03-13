@@ -808,13 +808,14 @@ login page Style
 
 .login-banner {
   background-image: url(../asset/images/banner-bg.jpg);
+  /* background-color: #1e1e1e; */
   background-position: center center;
   background-size: cover;
-  width: 40%;
-  min-height: 500px;
+  width: 30%;
+  min-height: 400px;
   margin: auto;
   border-radius: 23px;
-  padding: 80px 60px;
+  padding: 60px 60px;
 }
 
 .login-banner h6 {

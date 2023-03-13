@@ -5,8 +5,15 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-<!-- head 추가 -->
-<%@ include file="/resources/common/common_head.jsp" %>
+<head>
+	<!-- head 추가 -->
+	<%@ include file="/resources/common/common_head.jsp" %>
+	<style>
+		* {
+			--bs-gutter-x: 0rem;
+		}
+	</style>
+</head>
 
 <body>
 	<!-- header 추가 -->
@@ -18,7 +25,7 @@
 				<div class="page-content">
 					<div class="login-banner">
 						<div class="row">
-							<div class="header-text" style="text-align: center;">
+							<div class="header-text" style="text-align: center; ">
 								<h6>환영합니다!</h6>
 								<h4><em>MY SPACE </em> 로그인</h4>
 								<div class="register-div">
