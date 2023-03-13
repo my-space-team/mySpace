@@ -260,7 +260,5 @@
     });
     
   </script>
-
-    <p><sec:authentication property="principal" /></p>
 </body>
 </html>
