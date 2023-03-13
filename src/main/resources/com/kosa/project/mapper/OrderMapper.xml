@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosa.project.mapper.OrderMapper">
 
-	<resultMap type="com.kosa.project.domain.OrderVO"
+<!-- 	<resultMap type="com.kosa.project.domain.OrderVO"
 		id="orderMap">
 		<id column="idx" property="idx" />
 		<result column="price" property="price" />
@@ -61,6 +61,7 @@
 		
 		<association property="category" resultMap="categoryMap" />
 		<association property="brand" resultMap="brandMap" />
+		
 	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.CategoryVO"
@@ -75,7 +76,50 @@
 		<result column="name3" property="name" />
 		<result column="phone" property="phone" />
 		<result column="manager" property="manager" />
+	</resultMap> -->
+	
+	
+ 	<resultMap type="com.kosa.project.domain.OrderVO" id="orderMap">
+		<id column="o.idx" property="idx" />
+		<result column="payment" property="payment" />
+		<result column="price" property="price" />
+		<result column="delivery_price" property="deliveryPrice" />
+		<result column="regdate" property="state" />
+		<association property="cart" resultMap="cartMap" />
 	</resultMap>
+	
+ 	<resultMap type="com.kosa.project.domain.CartVO" id="cartMap">
+		<result column="c.idx" property="idx" />
+		<association property="member" resultMap="memberMap"/>
+		<association property="cartProduct" resultMap="cartProductMap"/>
+	</resultMap>
+	
+	 <resultMap type="com.kosa.project.domain.MemberVO" id="memberMap">
+		<result column="m.idx" property="idx" />
+		<result column="m.login_id" property="loginId" />
+		<result column="m.password" property="password" />
+		<result column="m.name" property="name" />
+		<result column="m.email" property="email" />
+		<result column="m.phone" property="phone" />
+		<result column="m.birth" property="birth" />
+	</resultMap>
+	
+	 <resultMap type ="com.kosa.project.domain.CartProductVO" id="cartProductMap">
+		<result column = "cp.idx" property = "idx"/>
+		<result column = "cp.amount" property = "amount"/>
+		<collection property="product" resultMap ="productMap"/>
+	</resultMap>
+	
+ 	<resultMap type = "com.kosa.project.domain.ProductVO" id = "productMap">
+		<id column="p.idx" property="idx" />
+		<result column="p.name" property="name" />
+		<result column="p.price" property="price" />
+		<result column="p.image_url" property="imageURL" />
+		<result column="p.image" property="imageUpload" />
+	</resultMap>
+	
+	
+	
 
 	<!-- 주문내역에 보여질 정보들 : 주문자정보, 카트상품정보 -->
 	<select id="getcartList" parameterType="int" resultMap="orderMap"> 
@@ -103,6 +147,19 @@
 	    GROUP BY m.idx
 	  ]]>
 	</select> -->
+	
+	<!-- 구매 후 주문한 리스트에 보여질 정보들 : 제품정보, 날짜 -->
+	
+	<!-- member, cart안의 cart_product안의 product --> 
+	<select id="getOrderList" parameterType = "int" resultMap="orderMap">
+	select m.idx as "m.idx", p.name as "p.name", p.price as "p.price", p.image_url as "p.image_url", cp.amount as "cp.amount"
+	from order2 o, cart c,  member m , cart_product cp, product p
+	where o.cart_idx = c.idx
+	and c.member_idx = m.idx
+	and cp.cart_idx = c.idx 
+	and cp.product_idx = p.idx
+	and m.idx= #{idx}
+	</select>
 
 
 

@@ -13,9 +13,10 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 public class ProductController {
-
+	
 	private ProductService productService;
 
+	
 	@GetMapping("/product/detail")
 	public ModelAndView godetail(int idx) {
 		ModelAndView mv = new ModelAndView();

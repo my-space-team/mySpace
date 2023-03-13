@@ -52,7 +52,7 @@
                     }
                 },
                 error: function(){
-                    console.log("에러가 발생하였습니다");
+                    alert("에러가 발생하였습니다");
                 }
             };
             $.ajax(ajaxParam);

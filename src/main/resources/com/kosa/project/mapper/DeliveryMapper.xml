@@ -20,7 +20,7 @@
 
 <insert id = "insert" parameterType="com.kosa.project.domain.DeliveryVO">
 	insert into delivery(idx, member_idx, address_name, delivery_name, address, delivery_phone, delivery_request)
-	values(delivery_seq.nextval,#{member.idx},#{addressName},#{deliveryName},#{address},#{deliveryPhone},#{deliveryRequest})
+	values(#{idx},#{member.idx},#{addressName},#{deliveryName},#{address},#{deliveryPhone},#{deliveryRequest})
 </insert>
 
 <select id = "read" resultMap = "deliveryMap" parameterType="int">

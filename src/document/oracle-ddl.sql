@@ -15,7 +15,7 @@ create table member (
     name varchar2(20) not null,
     email varchar2(50) not null,
     phone varchar2(30) not null,
-    birth date not null,
+    birth date not null
 );
 
 --권한
