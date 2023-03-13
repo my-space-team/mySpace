@@ -72,21 +72,21 @@
 		
 	</insert>
 
-	<!-- productIdx 값으로 그 product의 상품 정보를  조회 -->
+	<!-- productIdx 값으로 그 product의 상품 정보를  조회 
 	<select id="getProduct" parameterType="int"
 		resultMap="productMap">
 		SELECT *
 		FROM product
 		WHERE idx = #{idx }
-	</select>
+	</select>-->
 	
-	<!-- 같은 상품 있는 경우 amount 1증가 -->
+	<!--  같은 상품 있는 경우 amount 1증가 
 	<update id="updateProductAmount"
 		parameterType="com.kosa.project.domain.CartProductVO">
 		UPDATE cart_product 
 		SET amount = amount + 1 WHERE cart_idx = 1 
 		AND product_idx = #{product.idx}
-	</update>
+	</update> -->
 
 	
 

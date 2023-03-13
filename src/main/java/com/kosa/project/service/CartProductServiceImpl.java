@@ -21,46 +21,28 @@ public class CartProductServiceImpl implements CartProductService {
 	@Autowired
 	private CartProductMapper mapper;
 
-//	@Override
-//	public void addProduct(CartProductVO cartProduct) {
-//		mapper.addProduct(cartProduct);
-//
-//	}
-	
-//	@Override
-//	public void addProduct(CartProductVO cartProduct) {
-//	    CartProductVO existingProduct = mapper.getCartProduct(cartProduct);
-//	    if (existingProduct == null) {
-//	        // 장바구니에 새로운 상품을 추가합니다.
-//	        mapper.addProduct(cartProduct);
-//	    } else {
-//	        // 이미 장바구니에 담겨있는 상품의 수량을 증가시킵니다.
-//	        existingProduct.setAmount(existingProduct.getAmount() + 1);
-//	        mapper.updateProduct(existingProduct);
-//	    }
-//	}
-	
-//	@Override
-//	public void addProduct(CartProductVO cartProduct) {
-//	  // cart_product 테이블에서 현재 cart와 product를 가지고 있는 데이터를 조회합니다.
-//	  CartProductVO existingProduct = mapper.getProduct(cartProduct);
-//	  
-//	  // 조회한 데이터가 존재하는 경우, 해당 상품의 수량을 1 증가시킵니다.
-//	  if (existingProduct != null) {
-//	    mapper.updateProductAmount(existingProduct);
-//	  } else {
-//	    // 조회한 데이터가 없는 경우, 새로운 데이터를 추가합니다.
-//	    mapper.addProduct(cartProduct);
-//	  }
-//	}
-	
 	@Override
 	public void addProduct(CartProductVO cartProduct) {
-	  int productIdx = cartProduct.getProduct().getIdx();
-	  ProductVO product = mapper.getProduct(productIdx);
-	  cartProduct.setProduct(product);
-	  mapper.addProduct(cartProduct);
+		mapper.addProduct(cartProduct);
+
 	}
+	
+	
+//	@Override
+//	public void addProduct(CartProductVO cartProduct) {
+//	    int productIdx = cartProduct.getProduct().getIdx();
+//	    ProductVO product = mapper.getProduct(productIdx);
+//	    cartProduct.setProduct(product);
+//	    
+//	    CartProductVO existingProduct = mapper.read(cartProduct.getCart().getIdx(), productIdx);
+//	    if (existingProduct != null) {
+//	        existingProduct.setAmount(existingProduct.getAmount() + 1);
+//	        mapper.update(existingProduct);
+//	    } else {
+//	        cartProduct.setAmount(1);
+//	        mapper.addProduct(cartProduct);
+//	    }
+//	}
 
 	@Override
 	public boolean update(CartProductVO cartProduct) {

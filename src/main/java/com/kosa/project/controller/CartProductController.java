@@ -44,7 +44,7 @@ public class CartProductController {
 	    model.addAttribute("list", service.getList(idx));
 	    return "list"; 
 	}
-	
+//	
 //	@PostMapping("/add")
 //	public void addProduct(@RequestBody CartProductVO cartProduct) {
 //		service.addProduct(cartProduct);

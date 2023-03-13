@@ -18,10 +18,12 @@ public interface CartProductMapper {
 	
 	//public int update(int idx, int amount);
 	
-	//public CartProductVO read(int idx);
 	
-	public void updateProductAmount(CartProductVO cartProduct); //중복 상품 수량 증가 
 	
-	public ProductVO getProduct(int idx); //상품 정보 가져오는 메서드
+//	public void updateProductAmount(CartProductVO cartProduct); //중복 상품 수량 증가 
+//	
+//	public ProductVO getProduct(int idx); //상품 정보 가져오는 메서드
+//
+//	public CartProductVO read(int idx, int productIdx);
 
 }

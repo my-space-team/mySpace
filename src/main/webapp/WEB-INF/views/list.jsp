@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <html lang="ko">
 <head></head>
 <style type="text/css">
@@ -19,7 +20,9 @@
 					<!-- ***** Cart Start ***** -->
 					<div class="heading-section">
 						<h4>장바구니</h4>
+						
 					</div>
+					
 					<div>
 						<div class="row">
 							<div style="display: flex;">
@@ -37,9 +40,10 @@
 											</tr>
 										</thead>
 
-										<c:forEach items="${list }" var="cartProduct">
+										<c:forEach items="${list }" var="cartProduct" varStatus="status">
 											<tr>
-												<td><c:out value="${cartProduct.idx }" /></td>
+												<%-- <td><c:out value="${cartProduct.idx }" /></td> --%>
+												<td scope="row">${status.index + 1}</td>
 												<%-- <td><c:out value="${이미지 }" /></td> --%>
 												<td><c:out value="${cartProduct.product.name}" /></td>
 												<td><c:out value="${cartProduct.product.price }" /></td>
@@ -134,6 +138,7 @@
 											<button type="button" class="btn btn-primary"
 												name="allOrderBtn">구매하기</button>
 										</div>
+										
 									</div>
 
 								</div>
