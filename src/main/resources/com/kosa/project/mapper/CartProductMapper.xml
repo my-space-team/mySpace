@@ -61,17 +61,16 @@
 	<insert id="addProduct" parameterType="com.kosa.project.domain.CartProductVO">
 		<selectKey keyProperty = "idx" resultType = "int" order = "BEFORE">
 			SELECT cart_product_seq.nextval FROM DUAL		
-		</selectKey>
+		</selectKey>   
 		INSERT INTO cart_product 
-		<!-- (idx, cart_idx, product_idx, amount)  -->
+		(idx, cart_idx, product_idx, amount)  
 		VALUES (
-		#{idx},
+		 #{idx},
 		<!-- #{cart.idx} -->1,
-		#{product.idx},
+		<!-- #{cartProduct.product.idx} -->#{product.idx},
 		<!-- #{amount} -->1)
+		
 	</insert>
-
-
 
 	<!-- 장바구니 상품 삭제 -->
 	<delete id="delete">

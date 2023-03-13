@@ -85,7 +85,7 @@
 											<label for="colFormLabelSm"
 												class="col-sm-4 col-form-label col-form-label-sm">총
 												상품금액</label>
-											<div class="col-sm-5">
+											<div class="col-sm-6">
 												<c:set var="totalPrice" value="0" />
 												<c:forEach items="${list}" var="cartProduct">
 													<c:set var="price"
@@ -100,7 +100,7 @@
 										<div class="row mb-3">
 											<label for="colFormLabelSm"
 												class="col-sm-4 col-form-label col-form-label-sm">배송비</label>
-											<div class="col-sm-5">
+											<div class="col-sm-6">
 
 
 												<c:set var="totalPrice" value="0" />
@@ -120,7 +120,7 @@
 											<label for="colFormLabelSm"
 												class="col-sm-4 col-form-label col-form-label-sm">총
 												결제금액</label>
-											<div class="col-sm-5">
+											<div class="col-sm-6">
 												<c:set var="totalPayment"
 													value="${totalPrice + deliveryPrice}" />
 												<input type="text" readonly
@@ -129,7 +129,7 @@
 											</div>
 										</div>
 
-										<div class="d-grid gap-2 col-10 ">
+										<div class="d-grid gap-2 ">
 											<button type="button" class="btn btn-primary"
 												name="allOrderBtn">구매하기</button>
 										</div>

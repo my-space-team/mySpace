@@ -37,7 +37,7 @@
 				 class="btn btn-info">장바구니</button> -->
 				 
 						<form method="post" action="../cart/add">
-							<input type="hidden" name="idx" value="${product.idx}" /> <input
+							<input type="hidden" name="product.idx" value="${product.idx}" /> <input
 								type="hidden" name="${_csrf.parameterName }"
 								value="${_csrf.token }" />
 							<button id="cart" style="width: 150px; height: 30px;" type="submit" class="btn btn-info">장바구니</button>

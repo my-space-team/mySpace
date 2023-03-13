@@ -20,27 +20,27 @@ public class CartProductMapperTests {
 	@Autowired
 	private CartProductMapper mapper;
 
+//	
+//	@Test
+//	public void testGetList() {
+//		mapper.getList(1).forEach(cartProduct -> log.info(cartProduct));
+//	}
 	
 	@Test
-	public void testGetList() {
-		mapper.getList(1).forEach(cartProduct -> log.info(cartProduct));
+	public void testAddProduct() {
+		CartProductVO cartProduct = new CartProductVO();
+		
+		cartProduct.setIdx(5);
+		cartProduct.getCart().setIdx(1);
+		cartProduct.getProduct().setIdx(3);
+		cartProduct.setAmount(1);
+		
+
+		
+		mapper.addProduct(cartProduct);
+		log.info(cartProduct);
+		
 	}
-	
-//	@Test
-//	public void testAddProduct() {
-//		CartProductVO cartProduct = new CartProductVO();
-//		
-//		cartProduct.setIdx(3);
-//		cartProduct.getCart().setIdx(1);
-//		cartProduct.getProduct().setIdx(3);
-//		cartProduct.setAmount(3);
-//		
-//
-//		
-//		mapper.addProduct(cartProduct);
-//		log.info(cartProduct);
-//		
-//	}
 	
 //	@Test
 //	public void testDelete() {

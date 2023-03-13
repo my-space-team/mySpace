@@ -1,5 +1,6 @@
 package com.kosa.project.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosa.project.domain.CartProductVO;
+import com.kosa.project.domain.ProductVO;
 import com.kosa.project.service.CartProductService;
+import com.kosa.project.service.ProductService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -21,7 +24,11 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class CartProductController {
 	
+	@Autowired
 	private CartProductService service;
+	
+	@Autowired
+	private ProductService productService;
 
 //	@GetMapping("/list")
 //	public void list(Model model) {
@@ -46,9 +53,15 @@ public class CartProductController {
 //	}
 	
 	@PostMapping("/add")
-	public String addProduct(CartProductVO cartProduct, Model model, @RequestParam("idx") int idx) {
-	    service.addProduct(cartProduct);
-	    return "redirect:/detail?idx=" + idx;
+	public String addProduct(@RequestParam("product.idx") int productIdx, Model model) {
+//		ProductVO findProduct = productService.getProduct(idx);
+//		cartProduct.setProduct(findProduct);
+		ProductVO pvo = new ProductVO();
+		pvo.setIdx(productIdx);
+		CartProductVO cvo = new CartProductVO();
+		cvo.setProduct(pvo);
+		service.addProduct(cvo);
+	    return "redirect:/product/detail?idx=" + productIdx;
 	}
 	
 	
