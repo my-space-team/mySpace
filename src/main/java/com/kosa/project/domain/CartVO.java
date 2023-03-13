@@ -8,5 +8,6 @@ import lombok.Data;
 public class CartVO {
 	private int idx;
 	private MemberVO member;
+	private List<CartProductVO> cartProduct;
 	private List<CartProductVO> cartProductList;
 }

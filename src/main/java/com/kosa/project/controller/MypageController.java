@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kosa.project.domain.MemberVO;
 import com.kosa.project.domain.OrderVO;
+
 import com.kosa.project.domain.ScoreVO;
 import com.kosa.project.service.CustomUserDetailsService;
 import com.kosa.project.service.MemberService;
@@ -31,6 +32,9 @@ import lombok.extern.log4j.Log4j;
 public class MypageController {
 
     @Autowired
+    private CustomUserDetailsService customUserDetailsService;
+
+    @Autowired
     private ReviewService reviewService;
 
     @Autowired
@@ -38,7 +42,7 @@ public class MypageController {
 
     @Autowired
     private OrderService orderService;
-    
+
     @Autowired
     private OrderMapperService orderMapperService;
     
@@ -46,19 +50,22 @@ public class MypageController {
     private ProductService productService;
 
     @GetMapping("/home")
+
     public String orderList(Principal principal, Model model) {
+
         if (principal == null) {
             return "redirect:/memberLogin";
-        }	
-//        MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
-//        System.out.println(findMember.getIdx());
-//        model.addAttribute("member", findMember);
-//        System.out.println(orderMapperService.getOrderList(findMember.getIdx()));
-//        model.addAttribute("orderList", orderMapperService.getOrderList(findMember.getIdx()));
-//        //orderService.getcartList(findMember.getIdx());
-//        model.addAttribute("member", findMember);
-//        //model.addAttribute(null, findMember);
-        return "mypage/order_list";
+        }
+        MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
+
+        System.out.println(findMember.getIdx());
+        model.addAttribute("member", findMember);
+        System.out.println(orderMapperService.getOrderList(findMember.getIdx()));
+        model.addAttribute("orderList", orderMapperService.getOrderList(findMember.getIdx()));
+
+        model.addAttribute("member", findMember);
+
+        return "mypage/home";
     }
 
     @GetMapping("/review")
@@ -69,14 +76,14 @@ public class MypageController {
 
     @GetMapping("/review/insert")
     public String reviewInsert(
-    			@RequestParam("orderIdx") int orderIdx, 
-    			@RequestParam("productIdx") int productIdx, 
-    			@RequestParam("memberIdx") int memberIdx, Model model) {
-    	System.out.println(orderIdx + productIdx + memberIdx);
-    	model.addAttribute("memberIdx", memberIdx);
-    	model.addAttribute("orderIdx", orderIdx);
-    	model.addAttribute("productIdx", productIdx);
-    	model.addAttribute("product", productService.getProduct(productIdx));
+            @RequestParam("orderIdx") int orderIdx,
+            @RequestParam("productIdx") int productIdx,
+            @RequestParam("memberIdx") int memberIdx, Model model) {
+
+        model.addAttribute("memberIdx", memberIdx);
+        model.addAttribute("orderIdx", orderIdx);
+        model.addAttribute("productIdx", productIdx);
+        model.addAttribute("product", productService.getProduct(productIdx));
         return "mypage/review_insert";
     }
 

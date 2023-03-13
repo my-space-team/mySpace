@@ -7,7 +7,7 @@
 }
 
 .review-container h2 {
-  color: #ec6090;
+  color: #1EDDFF;
   font-weight: 700;
 }
 
@@ -79,14 +79,14 @@
 }
 
 .review-button input {
-  background-color: rgba(0,0,0,0);
+  background-color: #1EDDFF(0,0,0,0);
   font-size: 15px;
   border-radius: 8px;
   border: 1px solid gray;
-  color: #ec6090;
+  color: #1EDDFF;
   padding: 8px;
 }
 
 .review-button input:hover {
-  background-color: #df90ab;
+  background-color: #1EDDFF;
 }
