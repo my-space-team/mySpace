@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kosa.project.service.CategoryService;
 import com.kosa.project.service.ProductService;
 import com.kosa.project.service.ReviewService;
 
@@ -16,6 +15,7 @@ import lombok.AllArgsConstructor;
 @Controller
 @AllArgsConstructor
 public class ProductController {
+<<<<<<< HEAD
 	
 	@Autowired
 	private ProductService productService;
@@ -24,16 +24,24 @@ public class ProductController {
 	private ReviewService rservice;
 	
 	
+=======
+
+	private ProductService productService;
+
+>>>>>>> 37fe8dd835ffd3094321a44c044542e0672093a3
 	@GetMapping("/product/detail")
 	public ModelAndView godetail(int idx) {
-		ModelAndView mv=new ModelAndView();
-		mv.addObject("product",  productService.getProduct(idx));
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("product", productService.getProduct(idx));
 		mv.addObject("reviewlist", productService.getReviewList(idx));
 		mv.addObject("reviewTotal", productService.getTotalReviewList(idx));
 		mv.setViewName("product/detail");
 
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 37fe8dd835ffd3094321a44c044542e0672093a3
 		return mv;
 	}
-	
+
 }

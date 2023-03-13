@@ -17,4 +17,6 @@ public interface CartProductService {
 	public List<CartProductVO> getList(int idx);
 	
 	public CartProductVO get(int idx);
+
+	//public void update(int idx, int amount);
 }

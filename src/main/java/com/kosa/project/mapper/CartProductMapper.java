@@ -15,6 +15,8 @@ public interface CartProductMapper {
 	
 	public int update(CartProductVO cartProduct); //수량 변경
 	
+	//public int update(int idx, int amount);
+	
 	public CartProductVO read(int idx);
 
 

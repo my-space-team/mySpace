@@ -19,8 +19,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.info("mem111111:............... ");
         MemberVO member = mapper.findMemberByLoginId(username);
-        log.info(member);
+        log.info("mem22222:............... ");
         return member == null ? null : new CustomUser(member);
     }
 

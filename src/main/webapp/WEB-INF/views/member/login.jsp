@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!DOCTYPE html>
 <html lang="ko">
 <!-- head 추가 -->
 <%@ include file="/resources/common/common_head.jsp" %>
+
 <body>
 	<!-- header 추가 -->
 	<%@ include file="/resources/common/header.jsp" %>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -20,14 +23,14 @@
 								<h4><em>MY SPACE </em> 로그인</h4>
 								<div class="register-div">
 									<form method="POST" action="/login">
-                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+										<!-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.tokzen}"/> -->
                                         <input class="form-control" style="text-align: center; margin: auto; width: 50%;" type="text"
                                         placeholder="아이디를입력하세요" name="username" onfocus="this.placeholder=''" onblur="this.placeholder='아이디를 입력하세요'"/>
                                         <br>
-                                        <input class="form-control"style="text-align: center; margin: auto; width: 50%;" type="text"
+                                        <input class="form-control"style="text-align: center; margin: auto; width: 50%;" type="password"
                                         placeholder="비밀번호를 입력하세요" name="password" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호를 입력하세요'" />
                                         <br>
-                                        <button type="submit" class="btn btn-primary">로그인</button>
+                                        <button type="submit" class="btn btn-primary" style="background-color: #1EDDFF;">로그인</button>
                                     </form>
 								</div>
                                 <br>

@@ -43,6 +43,9 @@
 					WHERE rownum <= #{pageNum}* #{amount}]]>
 					
 					<trim prefix="AND">
+	        			<if test="search != '%%'">
+        					name LIKE #{search}
+        				</if>
 						<if test="cateNumber != 0">
 						category_idx = #{cateNumber}
 						</if>
@@ -58,7 +61,10 @@
         FROM product 
        	WHERE idx > 0
         	<trim prefix="AND">
-        		<if test="value != 0">
+        		<if test="search != '%%'">
+        			name LIKE #{search}
+        		</if>
+        		<if test="cateNumber != 0">
 					category_idx = #{cateNumber}
 				</if>
         	</trim>

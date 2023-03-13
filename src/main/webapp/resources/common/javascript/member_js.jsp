@@ -17,9 +17,6 @@
             event.preventDefault();
             var ajaxParam = {
                 url: "/REST/member/add",
-                beforeSend: function(xhr) {
-                    xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-                  },
                 data: $("form[name='form-member-register']").serialize(),
                 type: "POST",
                 success: function(result){
@@ -31,11 +28,12 @@
                     }
                 },
                 error: function(){
-                    console.log(data + "오류 발생");
+                    console.log("오류 발생");
                 }
             };
             $.ajax(ajaxParam);
         }
     }
+    
     $member.init();
 </script>
