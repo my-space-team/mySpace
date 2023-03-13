@@ -39,9 +39,9 @@ public class MypageController {
             return "redirect:/memberLogin";
         }
         MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
-        orderService.getcartList(findMember.getIdx());
+        //orderService.getcartList(findMember.getIdx());
         model.addAttribute("member", findMember);
-        model.addAttribute(null, findMember);
+        //model.addAttribute(null, findMember);
         return "mypage/order_list";
     }
 
