@@ -1,6 +1,7 @@
 package com.kosa.project.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,6 +20,8 @@ public class MemberVO {
     private String email;
 
     private String phone;
+
+    private List<AuthVO> authList;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth;

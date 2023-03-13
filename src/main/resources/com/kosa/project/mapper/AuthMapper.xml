@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosa.project.mapper.AuthMapper">
+
+    <resultMap id="authMap" type="com.kosa.project.domain.AuthVO">
+        <id property="userId" column="user_id"/>
+        <result property="auth" column="auth"/>
+    </resultMap>
+
+	<select id="find" resultMap="authMap">
+		SELECT * FROM auth WHERE auth = #{auth}
+	</select>
+
+    <insert id="insert">
+        INSERT INTO auth (user_id, auth)
+        values (#{userId}, #{auth})
+    </insert>
+
+</mapper>

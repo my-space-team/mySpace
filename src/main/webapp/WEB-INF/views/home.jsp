@@ -29,7 +29,7 @@
           				
 			<ul class="category-list" style="display: flex; justify-content: space-between; font-size: 20px;">
 			<c:forEach var="category" items="${categoryList}">
-				<li><a href="/category/${category.idx}">${category.name}</a></li>
+				<li><a href="/?category=${category.idx}&pageNum=${pageNum}&amount=${amount}">${category.name}</a></li>
 			</c:forEach>
 			</ul>
 			
@@ -38,16 +38,16 @@
             <div class="row">
               <div class="col-lg-12">
                 <div class="heading-section">
-                  <h4>인기상품</h4>
+                  <!-- <h4>인기상품</h4> -->
                 </div>
                 <div class="heading-section">
                   <!-- <h4><em>Most Popular</em> Right Now</h4> -->
                 </div>
-                <div class="row">
+                <div class="row" style="padding: 0; ">
                     <c:forEach var="product" items="${productList}">
-                    	<div class="col-lg-3 col-sm-6">
+                    	<div class="col-lg-3 col-sm-6" style="width: 22%;">
 	                        <div class="item">
-		                    	<img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/165060454096774324.jpg?gif=1&w=1280&h=1280&c=c&webp=1" alt="" />
+		                    	<img src="${product.imageURL}" alt="" />
 		                     	<h4><span style="font-size: 70%;">${product.name}</span>
 		                     	<input type="hidden" value="${product.idx}" readonly/>
 		                     	</h4>
@@ -59,19 +59,46 @@
                         </div>
 					</c:forEach>
 
-                  <div class="col-lg-12">
+<!--                   <div class="col-lg-12">
                     <div class="main-button">
                       <a href="browse.html">Discover Popular</a>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
           </div>
+         
           <!-- ***** Most Popular End ***** -->
+          <form id='actionForm' action="/" method='get'>
+          	<input type="hidden" name="category" value="${category}">
+          	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+          	<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+          </form>
+          <div style="display: flex; justify-content: space-around; font-size: 20px;">
+          <ul>
+          	<c:if test="${pageMaker.prev }">
+          		<li class="paginate_button previous">
+          			<a href="${pageMaker.startPage -1 }">Previous</a> 
+          		</li>
+          	</c:if>
+          </ul>
+          	<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+          		<li>
+          			<a href="${num }">${num }</a>
+          		</li>
+          	</c:forEach>
+          	
+          	<c:if test="${pageMaker.next }">
+          		<li class="paginate_button next">
+          			<a href="${pageMaker.endPage +1 }">Next</a> 
+          		</li>
+          	</c:if>
+          </div>
+
 
           <!-- ***** Gaming Library Start ***** -->
-          <div class="gaming-library">
+<!--           <div class="gaming-library">
             <div class="col-lg-12">
               <div class="heading-section">
                 <h4><em>Your Gaming</em> Library</h4>
@@ -179,13 +206,13 @@
               </div>
             </div>
           </div>
-          <!-- ***** Gaming Library End ***** -->
+          ***** Gaming Library End *****-->
         </div>
       </div>
     </div>
-  </div>
+  </div> 
 
-  <footer>
+  <!-- <footer>
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -204,7 +231,8 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> -->
+  <%@ include file="/resources/common/footer.jsp" %>
   <script src="/resources/vendor/jquery/jquery.min.js"></script>
   <div id="script"></div>
   <script>
@@ -216,6 +244,15 @@
       $(".item").click(function(){
     	  let idx = $(this).find("input").val(); 
     	  location.href = '/product/detail?idx=' + idx;
+      });
+      
+	  var actionForm = $("#actionForm");      
+      
+      $(".paginate_button a").on("click", function(e) {
+    	  e.preventDefault();
+    	  console.log('click');
+    	  actionForm.find('input[name="pageNum"]').val($(this).attr("href"));
+    	  actionForm.submit();
       });
     });
   </script>

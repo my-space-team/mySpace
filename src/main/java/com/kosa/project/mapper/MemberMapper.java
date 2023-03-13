@@ -9,6 +9,8 @@ public interface MemberMapper {
 
     public MemberVO find(int idx);
 
+    public MemberVO findMemberByLoginId(String loginId);
+
     public int delete(int idx);
 
     public int update(MemberVO vo);

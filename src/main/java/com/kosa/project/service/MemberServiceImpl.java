@@ -1,10 +1,12 @@
 package com.kosa.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.kosa.project.domain.AuthVO;
 import com.kosa.project.domain.MemberVO;
-import com.kosa.project.mapper.CategoryMapper;
+import com.kosa.project.mapper.AuthMapper;
 import com.kosa.project.mapper.MemberMapper;
 
 import lombok.AllArgsConstructor;
@@ -20,9 +22,19 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberMapper memberMapper;
 
+	@Autowired
+	private AuthMapper authMapper;
+
+	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
 	@Override
 	public MemberVO insert(MemberVO vo) {
+		vo.setPassword(encoder.encode(vo.getPassword()));
 		memberMapper.insert(vo);
+
+		AuthVO auth = new AuthVO(vo.getLoginId(), "MEMBER");
+		authMapper.insert(auth);
+
 		MemberVO dbMember = memberMapper.find(vo.getIdx());
 		log.info("------>service----->insert" + dbMember);
 		return dbMember;
@@ -41,6 +53,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int modify(MemberVO vo) {
 		return memberMapper.update(vo);
+	}
+
+	@Override
+	public MemberVO findMemberByLoginId(String loginId) {
+		return memberMapper.findMemberByLoginId(loginId);
 	}
 
 }

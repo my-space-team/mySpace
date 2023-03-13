@@ -803,6 +803,40 @@ Banner Style
 
 /* 
 ---------------------------------------------
+login page Style
+--------------------------------------------- 
+*/
+
+.login-banner {
+  background-image: url(../asset/images/banner-bg.jpg);
+  background-position: center center;
+  background-size: cover;
+  width: 40%;
+  min-height: 500px;
+  margin: auto;
+  border-radius: 23px;
+  padding: 80px 60px;
+}
+
+.login-banner h6 {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+
+.login-banner h4 {
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.login-banner h4 em {
+  font-style: normal;
+  color: #ec6090;
+}
+
+/* 
+---------------------------------------------
 Most Popular Style
 --------------------------------------------- 
 */
