@@ -12,7 +12,7 @@
 
     <security:http>
         <security:csrf disabled="true" />
-        <security:intercept-url pattern="/mypage/**" access="hasRole('MEMBER')" />
+<!--         <security:intercept-url pattern="/mypage/**" access="hasRole('MEMBER')" /> -->
         <security:intercept-url pattern="/**" access="permitAll" />
         <security:form-login login-page="/memberLogin" authentication-success-handler-ref="customLoginSuccess"/>
         <security:logout />

@@ -370,7 +370,6 @@ Header Style
   background: transparent;
   display: flex;
   padding: 15px 0px;
-  border-radius: 50px;
 }
 
 .background-header .main-nav {
@@ -383,11 +382,11 @@ Header Style
 }
 
 .header-area .main-nav #search input {
-  background-color: white;
+  /* background-color: white; */
   height: 46px;
   border-radius: 23px;
-  border: none;
-  color: white;
+  /* border: none; */
+  /* color: white; */
   font-size: 14px;
   padding: 0px 15px 0px 45px;
 }
@@ -1768,4 +1767,8 @@ body {
   .gaming-library .item ul li {
     width: 16%;
   }
+}
+
+.select_state {
+	
 }
