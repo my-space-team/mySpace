@@ -19,26 +19,27 @@ import lombok.extern.log4j.Log4j;
 public class DeliveryMapperTest {
 	
 	@Autowired
-	private DeliveryMapper mapper;
+	private DeliveryMapper deliveryMapper;
 	
 	@Autowired
 	private MemberMapper memberMapper;
 	
 	
-//	@Test
-//	public void insertTest() {
-//		DeliveryVO delivery = new DeliveryVO();
-//		delivery.setMember(memberMapper.find(10));
-//		delivery.setAddressName("송파구");
-//		delivery.setDeliveryName("youngoh");
-//		delivery.setAddress("송파 it벤처타워");
-//		delivery.setDeliveryPhone("010-0000");
-//		delivery.setDeliveryRequest("경비실");
-//		
-//		mapper.insert(delivery);
-//		
-//		log.info(delivery);
-//	}
+	@Test
+	public void insertTest() {
+		DeliveryVO delivery = new DeliveryVO();
+		delivery.setMember(memberMapper.find(4));
+		delivery.setIdx(4);
+		delivery.setAddressName("송파구");
+		delivery.setDeliveryName("youngoh");
+		delivery.setAddress("송파 it벤처타워");
+		delivery.setDeliveryPhone("010-0000");
+		delivery.setDeliveryRequest("경비실");
+		
+		deliveryMapper.insert(delivery);
+		
+		log.info(delivery);
+	}
 	
 //	@Test
 //	public void readTest() {
@@ -67,12 +68,12 @@ public class DeliveryMapperTest {
 //		log.info("Update count : "+count);
 //	}
 	
-	@Test
-	public void getListTest() {
-		List<DeliveryVO> list = mapper.getList();
-		
-		log.info(list);
-		list.forEach(delivery -> System.out.println(delivery));
-	}
+//	@Test
+//	public void getListTest() {
+//		List<DeliveryVO> list = deliveryMapper.getList();
+//		
+//		log.info(list);
+//		list.forEach(delivery -> System.out.println(delivery));
+//	}
 	
 }

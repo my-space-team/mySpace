@@ -3,10 +3,12 @@ package com.kosa.project.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.kosa.project.domain.DeliveryVO;
 import com.kosa.project.mapper.DeliveryMapper;
 
+@Service
 public class DeliveryServiceImpl implements DeliveryService{
 
 	@Autowired
