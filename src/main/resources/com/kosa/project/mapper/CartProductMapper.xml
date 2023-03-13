@@ -82,7 +82,7 @@
 		AND cp.product_idx = #{product.idx}
 	</select>
 	
-	<update id="updateProduct" parameterType="CartProductVO">
+	<update id="updateProduct" parameterType="com.kosa.project.domain.CartProductVO">
     UPDATE cart_product
     SET amount = #{amount}
     WHERE user_id = #{userId}
