@@ -21,29 +21,21 @@ public class ProductServiceImpl implements ProductService {
 	private ProductMapper productMapper;
 
 	@Override
-	public List<ProductVO> getProductList(String category, Criteria cri) {
+	public List<ProductVO> getProductList(String category, Criteria cri, String search) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		int cateNumber = 0;
-		try {
-			cateNumber = ((category == null) ? 0 : Integer.parseInt(category));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        map.put("cateNumber", cateNumber);
+        map.put("cateNumber", category);
 		map.put("pageNum", cri.getPageNum());
 		map.put("amount", cri.getAmount());
+		map.put("search", search);
 		return productMapper.getProductList(map);
 	}
 
 	@Override
-	public int getTotalCnt(String category) {
-		int cateNumber = 0;
-		try {
-			cateNumber = ((category == null) ? 0 : Integer.parseInt(category));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return productMapper.getTotalCnt(cateNumber);
+	public int getTotalCnt(String category, String search) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cateNumber", category);
+		map.put("search", search);
+		return productMapper.getTotalCnt(map);
 	}
 	
 	@Override

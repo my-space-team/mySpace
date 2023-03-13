@@ -21,16 +21,18 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderMapper ordermapper;
 	private MemberMapper memberMapper;
-	
+
 	@Override
 	public List<CartProductVO> getcartList(int member) {
-		
+
 		log.info("getList............");
-		
+
 		return ordermapper.getcartList(member);
 	}
+
+	// 이건 어디에 쓰는거죵?
 	public MemberVO find(int idx) {
 		return memberMapper.find(idx);
 	}
-	
+
 }

@@ -9,6 +9,7 @@ public class ProductVO {
 	private BrandVO brand;
 	private String name;
 	private int price;
+
 	private String contents;
 	private String imageURL;
 	private String imageUpload;
