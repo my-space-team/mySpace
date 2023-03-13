@@ -39,7 +39,7 @@
 		id="cartProductMap">
 		<id column="idx" property="idx" />
 		<result column="amount" property="amount" />
-		 <result property="sumAmount" column="sum_amount" />
+		<result property="sumAmount" column="sum_amount" />
 		<collection property="cart" resultMap="cartMap" />
 		<collection property="product" resultMap="productMap" />
 	</resultMap>
@@ -49,8 +49,8 @@
 		<id column="idx" property="idx" />
 		<result column="name2" property="name" />
 		<result column="price" property="price" />
-		 <result property="sumPrice" column="sum_price" />
-		
+		<result property="sumPrice" column="sum_price" />
+
 		<association property="category" resultMap="categoryMap" />
 		<association property="brand" resultMap="brandMap" />
 	</resultMap>
@@ -70,52 +70,51 @@
 	</resultMap>
 
 	<!-- 주문내역에 보여질 정보들 : 주문자정보, 카트상품정보 -->
-	<select id="getcartList" parameterType="int" resultMap="orderMap"> 
-	select 
-		m.name as name1, m.email , m.phone , 
-		p.name as name2, p.price, br.name as name3, cp.amount 
-		from cart c, cart_product cp, product p, brand br, member m 
-		where c.idx = cp.cart_idx 
-		and c.member_idx = m.idx 
-		and cp.product_idx = p.idx 
-		and p.brand_idx=br.idx 
-		and m.idx=#{idx} 
-	</select> 
-	
-	<insert id="insert" parameterType="map" >
-		
-		insert into order2 (idx,  member_idx, cart_idx, payment, price, delivery_price, regdate, delivery_name, address_name, address, delivery_request)
-		values(order2_seq.nextval, #{memberIdx},#{cartIdx},#{payment},#{totalPrice},#{dilPrice}, sysdate,#{dilName}, #{dilPlace},#{dilAddress},#{dilSelect}  )
-					
-	</insert>
-	
-	<select id="read" parameterType="int" resultMap="orderMap">
-	<!-- select 
-	member_idx, cart_idx, payment, price, regdate, delivery_name, address
-	from order2 -->
-	select 
-		m.name, price, payment, regdate, address
-		from order2 o, member m 
-		where o.member_idx = m.idx
-		and o.idx=#{idx}
+	<select id="getcartList" parameterType="int" resultMap="orderMap">
+		select
+		m.name as name1, m.email , m.phone ,
+		p.name as name2, p.price, br.name as name3, cp.amount
+		from cart c, cart_product cp, product p, brand br, member m
+		where c.idx = cp.cart_idx
+		and c.member_idx = m.idx
+		and cp.product_idx = p.idx
+		and p.brand_idx=br.idx
+		and m.idx=#{idx}
 	</select>
 	
+	<select id="orderProductList" parameterType="int" resultMap="orderMap">
+		select p.name 
+        from order2 o, cart c, cart_product cp, product p
+        where o.cart_idx = c.idx 
+        and c.idx = cp.cart_idx 
+        and cp.product_idx =p.idx
+        and o.idx=(SELECT MAX(idx)
+                  FROM order2)
 	
-	
-	
+	</select>
+
+	<insert id="insert" parameterType="map">
+		insert into order2 (idx, member_idx, cart_idx, payment, price,
+		delivery_price, regdate, delivery_name, address_name, address, delivery_request)
+		values(order2_seq.nextval,	#{memberIdx},#{cartIdx},#{payment},#{totalPrice},#{dilPrice},sysdate,#{dilName}, #{dilPlace},#{dilAddress},#{dilSelect} )
+
+	</insert>
+
+	<select id="read" parameterType="int" resultMap="orderMap">
+		SELECT * FROM
+		(SELECT * FROM order2 ORDER BY regdate DESC)
+		WHERE ROWNUM= 1
+	</select>
+
+
+
+
 	<!-- 총상품금액, 배송비, 총결제금액 계산하기 이건 굳이 여기서 안해도 된다고 함 -->
-	<!-- <select id="read" parameterType="int" resultMap="orderMap">
-		
-	  <![CDATA[
-	    SELECT m.idx, sum(p.price) AS sum_price, sum(cp.amount) AS sum_amount
-	    FROM cart c
-	    JOIN cart_product cp ON c.idx = cp.cart_idx
-	    JOIN product p ON cp.product_idx = p.idx
-	    JOIN member m ON c.member_idx = m.idx
-	    WHERE m.idx = #{idx}
-	    GROUP BY m.idx
-	  ]]>
-	</select> -->
+	<!-- <select id="read" parameterType="int" resultMap="orderMap"> <![CDATA[ 
+		SELECT m.idx, sum(p.price) AS sum_price, sum(cp.amount) AS sum_amount FROM 
+		cart c JOIN cart_product cp ON c.idx = cp.cart_idx JOIN product p ON cp.product_idx 
+		= p.idx JOIN member m ON c.member_idx = m.idx WHERE m.idx = #{idx} GROUP 
+		BY m.idx ]]> </select> -->
 
 
 

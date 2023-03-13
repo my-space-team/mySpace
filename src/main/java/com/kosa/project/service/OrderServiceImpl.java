@@ -30,7 +30,17 @@ public class OrderServiceImpl implements OrderService {
 
 
 	@Override
-	public OrderVO read(int idx) {
-		return ordermapper.read(idx) ;
+	public OrderVO read() {
+		
+		return ordermapper.read();
 	}
+
+
+	@Override
+	public List<OrderVO> orderProductList() {
+		return ordermapper.orderProductList();
+	}
+
+
+	
 }

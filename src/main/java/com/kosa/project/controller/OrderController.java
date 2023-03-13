@@ -79,31 +79,14 @@ public class OrderController {
 		orderService.insert(orderVo);
 		System.out.println(orderVo);
 		
-		//OrderVO order = new OrderVO();
-		/*model객체 생성하고+ model.addAttribute(getOrder2) */
-//		Model model = new ExtendedModelMap();
-//		@ModelAttribute("order") OrderVO order;
-		//int orderIdx = order.getIdx();
-		//model.addAttribute("order2", orderService.read(orderIdx));
-		//System.out.println("읽기 "+orderService.read(orderIdx));
-		
-//		 OrderVO order = orderService.insert(orderVo);
-//		 model.addAttribute("order2", orderService.read(order.getIdx()));
-		
-		//OrderVO order = new OrderVO();
-		//int orderIdx = order.getIdx();
-		//int orderIdx = (Integer) orderVo.get("idx"); // insert 후 반환된 OrderVO의 ID 값
-		
-		/*
-		 * model.addAttribute("order2", orderService.read(81));
-		 * System.out.println(orderService.read(81));
-		 */
-	    
-	    //int orderIdx = (Integer) orderVo.get("idx"); // insert 후 반환된 OrderVO의 ID 값
-	    OrderVO order = orderService.read(81); 
+		/*주문정보*/
+	    OrderVO order = orderService.read(); 
 	    model.addAttribute("order2", order);
-	    System.out.println(order);
-		
+	    
+	    /*주문상품리스트*/
+	   List<OrderVO> order1= orderService.orderProductList();
+	    model.addAttribute("orderProductList", order1);
+	    System.out.println(order1);
 		
 		return "order/confirm";
 	}

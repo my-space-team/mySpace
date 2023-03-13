@@ -9,5 +9,6 @@ import com.kosa.project.domain.CartProductVO;
 
 public interface OrderService {
 	public void insert(Map orderVo);
-	public OrderVO read(int idx);
+	public OrderVO read();
+	public List<OrderVO> orderProductList();
 }

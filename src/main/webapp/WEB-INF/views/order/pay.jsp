@@ -164,8 +164,8 @@
 									<select id="payment" class="form-select" aria-label="Default select example"
 										style="width: 90%" onchange="showForm(this.value)">
 										<option selected>결제수단 선택하기</option>
-										<option value="1">무통장입금</option>
-										<option value="2">신용카드</option>
+										<option value="무통장입금">무통장입금</option>
+										<option value="신용카드">신용카드</option>
 									</select>
 									
 									
@@ -291,10 +291,10 @@
 	        var 무통장입금 = document.getElementById("무통장입금");
 	        var 신용카드 = document.getElementById("신용카드");
 	        
-	        if (selectedOption == "1") {
+	        if (selectedOption == "무통장입금") {
 	            무통장입금.style.display = "block";
 	            신용카드.style.display = "none";
-	        } else if (selectedOption == "2") {
+	        } else if (selectedOption == "신용카드") {
 	            무통장입금.style.display = "none";
 	            신용카드.style.display = "block";
 	        } else {

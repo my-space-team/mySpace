@@ -10,5 +10,7 @@ public interface OrderMapper {
 	
 	public void insert (Map orderVo);
 	
-	public OrderVO read(int idx);
+	public OrderVO read();
+	
+	public List<OrderVO> orderProductList();
 }
