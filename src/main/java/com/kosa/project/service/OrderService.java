@@ -8,16 +8,8 @@ import com.kosa.project.domain.OrderVO;
 import com.kosa.project.domain.CartProductVO;
 
 public interface OrderService {
-<<<<<<< HEAD
 	public List<OrderVO> orderProductList();
 	public OrderVO read();
-	List<CartProductVO> getcartList(int member);
-	
-=======
 	List<CartProductVO> getcartList(int member);
 	public void insert(Map orderVo);
-	public OrderVO read();
-	public List<OrderVO> orderProductList();
-
->>>>>>> origin/youngoh
 }

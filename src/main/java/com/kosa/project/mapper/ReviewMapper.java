@@ -1,13 +1,14 @@
 package com.kosa.project.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.kosa.project.domain.ReviewVO;
 import com.kosa.project.domain.ScoreVO;
 
 public interface ReviewMapper {
-	public int insertReview(ScoreVO vo);
-	public int insertScore(ScoreVO vo);
+	public int insertReview(HashMap reviewForm);
+	public int insertScore(HashMap reviewForm);
 	
 	public List<ScoreVO> getMemberReviewList(int memberIdx);
 	public ScoreVO get(int idx);

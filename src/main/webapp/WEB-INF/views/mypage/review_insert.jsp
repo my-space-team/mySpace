@@ -13,14 +13,14 @@
   <div class="review-container">
     <h2>리뷰 작성</h2>
     
-	<form action="/mypage/review/insert" method="post">
+	<form name="reviewFormData">
 	<input type="hidden" name="member_idx" value="${memberIdx }"/>
 	<input type="hidden" name="order_idx" value="${orderIdx }">
 	<input type="hidden" name="product_idx" value="${productIdx }">
       <div class="review-box">
         <div>
             <div class="review-data">
-              <div class="product-img"><img src="${product.imageURL }" alt=""></div>
+              <div class="product-img"><img src="<%-- ${product.imageURL } --%>" alt=""></div>
               	<div class="product-name">
 	               	<span>${product.name}</span>
 	               	<div class="review-score">
@@ -68,11 +68,11 @@
               </div>
             </div>
             <div class="review-content">
-              <textarea name="review.contents" id="content" cols="100" rows="10"></textarea>
+              <textarea name="content" id="content" cols="100" rows="10"></textarea>
             </div>
        	</div>
             <div class="review-button">
-              <input type="submit" value="작성">
+              <input type="submit" id="submit" value="작성">
               <input type="button" value="취소">
             </div>
        </div>
@@ -95,6 +95,19 @@
 	    	 location.href = "/"; 
 	      }
 	      
+	  	$('#submit').click(function(){  
+				$.ajax({
+					type:'post', 
+					url:'/REST/review/insert', 
+					data:$("form[name='reviewFormData']").serialize(),   
+					dataType:'html',
+					success : function(data){ 
+						alert("리뷰 등록이 완료되었습니다.");
+						location.href = "/mypage/home";
+					}
+				});
+	  		});
+
 	    });
 	  </script>
 </body>

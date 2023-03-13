@@ -37,12 +37,16 @@
 	
 	<insert id="insertReview"> 
 		INSERT INTO review
-    		VALUES(1, #{review.member.idx}, #{review.product.idx}, #{review.order.idx}, #{review.content});
+    		VALUES(review_seq.nextval, #{member_idx}, #{product_idx}, #{order_idx}, #{content}, null)
+   		
 	</insert>
 	
 	<insert id="insertScore"> 
+		<selectKey keyProperty="review_idx" resultType="Integer" order="BEFORE">
+    		SELECT review_seq.currval FROM DUAL
+    	</selectKey>
 		INSERT INTO score
-    		VALUES(1, #{durability}, #{design}, #{price}, #{delivery});
+    		VALUES(score_seq.nextval, #{review_idx}, #{durability}, #{price}, #{design}, #{delivery})
 	</insert>
 	
 	<select id="getMemberReviewList" resultMap="scoreMap">

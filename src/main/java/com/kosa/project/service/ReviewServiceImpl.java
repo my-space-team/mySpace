@@ -1,5 +1,6 @@
 package com.kosa.project.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -17,9 +18,8 @@ public class ReviewServiceImpl implements ReviewService {
 	private ReviewMapper reviewMapper;
 	
 	@Override
-	public int insertReview(ScoreVO vo) {		
-		
-		return reviewMapper.insertReview(vo)==1 && reviewMapper.insertScore(vo)==1 
+	public int insertReview(HashMap reviewForm) {
+		return reviewMapper.insertReview(reviewForm)==1 && reviewMapper.insertScore(reviewForm)==1 
 				? 1 : 0 ;
 	}
 
