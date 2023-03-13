@@ -52,7 +52,7 @@
 		SELECT 
 		cp.idx as "cp.id", p.name as "p.name1", cp.amount as "cp.amount1", p.price as "p.price1"
 		FROM product p, cart_product cp
-		WHERE p.idx = cp.idx 
+		WHERE p.idx = cp.product_idx  
 		AND cp.cart_idx = #{idx}
 	</select>
 
