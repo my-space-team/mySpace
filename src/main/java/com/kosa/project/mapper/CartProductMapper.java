@@ -13,7 +13,7 @@ public interface CartProductMapper {
 	
 	public int delete(int idx);
 	
-	public int update(CartProductVO cartProduct); //수량 변경
+	public int update(CartProductVO cartProduct); 
 	
 	//public int update(int idx, int amount);
 	

@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosa.project.domain.CartProductVO;
+import com.kosa.project.domain.MemberVO;
 import com.kosa.project.domain.ProductVO;
 import com.kosa.project.service.CartProductService;
+import com.kosa.project.service.CartService;
+import com.kosa.project.service.MemberService;
 import com.kosa.project.service.ProductService;
 
 import lombok.AllArgsConstructor;
@@ -29,6 +32,8 @@ public class CartProductController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	
 
 //	@GetMapping("/list")
 //	public void list(Model model) {

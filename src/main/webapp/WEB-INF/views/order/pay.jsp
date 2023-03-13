@@ -11,7 +11,7 @@
 }
 </style>
 <body>
-	<%@ include file="/WEB-INF/views/header.jsp"%>
+	<%-- <%@ include file="/WEB-INF/views/header.jsp"%> --%>
 
 	<div class="container">
 		<div class="col-lg-12">
@@ -134,7 +134,7 @@
 										<tr>
 											<th scope="col">번호</th>
 											<th scope="col">상품명</th>
-											<th scope="col">브랜드명</th>
+											<!-- <th scope="col">브랜드명</th> -->
 											<th scope="col">상품가격</th>
 											<th scope="col">수량</th>
 										</tr>
@@ -145,7 +145,7 @@
 											<tr>
 												<th scope="row">${status.index + 1}</th>
 												<td>${cartProduct.product.name}</td>
-												<td>${cartProduct.product.brand.name}</td>
+												<%-- <td>${cartProduct.product.brand.name}</td> --%>
 												<td>${cartProduct.product.price}</td>
 												<td>${cartProduct.amount}</td>
 											</tr>

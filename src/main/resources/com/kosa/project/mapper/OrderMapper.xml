@@ -31,7 +31,7 @@
 	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.CartVO" id="cartMap">
-		<id column="idx" property="idx" />
+		<id column="c.idx" property="idx" />
 		<collection property="member" resultMap="memberMap" />
 	</resultMap>
 
@@ -79,9 +79,10 @@
 		and c.member_idx = m.idx
 		and cp.product_idx = p.idx
 		and p.brand_idx=br.idx
-		and m.idx=#{idx}
+		and c.idx=#{idx}
 	</select>
 	
+	<!-- 주문상품리스트 -->
 	<select id="orderProductList" parameterType="int" resultMap="orderMap">
 		select p.name 
         from order2 o, cart c, cart_product cp, product p
@@ -90,7 +91,6 @@
         and cp.product_idx =p.idx
         and o.idx=(SELECT MAX(idx)
                   FROM order2)
-	
 	</select>
 
 	<insert id="insert" parameterType="map">
@@ -105,6 +105,7 @@
 		(SELECT * FROM order2 ORDER BY regdate DESC)
 		WHERE ROWNUM= 1
 	</select>
+	
 
 
 

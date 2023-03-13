@@ -6,7 +6,7 @@ import java.util.Map;
 import com.kosa.project.domain.CartProductVO;
 import com.kosa.project.domain.OrderVO;
 public interface OrderMapper {
-	public List<CartProductVO> getcartList(int member);
+	public List<CartProductVO> getcartList(int cart);
 	
 	public void insert (Map orderVo);
 	

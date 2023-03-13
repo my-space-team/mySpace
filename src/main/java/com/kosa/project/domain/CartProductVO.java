@@ -8,4 +8,5 @@ public class CartProductVO {
 	private CartVO cart;
 	private ProductVO product;
 	private int amount;
+		
 }

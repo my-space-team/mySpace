@@ -11,7 +11,7 @@
 }
 </style>
 <body>
-	<%@ include file="/WEB-INF/views/header.jsp"%>
+	<%-- <%@ include file="/WEB-INF/views/header.jsp"%> --%>
 
 	<div class="container">
 		<div class="col-lg-12">
@@ -39,12 +39,19 @@
 									<th scope="row">주문자</th>
 									<td>${order2.deliveryName}</td>
 								</tr>
-								<tr>
+								<%-- <tr>
 									<th scope="row">주문상품</th>
 									<c:forEach items="${orderProductList}" var="orderProduct">
-										<td>${orderProduct.cartProduct.product.name}</td>
+										<td>${cartProduct.product.name}</td>
 									</c:forEach>
 									
+								</tr> --%>
+								<tr>
+								    <th scope="row">주문상품</th>
+								    <c:forEach items="${orderProductList}" var="product">
+								    
+								        <td><%-- ${product.name} --%>${product.name}</td>
+								    </c:forEach>
 								</tr>
 								<tr>
 									<th scope="row">결제수단</th>
