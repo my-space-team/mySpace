@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <!-- head 추가 -->
-<%-- <%@ include file="/resources/common/common_head.jsp" %> --%>
+<%@ include file="/resources/common/common_head.jsp" %>
 <body>
 	<!-- header 추가 -->
 	<%@ include file="/resources/common/header.jsp" %>

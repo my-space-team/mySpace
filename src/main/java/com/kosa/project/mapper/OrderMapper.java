@@ -15,4 +15,5 @@ public interface OrderMapper {
 	public List<OrderVO> orderProductList();
 	
 	public List<OrderVO> getOrderList(int member);
+	
 }

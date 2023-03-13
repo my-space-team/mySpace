@@ -17,9 +17,9 @@
             event.preventDefault();
             var ajaxParam = {
                 url: "/REST/member/add",
-                beforeSend: function(xhr) {
+/*                 beforeSend: function(xhr) {
                     xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-                  },
+                  }, */
                 data: $("form[name='form-member-register']").serialize(),
                 type: "POST",
                 success: function(result){

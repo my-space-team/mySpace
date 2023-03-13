@@ -30,6 +30,7 @@ public class OrderMapperTests {
 		
 	//mapper.orderProductList().forEach(order -> log.info(order));
 		mapper.getOrderList(1);
+		
 	}
 	
 }

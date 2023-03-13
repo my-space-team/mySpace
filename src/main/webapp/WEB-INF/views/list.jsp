@@ -10,7 +10,7 @@
 }
 </style>
 <body>
-	<%@ include file="/WEB-INF/views/header.jsp"%>
+	<%@ include file="/resources/common/header.jsp" %>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
