@@ -12,6 +12,6 @@ public class ProductVO {
 	
 	//³ªÁß¿¡
 	private String contents;
-	private String imageURl;
+	private String imageURL;
 	private String imageUpload;
 }

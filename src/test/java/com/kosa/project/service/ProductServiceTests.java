@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.kosa.project.domain.ProductVO;
 import com.kosa.project.domain.ReviewVO;
 import com.kosa.project.domain.ScoreVO;
+import com.kosa.project.mapper.ProductMapper;
 
 import lombok.extern.log4j.Log4j;
 
@@ -23,6 +24,8 @@ public class ProductServiceTests {
 	@Autowired
 	private ProductService service;
 
+	@Autowired
+	private ProductMapper mapper;
 //	@Test
 //	public void getProduct() {
 //		ProductVO findProduct = service.getProduct(1);
@@ -37,8 +40,8 @@ public class ProductServiceTests {
 	
 	@Test
 	public void getReviewList() {
-		List<ScoreVO> list=service.getReviewList(1);
+		List<ScoreVO> list=service.getReviewList(154);
 		
-		log.info(list);
+		log.warn(list);
 	}
 }

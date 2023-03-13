@@ -6,6 +6,7 @@
 		<id column="p.id" property="idx" />
 		<result column="p.name1" property="name"/>
 		<result column="p.price1" property="price"/>
+		<result column="image_URL" property="imageURL"/> 
 		<association property="category" resultMap="categoryMap"/>
 		<association property="brand" resultMap="brandMap"/>
 	</resultMap>
@@ -26,7 +27,7 @@
 	<!-- 상품 상세정보 -->
 	<select id="getProduct" parameterType="int" resultMap="productMap"> 
 		 SELECT 
-		p.idx as "p.id",c.idx as "c.id", b.idx as "b.id",
+		p.idx as "p.id",c.idx as "c.id", b.idx as "b.id",  p.image_URL as "image_URL",
 		p.name as "p.name1", b.name as "b.name1", c.name as "c.name1",
 		p.price as "p.price1" FROM product p, category c, brand b
 		WHERE p.category_idx=c.idx and b.idx=p.brand_idx 
@@ -64,14 +65,26 @@
     </select>
 	
 	<!-- 리뷰리스트 매핑 -->
-	<resultMap type="com.kosa.project.domain.ScoreVO" id="scoreMap">
+	<!-- <resultMap type="com.kosa.project.domain.ScoreVO" id="scoreMap">
 		<id column="c.id" property="idx"/>
 		<result column="durability" property="durability"/>
 		<result column="design" property="design"/>
 		<result column="delivery" property="delivery"/>
 		<result column="price" property="price"/>
 		<association property="review" resultMap="reviewMap"/>
+	</resultMap> -->
+	
+	
+	<resultMap type="com.kosa.project.domain.ScoreVO" id="scoreMap">
+		<id column="c.id" property="idx"/>
+		<result column="durability" property="durability"/>
+		<result column="design" property="design"/>
+		<result column="delivery" property="delivery"/>
+		<result column="price" property="price"/>
+		<result column="total" property="total" />
+		<association property="review" resultMap="reviewMap"/>
 	</resultMap>
+	
 	
 	
 	<resultMap type="com.kosa.project.domain.ReviewVO" id="reviewMap">
@@ -82,7 +95,11 @@
 		<collection property="member" resultMap="memberMap"/>
 	</resultMap>
 	
-
+	<!-- <select id="getTotal" resultType="_double">
+		select round((design+durability+price+delivery)/4,1)
+		from score
+		where idx = #{idx}
+	</select> -->
 	
 	<resultMap type="com.kosa.project.domain.MemberVO" id="memberMap">
 		<id column="m.id" property="idx"/>
@@ -95,7 +112,7 @@
 	</resultMap>
 	
 	<!-- 리뷰전체 리스트 -->
-	<select id="getReviewList" resultMap="scoreMap" parameterType="int">
+	<!-- <select id="getReviewList" resultMap="scoreMap" parameterType="int">
 	select 
 		p.name as "p.name1",
 		m.name as "m.name",
@@ -105,6 +122,30 @@
 		s.delivery,
 		r.image as "r.image",
 		r.content 
+			FROM review r 
+				LEFT OUTER JOIN score s 
+				ON r.idx=review_idx 
+				LEFT OUTER JOIN member m
+				ON m.idx=r.member_idx
+				LEFT OUTER JOIN product p
+				ON r.product_idx=p.idx
+					WHERE p.idx=#{product_idx} 
+						ORDER BY r.idx desc
+	</select> -->
+	
+	<select id="getReviewList" resultMap="scoreMap" parameterType="int">
+	select 
+		p.name as "p.name1",
+		m.name as "m.name",
+		s.durability,
+		s.price,
+		s.design,
+		s.delivery,
+		r.image as "r.image",
+		r.content, 
+		r.idx,
+		(select round((s.design+s.durability+s.price+s.delivery)/4,1)
+		from score where idx=r.idx) as total
 			FROM review r 
 				LEFT OUTER JOIN score s 
 				ON r.idx=review_idx 

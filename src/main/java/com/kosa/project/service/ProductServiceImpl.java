@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.kosa.project.domain.Criteria;
+import com.kosa.project.domain.MemberVO;
 import com.kosa.project.domain.ProductVO;
 import com.kosa.project.domain.ReviewVO;
 import com.kosa.project.domain.ScoreVO;

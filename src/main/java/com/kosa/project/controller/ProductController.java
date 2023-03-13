@@ -1,5 +1,6 @@
 package com.kosa.project.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.kosa.project.service.CategoryService;
 import com.kosa.project.service.ProductService;
+import com.kosa.project.service.ReviewService;
 
 import lombok.AllArgsConstructor;
 
@@ -15,15 +17,11 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ProductController {
 	
-	private CategoryService categoryService;
+	@Autowired
 	private ProductService productService;
-
-	@GetMapping("/category/{category}")
-	public String getProductList(@PathVariable(value = "category") int category, Model model) {
-		model.addAttribute("categoryList", categoryService.getCategory());
-		model.addAttribute("productList", productService.getProductList(category));
-		return "home";
-	}
+	
+	@Autowired
+	private ReviewService rservice;
 	
 	
 	@GetMapping("/product/detail")
@@ -33,6 +31,7 @@ public class ProductController {
 		mv.addObject("reviewlist", productService.getReviewList(idx));
 		mv.addObject("reviewTotal", productService.getTotalReviewList(idx));
 		mv.setViewName("product/detail");
+
 		
 		return mv;
 	}

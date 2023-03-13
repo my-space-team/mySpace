@@ -11,6 +11,10 @@ public class ScoreVO {
 	private int price;
 	private int delivery;
 	
-	private int total;
+	private double total;
+
+	
+
+	
 	
 }

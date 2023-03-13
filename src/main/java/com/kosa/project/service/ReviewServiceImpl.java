@@ -9,7 +9,9 @@ import com.kosa.project.domain.ScoreVO;
 import com.kosa.project.mapper.ReviewMapper;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Service
 @AllArgsConstructor
 public class ReviewServiceImpl implements ReviewService {
@@ -31,8 +33,8 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public ScoreVO get(int idx) {
-		
-		return reviewMapper.get(idx);
+		ScoreVO vo = reviewMapper.get(idx);
+		return vo;
 	}
 
 	@Override

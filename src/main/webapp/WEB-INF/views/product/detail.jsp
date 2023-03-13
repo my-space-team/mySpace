@@ -18,91 +18,67 @@
 <!-- 상세정보 start -->
 <div style="width: 100%; height: 100%;">
 <input type="hidden" value="${product.idx }">
-
-	<div style="margin: 110px auto 0; align-items: center; width: 1100px; height:250px; display: flex;">
+<input type="hidden" value="${reviewTotal }" id="reviewTotal" >
+	<div style="margin: 110px auto 0; align-items: center; width: 1100px; height:230px; display: flex;">
 		<div style="width: 40%; margin: 20px; ">
 			<div style="width: 100%; height: 100%; align-items: center; align-content: center;">
-				<img src="../../resources/asset/images/profile.jpg">
+			<span>${product.category.name } ></span><br><br>
+				  <img alt="" src="${product.imageURL} "> 
 			</div>
 		</div>
 		<div style="width: 60%; margin: 10px; display: flex; justify-content: center; ">
-			<div style="width: 60%; height:100px; display:table-cell; vertical-align:middle; ">
-				<span>${product.category.name } ></span><br>
-				<span style="color: gray;">${product.brand.name }</span>		<br>	
-				<span style="font-size: 2.0em;">${product.name }</span><br>
-				<span>${reviewTotal }개 리뷰</span><br>
-				<span style="font-size: 1.7em;"><fmt:formatNumber value="${product.price }" pattern="#,###원"/></span><br><br>
+			<div style="width: 70%; height:100px; display:table-cell; vertical-align:middle; ">
+				<span style="color: gray;"><b>${product.brand.name }</b></span>		<br>	
+				<span style="font-size: 1.7em;">${product.name }</span><br>
+				<span style="color: #35C5F0; font-size: 0.8em;"><b>${reviewTotal }개 리뷰</b></span><br>
+				<span style="font-size: 1.7em;"><b><fmt:formatNumber value="${product.price }" pattern="#,###원"/></b></span><br><br>
+				<span style="color: gray;">배송</span>&nbsp;&nbsp;&nbsp;
+				<span>배송상품정보 참고</span><br><hr>
+				<img alt="" src="../resources/asset/images/brandimg.png" style="width: 30px; height: 30px;">
+				<span>${product.brand.name }</span><br><br>
 				
-				<button id="cart" style="width: 150px; height: 30px;" type="button"
+				<span><b>주문금액 </b></span>
+				<span style="float: right;"><b><fmt:formatNumber value="${product.price }" pattern="#,###원"/></b></span><br>
+				<button id="cart" style="margin-top:15px; width: 180px; height: 30px; color: white;"  type="button"
 				 class="btn btn-info">장바구니</button>
-				<button id="purchase" style="width: 150px; height: 30px;"
-				 class="btn btn-light">구매하기</button><hr>
-				 <div style="background-color: lightgray; height: 80px; border-radius: 15%; width: 280px;">
-				 ${product.name }
-				 </div>
+				<button id="purchase" style="width: 180px; height: 30px; margin-top:15px; margin-left: 10px;"
+				 class="btn btn-light">구매하기</button>
+				
 					
 			</div>
 		</div>
 	</div>
 
-<!-- 상세정보 end -->
 
-<!-- 리뷰 리스트 start -->
-		<%-- <div style="margin: 0 auto 0; align-items: center; width: 1100px; height:700px; margin-top: 100px;">
-			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" style="margin:auto 0; align-items: center; width: 1100px; display: flex; justify-content: space-around; ">
-			  <li class="nav-item" role="presentation" style="width: 50%" >
-			    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" style="width: 50%">상세정보</button>
-			  </li>
-			  <li class="nav-item" role="presentation" style="width: 50%">
-			    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" style="width: 50%">리뷰</button>
-			  </li>
-			</ul>
-			<div class="tab-content" id="pills-tabContent">
-			  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">...</div>
-			  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
-			
-									<c:forEach var="rlist" items="${reviewlist }">
-										${rlist.review.member.name}<br>
-										
-										내구성 ${rlist.durability} 
-										가격 ${rlist.price }
-										디자인 ${rlist.design }
-										배송 ${rlist.delivery }
-										상품 ${rlist.review.product.name }
-										<c:if test="${rlist.review.image!=null }">
-										<img src="${rlist.review.image }">
-										</c:if>
-										내용  ${rlist.review.content}
-									</c:forEach>
-			
-			  </div>
-			  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">...</div>
-			  <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">...</div>
-			</div>
-		</div> --%>
 		<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist" style="margin: 0 auto 0; align-items: center; width: 1100px;  margin-top: 200px;">
+  <div class="nav nav-tabs" id="nav-tab" role="tablist" style="margin: 0 auto 0; align-items: center; width: 1100px;  margin-top: 300px;">
     <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true" style="width: 500px;">상세정보</button>
     <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false" style="width: 500px;">리뷰  ${reviewTotal }</button>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">...</div>
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0"></div>
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0" style="margin-left:500px; margin-top: 70px;">
+  	<span>allTotal</span>
   					<c:forEach var="rlist" items="${reviewlist }">
-  						<img src="../../resources/asset/images/reviewprofile.png" style="width: 23px; height: 23px;">
-										${rlist.review.member.name}<br>
-										
-										내구성 ${rlist.durability}&nbsp;&nbsp; 
+  						<img src="../../resources/asset/images/reviewprofile.png" style="width: 26px; height: 26px;">
+										<span style="display: inline-block; margin-bottom: 10px;">${rlist.review.member.name}</span><br>
+										총점 <input value="${rlist.total}" type="hidden" name="total"><span style="display: inline-block; margin-bottom: 10px;" id="total" name="total" >
+										${rlist.total}
+										</span><br>
+										내구성 ${rlist.durability}&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;  
 										가격 ${rlist.price }<br>
-										디자인 ${rlist.design }&nbsp;&nbsp;
-										배송 ${rlist.delivery }<br>
-										 ${rlist.review.product.name }<br>
+										디자인 ${rlist.design }&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; 
+										배송 ${rlist.delivery }<br><br>
+										<div>
+										<div style="background: lightgray; border: 1px solid #F3F3F3; width: 3px;height: 25px;"></div>
+										<b style="position: relative; bottom: 25px; left: 10px;"> ${rlist.review.product.name }</b><br>
+										</div>
 										<%-- <c:if test="${rlist.review.image!=null }">
 										<img src="${rlist.review.image }">
 										</c:if> --%>
 										  ${rlist.review.content}
-										 <br> <hr style="width: 800px;">
+										 <br> <hr style="width: 800px;"><br>
 									</c:forEach>
   
   </div>
@@ -124,10 +100,21 @@
       $("#cart").click(function(){
       	location.href="../cart/list?idx=1"; //cart_idx = 1 말하는 건데 수정해야함
       })
-    });
+      
+	
+      let allTotal = $("[name=total]").map(function(){return this.value}).get();	//각각의 평점
+   	 //alert(allTotal);
+   	
+   	 let totalCount=$("#reviewTotal").val();	//총 리뷰수
+   
+   	// alert(totalCount);
+   	//alert(typeof split);
+   	 //let split=allTotal.split(',');
+   	 
+   	 
+    }); 
     
-    
-    
+   
   </script>
 </div>
 </body>
