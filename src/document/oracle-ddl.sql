@@ -13,7 +13,7 @@ create table member (
     login_id varchar2(20) unique not null,
     password varchar2(200) not null,
     name varchar2(20) not null,
-    email varchar2(20) not null,
+    email varchar2(50) not null,
     phone varchar2(30) not null,
     birth date not null,
 );
@@ -28,9 +28,9 @@ create table auth (
 --브랜드
 create table brand (
     idx number PRIMARY KEY,
-    name varchar2(20) not null,
+    name varchar2(200) not null,
     phone varchar2(20) not null,
-    manager varchar2(20) not null
+    manager varchar2(200) not null
 );
 
 --카테고리
@@ -44,9 +44,9 @@ create table product (
     idx number PRIMARY KEY,
     category_idx number CONSTRAINT category_idx_product_fk references category(idx),
     brand_idx number constraint brand_idx_product_fk references brand(idx),
-    name varchar2(50) not null,
+    name varchar2(200) not null,
     price number not null,
-    image_url varchar2(100),
+    image_url varchar2(200),
     image varchar2(200)
 );
 
