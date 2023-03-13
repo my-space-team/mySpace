@@ -50,7 +50,8 @@
 	
 	<update id="update">
 		UPDATE MEMBER SET
-		name= #{name},
+		name = #{name},
+		password = #{password},
 		email = #{email},
 		phone = #{phone}
 		WHERE idx = #{idx}

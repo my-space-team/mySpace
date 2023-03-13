@@ -41,9 +41,11 @@
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
                                     <input type="hidden" name="idx" value=<c:out value="${member.idx}"/>>
                                     <input type="hidden" name="loginId" value=<c:out value="${member.loginId}"/>>
-                                    <input type="hidden" name="password" value=<c:out value="${member.password}"/>>
                                     <label for="name">이름</label>
                                     <input class="form-control" type="text" id="name" name="name" value=<c:out value="${member.name}"/>>
+                                    <br>
+                                    <label for="password">비밀번호</label>
+                                    <input class="form-control" type="password" id="password" name="password" />>
                                     <br>
                                     <label for="name">이메일</label>
                                     <input class="form-control" type="text" name="email"value=<c:out value="${member.email}"/>>
