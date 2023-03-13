@@ -28,7 +28,6 @@ import com.kosa.project.domain.DeliveryVO;
 import com.kosa.project.domain.MemberVO;
 import com.kosa.project.domain.OrderVO;
 import com.kosa.project.service.CartProductService;
-import com.kosa.project.service.DeliveryService;
 import com.kosa.project.service.MemberService;
 import com.kosa.project.service.OrderService;
 
@@ -49,8 +48,7 @@ public class OrderController {
     @Autowired
     private CartProductService cartProductService;
     
-    @Autowired
-    private DeliveryService deliveryService;
+
     
     @GetMapping("/pay")
     public String getcartList(Model model, @ModelAttribute("member") MemberVO member, 

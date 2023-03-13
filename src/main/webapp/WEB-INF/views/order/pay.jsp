@@ -171,7 +171,7 @@
 									
 									
 										
-									<div class="col-sm-8 text-bg-warning p-3" id="무통장입금"  style="display:none;" >
+									<div class="col-sm-11 text-bg-warning p-3" id="무통장입금"  style="display:none;" >
 									<label for="staticEmail" class="col-sm-2 col-form-label">은행</label>
 										<div class="form-check form-check-inline">
 										  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
@@ -209,7 +209,7 @@
 									
 									
 										
-									<div class="col-sm-8 text-bg-warning p-3" id="신용카드"  style="display:none;">
+									<div class="col-sm-11 text-bg-warning p-3" id="신용카드"  style="display:none;">
 									<label for="staticEmail" class="col-sm-2 col-form-label">카드사</label>
 										<div class="form-check form-check-inline">
 										  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
