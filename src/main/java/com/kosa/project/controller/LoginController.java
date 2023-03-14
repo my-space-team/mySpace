@@ -17,7 +17,7 @@ public class LoginController {
         }
 
         if (logout != null) {
-            model.addAttribute("logout", "logout!!");
+            model.addAttribute("logout", "로그아웃 처리되었습니다");
         }
 
         return "member/login";

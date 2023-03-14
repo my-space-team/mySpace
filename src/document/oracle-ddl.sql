@@ -117,7 +117,7 @@ create sequence brand_seq start with 1 increment by 1;
 create sequence cart_seq start with 1 increment by 1;
 create sequence cart_product_seq start with 1 increment by 1;
 create sequence category_seq start with 1 increment by 1;
-create sequence delivery_seq start with 1 increment by 1;
+--create sequence delivery_seq start with 1 increment by 1;
 create sequence order2_seq start with 1 increment by 1;
 create sequence product_seq start with 1 increment by 1;
 create sequence review_seq start with 1 increment by 1;
