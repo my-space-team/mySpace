@@ -1,5 +1,6 @@
 package com.kosa.project.controller;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,10 +21,14 @@ import com.kosa.project.domain.MemberVO;
 import com.kosa.project.domain.OrderVO;
 import com.kosa.project.domain.ProductVO;
 import com.kosa.project.service.CartProductService;
+import com.kosa.project.service.CartService;
 import com.kosa.project.service.MemberService;
 import com.kosa.project.service.OrderService;
 import com.kosa.project.service.ProductService;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @Controller
 @RequestMapping("/order/*")
 public class OrderController {
@@ -39,11 +45,17 @@ public class OrderController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CartService cartService;
+
     @GetMapping("/pay")
-    public String getcartList(HttpServletRequest request, Model model,
+    public String getcartList(Principal principal, HttpServletRequest request, Model model,
             @ModelAttribute("member") MemberVO member,
             @ModelAttribute("cartProduct") CartProductVO cartProduct,
             @ModelAttribute("product") ProductVO product) {
+
+        if (principal == null)
+            return "memberLogin";
 
         String referer = request.getHeader("referer");
         int cartIdx = cartProduct.getIdx();
@@ -62,11 +74,15 @@ public class OrderController {
 
     }
 
+    @Transactional
     @GetMapping("/add")
-    public String addDeliveryInfo(HttpServletRequest request, Model model) {
+    public String addDeliveryInfo(Principal principal, HttpServletRequest request, Model model) {
+        if (principal == null)
+            return "memberLogin";
+
         Map<String, Object> orderVo = new HashMap<String, Object>();
-        orderVo.put("memberIdx", 1);
-        orderVo.put("cartIdx", Integer.parseInt(request.getParameter("cartIdx")));
+        orderVo.put("memberIdx", memberService.findMemberByLoginId(principal.getName()).getIdx());
+        orderVo.put("cartIdx", cartService.findCartByMemberIdx((int) orderVo.get("memberIdx")));
         orderVo.put("payment", request.getParameter("payment"));
         orderVo.put("totalPrice", request.getParameter("totalPrice"));
         orderVo.put("dilName", request.getParameter("dil-name"));
@@ -75,26 +91,21 @@ public class OrderController {
         orderVo.put("dilSelect", request.getParameter("dil-select"));
         orderVo.put("dilPrice", request.getParameter("delivery-price"));
         orderService.insert(orderVo);
-        System.out.println(orderVo);
+        orderVo.get("idx");
+        log.info("----------> " + orderVo.get("idx"));
 
-        OrderVO order = orderService.read();
-        model.addAttribute("order2", order);
+        // OrderVO order = orderService.read((int) orderVo.get("idx"));
+        OrderVO order = orderService.findOrderByIdx((int) orderVo.get("idx"));
+        log.info(order);
+        model.addAttribute("order", order);
 
-        List<CategoryVO> vo = new ArrayList<CategoryVO>();
+        List<ProductVO> productList = new ArrayList<>();
 
-        orderService.orderProductList().forEach(item -> {
-            vo.add(item.getCartProduct().getProduct().getCategory());
-            System.out.println(item.getCartProduct().getProduct().getCategory().getName());
-        });
-        System.out.println(vo.toString());
-        model.addAttribute("orderProductList", vo);
+        order.getCartProduct().forEach(product -> productList.add(productService.getProduct(product.getIdx())));
+
+        model.addAttribute("productList", productList);
+        model.addAttribute("member", principal.getName());
 
         return "order/confirm";
     }
-
-    @GetMapping("/confirm")
-    public String confirm() {
-        return "order/confirm";
-    }
-
 }

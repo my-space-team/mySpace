@@ -14,4 +14,6 @@ public interface CartMapper {
 
 	public int update(CartVO cart);
 
+	public int findCartByMemberIdx(int memberIdx);
+
 }

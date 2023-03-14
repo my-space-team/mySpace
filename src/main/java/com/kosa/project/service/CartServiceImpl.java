@@ -13,6 +13,7 @@ public class CartServiceImpl implements CartService {
 
 	@Autowired
 	private CartMapper mapper;
+
 	@Override
 	public List<CartVO> getList(int idx) {
 		return mapper.getList(idx);
@@ -34,6 +35,11 @@ public class CartServiceImpl implements CartService {
 	public int update(CartVO cart) {
 		mapper.update(cart);
 		return 0;
+	}
+
+	@Override
+	public int findCartByMemberIdx(int memberIdx) {
+		return mapper.findCartByMemberIdx(memberIdx);
 	}
 
 }

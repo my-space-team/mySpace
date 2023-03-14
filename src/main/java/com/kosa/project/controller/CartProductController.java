@@ -40,7 +40,7 @@ public class CartProductController {
 	private MemberService memberService;
 
 	@Autowired
-	private CartService cartservice;
+	private CartService cartService;
 
 	// @GetMapping("/list")
 	// public void list(Model model) {
@@ -51,14 +51,14 @@ public class CartProductController {
 	// }
 
 	@GetMapping("/list")
-	public String list(Principal principal, @RequestParam("idx") int idx, Model model) {
+	public String list(Principal principal, Model model) {
 		if (principal == null) {
 			return "redirect:/memberLogin";
 		}
 
 		MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
 		log.info("list");
-		model.addAttribute("list", service.getList(findMember.getIdx()));
+		model.addAttribute("list", service.getList(cartService.findCartByMemberIdx(findMember.getIdx())));
 		return "list";
 	}
 	//
@@ -79,7 +79,7 @@ public class CartProductController {
 		MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("product_idx", productIdx);
-		map.put("cart_idx", findMember.getIdx());
+		map.put("cart_idx", cartService.findCartByMemberIdx(findMember.getIdx()));
 		System.out.println(map);
 		service.addProduct(map);
 

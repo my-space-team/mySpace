@@ -5,15 +5,18 @@ import java.util.Map;
 
 import com.kosa.project.domain.CartProductVO;
 import com.kosa.project.domain.OrderVO;
+
 public interface OrderMapper {
 	public List<CartProductVO> getcartList(int cart);
-	
-	public void insert (Map orderVo);
-	
-	public OrderVO read();
-	
+
+	public void insert(Map<String, Object> orderVo);
+
+	public OrderVO read(int orderIdx);
+
 	public List<OrderVO> orderProductList();
-	
+
 	public List<OrderVO> getOrderList(int member);
-	
+
+	public OrderVO findOrderByIdx(int orderIdx);
+
 }
