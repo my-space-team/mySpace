@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.kosa.project.domain.AuthVO;
+import com.kosa.project.domain.CartVO;
 import com.kosa.project.domain.MemberVO;
 import com.kosa.project.mapper.AuthMapper;
 import com.kosa.project.mapper.CartMapper;
@@ -38,7 +39,11 @@ public class MemberServiceImpl implements MemberService {
 		AuthVO auth = new AuthVO(vo.getLoginId(), "MEMBER");
 		authMapper.insert(auth);
 		MemberVO dbMember = memberMapper.find(vo.getIdx());
-		cartMapper.createCart(dbMember);
+		
+		CartVO cart = new CartVO();
+		cart.setMember(dbMember);
+		cartMapper.createCart(cart);
+		
 		log.info("------>service----->insert" + dbMember);
 		return dbMember;
 	}

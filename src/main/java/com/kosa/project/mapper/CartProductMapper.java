@@ -22,8 +22,10 @@ public interface CartProductMapper {
 	
 //	public void updateProductAmount(CartProductVO cartProduct); //중복 상품 수량 증가 
 //	
-//	public ProductVO getProduct(int idx); //상품 정보 가져오는 메서드
+	public ProductVO getProduct(int idx); //상품 정보 가져오는 메서드
 //
-//	public CartProductVO read(int idx, int productIdx);
+	public CartProductVO read(int idx);
+
+	
 
 }

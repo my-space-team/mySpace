@@ -12,7 +12,7 @@ public interface CartMapper {
 	
 	public List<CartVO> getList(int idx);
 	
-	public void createCart(MemberVO member);
+	public void createCart(CartVO cart);
 	
 	public int delete(int idx);
 	
