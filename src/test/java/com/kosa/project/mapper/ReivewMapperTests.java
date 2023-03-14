@@ -1,5 +1,7 @@
 package com.kosa.project.mapper;
 
+import java.util.HashMap;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +20,19 @@ public class ReivewMapperTests {
 	@Autowired
 	private ReviewMapper reviewMapper;
 	
+//	@Test
+//	public void getList() {
+//		System.out.println(reviewMapper.get(1));
+//		
+//	}
+	
 	@Test
-	public void getList() {
-		System.out.println(reviewMapper.get(1));
+	public void reviewDuplicate() {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("memberIdx", 2);
+		map.put("orderIdx", 2);
+		map.put("productIdx", 2);
+		System.out.println(reviewMapper.reviewDuplicate(map));
 		
 	}
 	
@@ -49,9 +61,9 @@ public class ReivewMapperTests {
 //    	
 //	}
 	
-	@Test
-	public void testDelete() {
-//		log.info(reviewMapper.deleteReview(1));
-//    	log.info(reviewMapper.deleteScore(2));
-	}
+//	@Test
+//	public void testDelete() {
+////		log.info(reviewMapper.deleteReview(1));
+////    	log.info(reviewMapper.deleteScore(2));
+//	}
 }

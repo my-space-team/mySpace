@@ -98,7 +98,7 @@ public class MypageController {
             @RequestParam("orderIdx") int orderIdx,
             @RequestParam("productIdx") int productIdx,
             @RequestParam("memberIdx") int memberIdx, Model model) {
-
+    	
         model.addAttribute("memberIdx", memberIdx);
         model.addAttribute("orderIdx", orderIdx);
         model.addAttribute("productIdx", productIdx);

@@ -14,13 +14,13 @@
     <h2>리뷰 작성</h2>
     
 	<form name="reviewFormData">
-	<input type="hidden" name="member_idx" value="${memberIdx }"/>
-	<input type="hidden" name="order_idx" value="${orderIdx }">
-	<input type="hidden" name="product_idx" value="${productIdx }">
+	<input type="hidden" name="memberIdx" value="${memberIdx }"/>
+	<input type="hidden" name="orderIdx" value="${orderIdx }">
+	<input type="hidden" name="productIdx" value="${productIdx }">
       <div class="review-box">
         <div>
             <div class="review-data">
-              <div class="product-img"><img src="<%-- ${product.imageURL } --%>" alt=""></div>
+              <div class="product-img"><img src="${product.imageURL }" alt=""></div>
               	<div class="product-name">
 	               	<span>${product.name}</span>
 	               	<div class="review-score">
@@ -90,19 +90,24 @@
 	      
 	      let member = Number('<sec:authentication property="principal.member.idx"/>');
 	      console.log(member);
-	      if(!(Number($("input[name=member_idx]" ).val()) == member)){
+	      if(!(Number($("input[name=memberIdx]" ).val()) == member)){
 	    	 alert("잘못된 경로입니다.");
 	    	 location.href = "/"; 
 	      }
 	      
-	  	$('#submit').click(function(){  
+	  	$('#submit').click(function(event){  
+	  		event.preventDefault();
 				$.ajax({
 					type:'post', 
 					url:'/REST/review/insert', 
 					data:$("form[name='reviewFormData']").serialize(),   
-					dataType:'html',
 					success : function(data){ 
 						alert("리뷰 등록이 완료되었습니다.");
+						location.replace("/mypage/home");
+					},
+					error : function(error){
+						alert("이미 작성된 리뷰입니다.");
+						console.log(error);
 						location.replace("/mypage/home");
 					}
 				});

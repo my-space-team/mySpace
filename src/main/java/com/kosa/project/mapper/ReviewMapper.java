@@ -12,7 +12,7 @@ public interface ReviewMapper {
 	
 	public List<ScoreVO> getMemberReviewList(int memberIdx);
 	public ScoreVO get(int reviewIdx);
-	
+	public ScoreVO reviewDuplicate(HashMap reviewForm);
 	public int updateReview(HashMap reviewForm);
 	public int updateScore(HashMap reviewForm);
 	

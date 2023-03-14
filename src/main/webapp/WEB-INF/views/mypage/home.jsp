@@ -23,7 +23,7 @@
             <!-- ***** Banner Start ***** -->
             <div class="row">
                 <div class="col-lg-12">
-                <div class="main-profile ">
+                <div class="main-profile">
                     <div class="row">
                     <div class="col-lg-4">
                         <img src="/resources/asset/images/profile_images.webp" alt="" style="border-radius: 23px;">
@@ -68,12 +68,12 @@
                         </div>
                     </div>
                     <div class="col-lg-4 align-self-center">
-                        <ul>
-                        <li>나의주문내역<span>32건</span></li>
-                        <li><a href="/mypage/review">내가 작성한 리뷰</a> <span>16건</span></li>
-                        <li>질문과 답변<span>0건</span></li>
-                        <li>내 장바구니<span>5건</span></li>
-                        </ul>
+                        <ul style="text-align: center;">
+	                        <!-- <li><a href="/mypage/order">나의주문내역</a></li> -->
+	                        <li><a href="/mypage/review">내가 작성한 리뷰</a></li>
+	                        <li><a href="#">질문 답변</a></li>
+	                       	<li><a href= "/cart/list?idx=<c:out value="${member.idx}" />">장바구니</a></li>
+                        </ul> 
                     </div>
                     </div>
                     <div class="row">
@@ -84,24 +84,31 @@
                                 <div class="heading-section">
                                     <h4><em>최근</em> 주문내역</h4>
                                 </div>
-                                <div class="item">
-                                    <ul>
-                                    <li><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/164393265025235969.jpg?gif=1&w=850&h=850&c=c&webp=1" alt="" class="templatemo-item"><h4 style="font-size: 17px; margin-left: 15px;"><span style="margin-left: 10px; color: #1EDDFF;">찰스퍼니처</span></h4></li>
-                                    <li><h4>카테고리</h4><span>테이블, 식탁, 책상</span></li>
-                                    <li><h4>상품가격</h4><span>1,800,000원</span></li>
-                                    <li><h4>주문수량</h4><span>3개</span></li>
-                                    <li><h4>주문일자</h4><span>2022.03.13</span></li>
-                                    </ul>
-                                </div>
-                                <div class="item last-item">
-                                    <ul>
-                                    <li><img src="assets/images/game-03.jpg" alt="" class="templatemo-item"></li>
-                                    <li><h4>CS-GO</h4><span>Sandbox</span></li>
-                                    <li><h4>Date Added</h4><span>21/04/2022</span></li>
-                                    <li><h4>Hours Played</h4><span>632 H 46 Mins</span></li>
-                                    <li><h4>Currently</h4><span>Downloaded</span></li>
-                                    </ul>
-                                </div>
+                                <c:forEach var="order" items="${orderList }">
+                                	<c:forEach var="product" items="${order.productList }">
+		                                <div class="item">
+		                                    <ul>
+		                                    <li><img src="${product.imageURL}" alt="" class="templatemo-item">
+		                                    	<a href="/product/detail?idx=<c:out value="${product.idx}" />">
+		                                    		<h4>${product.name}
+		                                    			<span style="margin-left: 10px; color: #1EDDFF;">${product.brand.name}</span>
+		                                    		</h4>
+		                                    	</a>
+		                                    <span>
+		                                    	<input name="order_idx" type="hidden" value="<c:out value="${order.idx }"/>" />
+			                                    <input name="product_idx" type="hidden" value="<c:out value="${product.idx }"/>" />
+			                                    <input name="member_idx" type="hidden" value="<c:out value="${member.idx }"/>" />
+			                                    <button class="review-insert">리뷰 작성</button>
+		                                    </span>
+		                                    </li>
+		                                    <li><h4>카테고리</h4><span>${product.category.name }</span></li>
+		                                    <li><h4>상품가격</h4><span><fmt:formatNumber value="${product.price }" pattern="#,###원"/></span></li>
+		                                    <li><h4>주문일자</h4><span><fmt:formatDate value="${order.state}" pattern="yyyy년 MM월 dd일"/></span></li>
+		                                    </ul>
+		                                    
+		                                </div>
+	                                </c:forEach>
+                                </c:forEach>
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -130,5 +137,14 @@
 
     <!-- Only this page. -->
     <%@ include file="/resources/common/javascript/member_js.jsp" %>
+    <script type="text/javascript">		    
+		$("button[class='review-insert']").click (function() {
+		    	let orderIdx = $(this).parent().find("input[name='order_idx']").val();
+				let productIdx = $(this).parent().find("input[name='product_idx']").val();
+				let memberIdx = $(this).parent().find("input[name='member_idx']").val();
+				location.href = "/mypage/review/insert?memberIdx=" + memberIdx + 
+								"&productIdx=" + productIdx + "&orderIdx=" + orderIdx;
+		    	});		    
+    </script>
 </body>
 </html>
