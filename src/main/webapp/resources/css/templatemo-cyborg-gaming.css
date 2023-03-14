@@ -448,7 +448,7 @@ Header Style
 .header-area .main-nav .nav li a {
   display: block;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   text-transform: capitalize;
   color: black;
   -webkit-transition: all 0.3s ease 0s;
@@ -855,12 +855,17 @@ Most Popular Style
   margin-bottom: 30px;
 }
 
+.most-popular .item:hover {
+  transform: scale(1.1);
+}
+
 .most-popular .item .item {
   padding: 0px;
   border-radius: 0px;
   background-color: transparent;
   margin-bottom: 0px;
 }
+
 
 .most-popular .item img {
   border-radius: 23px;
