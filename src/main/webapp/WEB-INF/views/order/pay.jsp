@@ -11,11 +11,8 @@
 }
 </style>
 <body>
-<<<<<<< HEAD
+	<%-- <%@ include file="/WEB-INF/views/header.jsp"%> --%>
 	<%@ include file="/resources/common/header.jsp"%>
-=======
-	<%@ include file="/resources/common/header.jsp" %>
->>>>>>> origin/youngoh
 
 	<div class="container">
 		<div class="col-lg-12">
@@ -138,7 +135,7 @@
 										<tr>
 											<th scope="col">번호</th>
 											<th scope="col">상품명</th>
-											<th scope="col">브랜드명</th>
+											<!-- <th scope="col">브랜드명</th> -->
 											<th scope="col">상품가격</th>
 											<th scope="col">수량</th>
 										</tr>
@@ -149,7 +146,7 @@
 											<tr>
 												<th scope="row">${status.index + 1}</th>
 												<td>${cartProduct.product.name}</td>
-												<td>${cartProduct.product.brand.name}</td>
+												<%-- <td>${cartProduct.product.brand.name}</td> --%>
 												<td>${cartProduct.product.price}</td>
 												<td>${cartProduct.amount}</td>
 											</tr>
@@ -175,7 +172,7 @@
 									
 									
 										
-									<div class="col-sm-8 text-bg-warning p-3" id="무통장입금"  style="display:none;" >
+									<div class="col-sm-11 text-bg-warning p-3" id="무통장입금"  style="display:none;" >
 									<label for="staticEmail" class="col-sm-2 col-form-label">은행</label>
 										<div class="form-check form-check-inline">
 										  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
@@ -213,7 +210,7 @@
 									
 									
 										
-									<div class="col-sm-8 text-bg-warning p-3" id="신용카드"  style="display:none;">
+									<div class="col-sm-11 text-bg-warning p-3" id="신용카드"  style="display:none;">
 									<label for="staticEmail" class="col-sm-2 col-form-label">카드사</label>
 										<div class="form-check form-check-inline">
 										  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">

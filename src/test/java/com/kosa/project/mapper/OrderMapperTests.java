@@ -24,12 +24,12 @@ public class OrderMapperTests {
 	
 	@Test
 	public void test() {
+
 		/*CartProductVO order = (CartProductVO) mapper.getcartList(1); 
 		log.info(order);*/
 		//MemberVO member = membermapper.read();
 		
 	//mapper.orderProductList().forEach(order -> log.info(order));
-		mapper.getOrderList(1);
 		
 	}
 	

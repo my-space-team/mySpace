@@ -6,11 +6,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <!-- head 추가 -->
-<<<<<<< HEAD
 <%@ include file="/resources/common/common_head.jsp" %>
-=======
- <%@ include file="/resources/common/common_head.jsp" %> 
->>>>>>> origin/youngoh
 <body>
 	<!-- header 추가 -->
 	<%@ include file="/resources/common/header.jsp" %>

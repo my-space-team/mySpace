@@ -67,14 +67,16 @@ public class CartProductServiceImpl implements CartProductService {
 		return mapper.getList(idx);
 	}
 
+
+	
 	
 
-//	@Override
-//	public CartProductVO get(int idx) {
-//		
-//		log.info("get........." + idx);
-//		return mapper.read(idx);
-//	}
+	@Override
+	public CartProductVO get(int idx) {
+		
+		log.info("get........." + idx);
+		return mapper.read(idx);
+	}
 
 	
 

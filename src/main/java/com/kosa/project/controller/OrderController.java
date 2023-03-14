@@ -1,6 +1,7 @@
 package com.kosa.project.controller;
 
 import java.net.http.HttpRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,13 +25,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosa.project.domain.CartProductVO;
 import com.kosa.project.domain.CartVO;
+import com.kosa.project.domain.CategoryVO;
 import com.kosa.project.domain.DeliveryVO;
 import com.kosa.project.domain.MemberVO;
 import com.kosa.project.domain.OrderVO;
+import com.kosa.project.domain.ProductVO;
 import com.kosa.project.service.CartProductService;
-import com.kosa.project.service.DeliveryService;
+import com.kosa.project.service.CartService;
 import com.kosa.project.service.MemberService;
 import com.kosa.project.service.OrderService;
+import com.kosa.project.service.ProductService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -49,17 +53,35 @@ public class OrderController {
     @Autowired
     private CartProductService cartProductService;
 
+    @Autowired
+    private ProductService productService;
+    
     @GetMapping("/pay")
     public String getcartList(Model model, @ModelAttribute("member") MemberVO member, 
             @ModelAttribute("cartProduct") CartProductVO cartProduct,
-            DeliveryVO delivery, RedirectAttributes rttr) {
+            @ModelAttribute("product") ProductVO product,HttpServletRequest request,
+            RedirectAttributes rttr) {
+    	int cartIdx = cartProduct.getIdx();
+    	//int cartIdx1=cartProduct.getCart().getIdx();
         int memberIdx = member.getIdx();
+        int productIdx=product.getIdx();
         model.addAttribute("member", memberService.find(memberIdx));
-        model.addAttribute("cartProductlist", cartProductService.getList(memberIdx));
-        rttr.addFlashAttribute("result", delivery.getIdx());
-        return "order/pay";
+        //model.addAttribute("cartProductlist", cartProductService.getList(memberIdx));
+    	model.addAttribute("cartProductlist", cartProductService.getList(cartIdx));
+        model.addAttribute("productList", productService.getProduct(productIdx));
+        return "order/pay" ;
     }
     
+//    @GetMapping("/pay")
+//    public String getcartList(Model model, @ModelAttribute("member") MemberVO member,
+//                              RedirectAttributes rttr, @RequestParam("idx") int idx) {
+//        CartProductVO cartProduct = cartProductService.find(idx);
+//        CartVO cart = cartService.find(cartProduct.getCart().getIdx());
+//        int memberIdx = member.getIdx();
+//        model.addAttribute("member", memberService.find(memberIdx));
+//        model.addAttribute("cartProductlist", cartProductService.getList(cart.getIdx()));
+//        return "order/pay?idx=" + idx;
+//    }
 	
 	 @GetMapping("/add") 
 	 public String addDeliveryInfo(HttpServletRequest request,Model model) { 
@@ -80,10 +102,16 @@ public class OrderController {
 	    OrderVO order = orderService.read(); 
 	    model.addAttribute("order2", order);
 	    
-	    /*ï¿½Ö¹ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Æ®*/
-	   List<OrderVO> order1= orderService.orderProductList();
-	    model.addAttribute("orderProductList", order1);
-	    System.out.println(order1);
+	    /*ÁÖ¹®»óÇ°¸®½ºÆ®*/
+	    List<CategoryVO> vo = new ArrayList<CategoryVO>();
+	    
+	    orderService.orderProductList().forEach(item -> {
+	    	vo.add(item.getCartProduct().getProduct().getCategory());
+	    	System.out.println(item.getCartProduct().getProduct().getCategory().getName());
+	    });
+	    System.out.println(vo.toString());
+ 	    model.addAttribute("orderProductList", vo);
+
 		
 		return "order/confirm";
 	}

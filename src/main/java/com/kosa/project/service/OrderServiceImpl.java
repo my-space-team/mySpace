@@ -22,9 +22,6 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderMapper ordermapper;
 
-	@Autowired
-	private MemberMapper memberMapper;
-
 	@Override
 	public List<CartProductVO> getcartList(int member) {
 		log.info("getList............");

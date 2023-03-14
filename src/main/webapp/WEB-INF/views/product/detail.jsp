@@ -53,7 +53,7 @@
 						</form> 
 						<div style="padding-bottom: 200px; top: 560px; position: absolute; right: 500px;">
 						<button id="purchase" style="width: 180px; height: 30px; float: right;"
-				 class="btn btn-light">구매하기</button></div>
+				 class="btn btn-light" onclick="gogo()">구매하기</button></div>
 				
 					
 			</div>
@@ -111,6 +111,22 @@
       $("head").load("/resources/common/common_head.html");
       $("#script").load("/resources/common/include_script.html");
       $("#header").load("/resources/common/header.html");
+      
+     
+      
+      $(".item").click(function(){
+    	  let idx = $(this).find("button").val(); 
+    	  location.href = '/order/pay?idx=' + idx;
+      });
+      
+      var url_string = window.location.href;
+	  var url = new URL(url_string);
+	  var param1 = url.searchParams.get("idx");
+		console.log(param1);
+		
+		function gogo() {
+			location.href = '/order/pay?product_idx=' + param1;
+		}
       
       /* $("#cart").click(function(){
       	location.href="../cart/list?idx=1"; //cart_idx = 1 말하는 건데 수정해야함
