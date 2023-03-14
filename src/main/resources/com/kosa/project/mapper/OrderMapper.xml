@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosa.project.mapper.OrderMapper">
 
-	<resultMap type="com.kosa.project.domain.OrderVO"
-		id="orderMap">
-		<id column="idx" property="idx" />
+	<!-- orderMap -->
+	<resultMap type="com.kosa.project.domain.OrderVO" id="orderMap">
+		<id column="o.idx" property="idx" />
 		<result column="price" property="price" />
 		<result column="delivery_price" property="deliveryPrice" />
 		<result column="payment" property="payment" />
@@ -13,69 +13,32 @@
 		<result column="address_name" property="addressName" />
 		<result column="address" property="address" />
 		<result column="delivery_request" property="deliveryRequest" />
-		<collection property="member" resultMap="memberMap" />
 		<collection property="cart" resultMap="cartMap" />
-		<collection property="cartProduct"
-			resultMap="cartProductMap" />
-	</resultMap>
-	
-	<resultMap type="com.kosa.project.domain.MemberVO"
-		id="memberMap">
-		<id column="idx" property="idx" />
-		<result column="login_id" property="loginId" />
-		<result column="password" property="password" />
-		<result column="name1" property="name" />
-		<result column="email" property="email" />
-		<result column="phone" property="phone" />
-		<result column="birth" property="birth" />
+		<collection property="cartProduct" resultMap="cartProductMap" />
 	</resultMap>
 
+	<!-- cartMap -->
 	<resultMap type="com.kosa.project.domain.CartVO" id="cartMap">
-		<id column="c.idx" property="idx" />
-		<collection property="member" resultMap="memberMap" />
+		<id column="c.id" property="idx" />
 	</resultMap>
 
-
-	<resultMap type="com.kosa.project.domain.CartProductVO"
-		id="cartProductMap">
-		<id column="idx" property="idx" />
-		<result column="amount" property="amount" />
-		 <result property="sumAmount" column="sum_amount" />
-		<collection property="cart" resultMap="cartMap" />
-		<collection property="product" resultMap="productMap" />
+	<!-- cartProductMap --> 
+	<resultMap type="com.kosa.project.domain.CartProductVO" id="cartProductMap">
+		<id column= "p.id" property="idx" />
 	</resultMap>
 
-	<resultMap type="com.kosa.project.domain.ProductVO"
-		id="productMap">
-		<id column="idx" property="idx" />
-		<result column="name2" property="name" />
-		<result column="price" property="price" />
-		 <result property="sumPrice" column="sum_price" />
-		
-		<association property="category" resultMap="categoryMap" />
-		<association property="brand" resultMap="brandMap" />
-		
-	</resultMap>
+	<!-- findOrderByIdx -->
+	<select id="findOrderByIdx" resultMap="orderMap">
+		SELECT o.idx as "o.id", price, delivery_price, payment, regdate, delivery_name, address_name,
+		address, delivery_request, c.idx as "c.id", p.idx as "p.id"
+		FROM order2 o, cart c, cart_product p
+		WHERE o.cart_idx = c.idx AND c.idx = p.cart_idx
+		AND o.idx = #{idx}
+	</select>
 
-	<resultMap type="com.kosa.project.domain.CategoryVO"
-		id="categoryMap">
-		<id column="idx" property="idx" />
-		<result column="name" property="name" />
-	</resultMap>
 
-	<resultMap type="com.kosa.project.domain.BrandVO"
-		id="brandMap">
-		<id column="idx" property="idx" />
-		<result column="name3" property="name" />
-		<result column="phone" property="phone" />
-		<result column="manager" property="manager" />
-	</resultMap> 
-	
-	
-	
 
 	<!-- 주문내역에 보여질 정보들 : 주문자정보, 카트상품정보 -->
-
 	<select id="getcartList" parameterType="int" resultMap="orderMap">
 		select
 		m.name as name1, m.email , m.phone ,
@@ -99,17 +62,23 @@
                   FROM order2)
 	</select>
 
-	<insert id="insert" parameterType="map">
+	<insert id="insert" parameterType="map" useGeneratedKeys="true"
+		keyProperty="idx" keyColumn="idx">
+		<selectKey keyProperty="idx" resultType="int" order="BEFORE">
+			SELECT order2_seq.nextval FROM DUAL
+		</selectKey>
 		insert into order2 (idx, member_idx, cart_idx, payment, price,
 		delivery_price, regdate, delivery_name, address_name, address, delivery_request)
-		values(order2_seq.nextval,	#{memberIdx},#{cartIdx},#{payment},#{totalPrice},#{dilPrice},sysdate,#{dilName}, #{dilPlace},#{dilAddress},#{dilSelect} )
+		values(#{idx},#{memberIdx},#{cartIdx},#{payment},#{totalPrice},#{dilPrice},sysdate,#{dilName}, #{dilPlace},#{dilAddress},#{dilSelect} )
 
 	</insert>
 
 	<select id="read" parameterType="int" resultMap="orderMap">
-		SELECT * FROM
-		(SELECT * FROM order2 ORDER BY regdate DESC)
-		WHERE ROWNUM= 1
+		SELECT
+		m.name as name1, m.email , m.phone ,
+		p.name as name2, p.price, br.name as name3, cp.amount
+		FROM order2 o, cart c, cart_product cp, product p
+		WHERE idx = #{idx}
 	</select>
 
 	<!-- 총상품금액, 배송비, 총결제금액 계산하기 이건 굳이 여기서 안해도 된다고 함 -->
@@ -138,7 +107,4 @@
 	and cp.product_idx = p.idx
 	and m.idx= #{idx}
 	</select>
-
-
-
 </mapper>

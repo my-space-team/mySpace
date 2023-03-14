@@ -27,46 +27,34 @@
 
 				<div class="container">
 					<div class="row">
-
-
-
-
-
 						<table class="table">
 							<tbody>
 								<tr>
 									<th scope="col">배송지</th>
-									<th scope="col">${order2.address}</th>
+									<th scope="col">${order.address}</th>
 								</tr>
 								<tr>
 									<th scope="row">주문자</th>
-									<td>${order2.deliveryName}</td>
+									<td>${order.deliveryName}</td>
 								</tr>
-								<%-- <tr>
-									<th scope="row">주문상품</th>
-									<c:forEach items="${orderProductList}" var="orderProduct">
-										<td>${cartProduct.product.name}</td>
-									</c:forEach>
-									
-								</tr> --%>
 								<tr>
 								    <th scope="row">주문상품</th>
-								    <c:forEach items="${orderProductList}" var="product">
+								    <c:forEach items="${productList}" var="product">
 								    
-								        <td><%-- ${product.name} --%>${product.name}</td>
+								        <td>${product.name}</td>
 								    </c:forEach>
 								</tr>
 								<tr>
 									<th scope="row">결제수단</th>
-									<td>${order2.payment}</td>
+									<td>${order.payment}</td>
 								</tr>
 								<tr>
 									<th scope="row">총결제금액</th>
-									<td>${order2.price}</td>
+									<td>${order.price}</td>
 								</tr>
 								<tr>
 									<th scope="row">주문일자</th>
-									<td>${order2.state}</td>
+									<td>${order.state}</td>
 								</tr>
 							</tbody>
 						</table>

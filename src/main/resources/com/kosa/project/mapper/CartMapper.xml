@@ -40,7 +40,6 @@
 		 #{idx},
 		 #{member.idx}
 		)
-		
 	</insert>
 	
 	<!-- 카트 삭제 -->
@@ -53,6 +52,14 @@
 		update cart set member_idx = #{member.idx}
 		where member_idx = #{member.idx}
 	</update>
+
+	<!-- memberIdx로 검색 MAX(idx) -->
+	<select id="findCartByMemberIdx" resultType="int">
+		SELECT idx
+		FROM cart
+		WHERE member_idx = #{memberIdx} 
+		AND idx = (SELECT MAX(idx) FROM cart WHERE member_idx = #{memberIdx})
+	</select>
 
 
 	
