@@ -1,5 +1,6 @@
 package com.kosa.project.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
@@ -22,8 +23,8 @@ public class CartProductServiceImpl implements CartProductService {
 	private CartProductMapper mapper;
 
 	@Override
-	public void addProduct(CartProductVO cartProduct) {
-		mapper.addProduct(cartProduct);
+	public void addProduct(HashMap map) {
+		mapper.addProduct(map);
 
 	}
 	

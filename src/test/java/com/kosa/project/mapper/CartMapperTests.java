@@ -19,6 +19,6 @@ public class CartMapperTests {
 	
 	@Test
 	public void testGetList() {
-		mapper.getList().forEach(cartProduct -> log.info(cartProduct));
+		mapper.getList(1).forEach(cartProduct -> log.info(cartProduct));
 	}
 }

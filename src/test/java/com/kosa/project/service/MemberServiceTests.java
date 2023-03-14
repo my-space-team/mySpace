@@ -26,7 +26,7 @@ public class MemberServiceTests {
         member.setName("tester");
         member.setBirth(new Date());
         member.setEmail("evisahah@gmail.com");
-        member.setLoginId("tester7");
+        member.setLoginId("tester1");
         member.setPassword("1234");
         member.setPhone("010-xxxx-xxxx");
 

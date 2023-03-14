@@ -1,6 +1,7 @@
 package com.kosa.project.controller;
 
 import java.security.Principal;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import com.kosa.project.domain.CartProductVO;
 import com.kosa.project.domain.MemberVO;
 import com.kosa.project.domain.ProductVO;
 import com.kosa.project.service.CartProductService;
+import com.kosa.project.service.CartService;
 import com.kosa.project.service.MemberService;
 import com.kosa.project.service.ProductService;
 
@@ -37,6 +39,9 @@ public class CartProductController {
 	@Autowired
 	private MemberService memberService;
 
+	@Autowired
+	private CartService cartservice;
+
 	// @GetMapping("/list")
 	// public void list(Model model) {
 	//
@@ -49,7 +54,7 @@ public class CartProductController {
 	public String list(Principal principal, @RequestParam("idx") int idx, Model model) {
 		MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
 		log.info("list");
-		model.addAttribute("list", service.getList(idx));
+		model.addAttribute("list", service.getList(findMember.getIdx()));
 		return "list";
 	}
 	//
@@ -61,15 +66,18 @@ public class CartProductController {
 	// }
 
 	@PostMapping("/add")
-	public String addProduct(@RequestParam("product.idx") int productIdx, Model model) {
+	public String addProduct(Principal principal, @RequestParam("product.idx") int productIdx, Model model) {
 		// ProductVO findProduct = productService.getProduct(idx);
 		// cartProduct.setProduct(findProduct);
-		ProductVO pvo = new ProductVO();
-		pvo.setIdx(productIdx);
-		CartProductVO cvo = new CartProductVO();
-		cvo.setProduct(pvo);
-
-		service.addProduct(cvo);
+		if (principal == null) {
+			return "redirect:/memberLogin";
+		}
+		MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("product_idx", productIdx);
+		map.put("cart_idx", findMember.getIdx());
+		System.out.println(map);
+		service.addProduct(map);
 
 		return "redirect:/product/detail?idx=" + productIdx;
 	}
@@ -82,20 +90,25 @@ public class CartProductController {
 	// }
 
 	@PostMapping("/update")
-	public String update(CartProductVO cartProduct) {
+	public String update(Principal principal, CartProductVO cartProduct) {
+		if (principal == null) {
+			return "redirect:/memberLogin";
+		}
 		service.update(cartProduct);
-		return "redirect:/cart/list?idx=" + 1;
+		MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
+		return "redirect:/cart/list?idx=" + findMember.getIdx();
 	}
 
 	@PostMapping("/delete")
-	public String delete(@RequestParam("idx") int idx
+	public String delete(Principal principal, @RequestParam("idx") int idx
 	// ,RedirectAttributes rttr
 	) {
 		service.delete(idx);
 		// if (service.delete(idx)) {
 		// rttr.addFlashAttribute("result", "success");
 		// }
-		return "redirect:/cart/list?idx=" + 1;
+		MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
+		return "redirect:/cart/list?idx=" + findMember.getIdx();
 	}
 
 }

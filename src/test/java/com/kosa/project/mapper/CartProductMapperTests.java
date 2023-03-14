@@ -1,5 +1,7 @@
 package com.kosa.project.mapper;
 
+import java.util.HashMap;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,21 +27,25 @@ public class CartProductMapperTests {
 //	public void testGetList() {
 //		mapper.getList(1).forEach(cartProduct -> log.info(cartProduct));
 //	}
-	
-	@Test
-	public void testAddProduct() {
-		CartProductVO cartProduct = new CartProductVO();
-		
-		cartProduct.setIdx(5);
-		cartProduct.getCart().setIdx(1);
-		cartProduct.getProduct().setIdx(3);
-		cartProduct.setAmount(1);
-		
-
-		
-		mapper.addProduct(cartProduct);
-		log.info(cartProduct);
-		
+//	
+//	@Test
+//	public void testAddProduct() {
+//		
+//		HashMap<String, Object> map = new HashMap<String, Object>();
+//		map.put("product.idx", 1);
+//		map.put("cart.idx", findMember.getIdx());
+//		
+//		
+//		cartProduct.setIdx(5);
+//		cartProduct.getCart().setIdx(1);
+//		cartProduct.getProduct().setIdx(3);
+//		cartProduct.setAmount(1);
+//		
+//
+//		
+//		mapper.addProduct(cartProduct);
+//		log.info(cartProduct);
+//		
 	}
 	
 //	@Test

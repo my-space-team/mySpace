@@ -58,7 +58,7 @@
 
 
 	<!-- 장바구니 담기 -->
-	<insert id="addProduct" parameterType="com.kosa.project.domain.CartProductVO">
+	<insert id="addProduct" parameterType="HashMap">
 		<selectKey keyProperty = "idx" resultType = "int" order = "BEFORE">
 			SELECT cart_product_seq.nextval FROM DUAL		
 		</selectKey>   
@@ -66,8 +66,8 @@
 		(idx, cart_idx, product_idx, amount)  
 		VALUES (
 		 #{idx},
-		<!-- #{cart.idx} -->1,
-		<!-- #{cartProduct.product.idx} -->#{product.idx},
+		 #{cart_idx},
+		<!-- #{cartProduct.product.idx} -->#{product_idx},
 		<!-- #{amount} -->1)
 		
 	</insert>
