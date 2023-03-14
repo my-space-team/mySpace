@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
@@ -39,7 +40,12 @@
             <ul class="nav" style="display:flex; align-items: center;">
               <li><a href="#" class="active">쇼핑</a></li>
               <li><a href="/cart/list?idx=1">장바구니</a></li>
-              <li><a href="/member/register">회원가입</a></li>
+              <sec:authorize access="isAnonymous()">
+           	  <li><a href="/member/register">회원가입</a></li>
+           	  </sec:authorize>
+           	  <sec:authorize access="isAuthenticated()">
+           	  <li><a href="/logout">로그아웃</a></li>
+           	  </sec:authorize>
               <li>
                 <a href="/mypage/home">프로필 <img src="/resources/asset/images/profile_images.webp" alt=""/></a>
               </li>

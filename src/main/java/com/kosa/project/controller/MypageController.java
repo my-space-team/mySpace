@@ -66,6 +66,18 @@ public class MypageController {
 
         return "mypage/home";
     }
+    
+    @GetMapping("/order")
+    public String order(Principal principal, 
+    		@RequestParam("orderIdx") int orderIdx,
+            @RequestParam("productIdx") int productIdx, Model model) {
+    	//orderIdx
+    	//model.addAttribute("orderIdx", orderIdx);
+    	//model.addAttribute("productIdx", productIdx);
+    	//MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
+    	//findMember.getIdx();
+    	return "mypage/order";
+    }
 
     @GetMapping("/review")
     public String review(Principal principal, Model model) {
