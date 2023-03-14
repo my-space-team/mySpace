@@ -119,7 +119,7 @@
 	  var param1 = url.searchParams.get("idx");
 		console.log(param1);
 		
-		function gogo() {
+      $("#purchase").on("click",function() {
 			location.href = '/order/pay?idx=' + param1;
 		}
       
