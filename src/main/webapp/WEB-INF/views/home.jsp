@@ -71,7 +71,7 @@
                 <div class="row" style="padding: 0; ">
                     <c:forEach var="product" items="${productList}">
                     	<div class="col-lg-3 col-sm-6" style="width: 22%;">
-	                        <div class="item">
+	                        <div class="item" style="cursor: pointer;">
 		                    	<img src="${product.imageURL}" alt="" />
 		                     	<h4><span style="font-size: 1.2em; ">${product.name}</span>
 		                     	<input type="hidden" value="${product.idx}" readonly/>
