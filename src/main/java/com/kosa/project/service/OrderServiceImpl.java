@@ -65,4 +65,9 @@ public class OrderServiceImpl implements OrderService {
 		return ordermapper.findOrderByIdx(orderIdx);
 	}
 
+	@Override
+	public List<OrderVO> findOrderByMemberIdx(int memberIdx) {
+		return ordermapper.findOrderByMemberIdx(memberIdx);
+	}
+
 }

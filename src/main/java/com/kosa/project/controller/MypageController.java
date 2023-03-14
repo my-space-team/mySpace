@@ -1,7 +1,9 @@
 package com.kosa.project.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,9 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kosa.project.domain.CartProductVO;
 import com.kosa.project.domain.MemberVO;
 import com.kosa.project.domain.OrderVO;
-
+import com.kosa.project.domain.ProductVO;
 import com.kosa.project.domain.ScoreVO;
 import com.kosa.project.service.CustomUserDetailsService;
 import com.kosa.project.service.MemberService;
@@ -32,9 +35,6 @@ import lombok.extern.log4j.Log4j;
 public class MypageController {
 
     @Autowired
-    private CustomUserDetailsService customUserDetailsService;
-
-    @Autowired
     private ReviewService reviewService;
 
     @Autowired
@@ -43,9 +43,6 @@ public class MypageController {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private OrderMapperService orderMapperService;
-    
     @Autowired
     private ProductService productService;
 
@@ -56,25 +53,30 @@ public class MypageController {
             return "redirect:/memberLogin";
         }
         MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
-
-        System.out.println(findMember.getIdx());
-        model.addAttribute("member", findMember);
-        System.out.println(orderMapperService.getOrderList(findMember.getIdx()));
-        model.addAttribute("orderList", orderMapperService.getOrderList(findMember.getIdx()));
+        List<OrderVO> orderList = orderService.findOrderByMemberIdx(findMember.getIdx());
 
         model.addAttribute("member", findMember);
 
+        for (OrderVO order : orderList) {
+            List<ProductVO> productList2 = new ArrayList<>();
+
+            order.getCartProduct().forEach(product -> productList2.add(productService.getProduct(product.getIdx())));
+            order.setProductList(productList2);
+        }
+
+        model.addAttribute("orderList", orderList);
+        log.info(orderList);
         return "mypage/home";
     }
 
     @GetMapping("/review")
     public String review(Principal principal, Model model) {
-    	if (principal == null) {
+        if (principal == null) {
             return "redirect:/memberLogin";
         }
-    	MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
-    	
-    	model.addAttribute("member", findMember);
+        MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
+
+        model.addAttribute("member", findMember);
         model.addAttribute("List", reviewService.getMemberReviewList(findMember.getIdx()));
         return "mypage/review";
     }
@@ -91,15 +93,14 @@ public class MypageController {
         model.addAttribute("product", productService.getProduct(productIdx));
         return "mypage/review_insert";
     }
-    
+
     @GetMapping("/review/update")
     public String reviewUpdate(Principal principal, @RequestParam("reviewIdx") int reviewIdx, Model model) {
-    	if (principal == null) {
+        if (principal == null) {
             return "redirect:/memberLogin";
         }
         model.addAttribute("reviewIdx", reviewIdx);
         model.addAttribute("reviewScore", reviewService.get(reviewIdx));
         return "mypage/review_update";
     }
-
 }

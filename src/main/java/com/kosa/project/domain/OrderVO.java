@@ -21,5 +21,6 @@ public class OrderVO {
     private MemberVO member;
     private CartVO cart;
     private List<CartProductVO> cartProduct;
+    private List<ProductVO> productList;
 
 }

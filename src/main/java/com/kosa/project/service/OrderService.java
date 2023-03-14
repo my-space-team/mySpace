@@ -17,4 +17,6 @@ public interface OrderService {
 
 	public OrderVO findOrderByIdx(int orderIdx);
 
+	public List<OrderVO> findOrderByMemberIdx(int memberIdx);
+
 }
