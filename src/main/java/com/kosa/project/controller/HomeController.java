@@ -20,7 +20,6 @@ public class HomeController {
 	private ProductService productService;
 
 	@GetMapping("/")
-
 	public String home(@RequestParam(value="category", defaultValue = "0")String category, 
 						@RequestParam(value = "pageNum", defaultValue = "1")int pageNum, 
 						@RequestParam(value = "amount", defaultValue = "16")int amount,
