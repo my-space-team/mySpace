@@ -26,6 +26,30 @@
               </div>
             </div>
           </div> -->
+          
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="height: 330px;  width: 100%">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/store/banners/store_home_banners/167844178173643370.jpg?w=2560" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/store/banners/store_home_banners/167866769021640162.png?w=2560" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/store/banners/store_home_banners/167869907959118826.png?w=2560" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+          
+          
           <!-- ***** Banner End ***** -->
           				
 			<ul class="category-list" style="display: flex; justify-content: space-between; font-size: 20px; border-top: 1px solid #CCC; border-bottom: 1px solid #CCC; padding: 10px 0 15px 0;">
@@ -49,7 +73,7 @@
                     	<div class="col-lg-3 col-sm-6" style="width: 22%;">
 	                        <div class="item">
 		                    	<img src="${product.imageURL}" alt="" />
-		                     	<h4><span style="font-size: 1.2em;">${product.name}</span>
+		                     	<h4><span style="font-size: 1.2em; ">${product.name}</span>
 		                     	<input type="hidden" value="${product.idx}" readonly/>
 		                     	</h4>
 			                     	<!-- <ul>
@@ -77,7 +101,7 @@
           	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
           	<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
           </form>
-          <div style="display: flex; justify-content: space-between;; font-size: 20px; width: 200px; margin: 0 auto; color: black;">
+          <div style="display: flex; justify-content: space-between; font-size: 20px; width: 200px; margin: 0 auto; color: black;">
           <ul>
           	<c:if test="${pageMaker.prev }">
           		<li class="paginate_button previous">
