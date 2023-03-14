@@ -37,9 +37,10 @@
 
             <!-- ***** Search End ***** -->
             <!-- ***** Menu Start ***** -->
+
             <ul class="nav" style="display:flex; align-items: center;">
-              <li><a href="#" class="active">쇼핑</a></li>
-              <li><a href="/cart/list?idx=1">장바구니</a></li>
+              <li><a href="/" class="active">쇼핑</a></li>
+              <li><a href="/cart/list">장바구니</a></li>
               <sec:authorize access="isAnonymous()">
            	  <li><a href="/member/register">회원가입</a></li>
            	  </sec:authorize>

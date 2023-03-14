@@ -14,17 +14,14 @@
 	<%-- <%@ include file="/WEB-INF/views/header.jsp"%> --%>
 
 	<%@ include file="/resources/common/header.jsp"%>
-===
 
 	<div class="container">
 		<div class="col-lg-12">
 			<div class="page-content">
 				<div class="heading-section">
-					<h4>주문이 정상적으로 신청되었습니다!</h4>
+					<h4>주문완료</h4>
 				</div>
-
 				<!-- 결제확인내용 -->
-
 				<div class="container">
 					<div class="row">
 						<table class="table">
@@ -58,39 +55,20 @@
 								</tr>
 							</tbody>
 						</table>
-
-
-
-
-
-
-
 					</div>
 				</div>
-				
-				<button type="button" class="btn btn-outline-primary">쇼핑 계속하기</button>
-				<button type="button" class="btn btn-outline-primary">주문현황 보기</button>
-
-				<!-- 주문결제내용 끝 -->
-
+				<div class="col-lg-12">
+					<div class="main-button">
+						<a href="/">돌아가기</a>
+					</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+  	<!-- footer 삽입 -->
+	<%@ include file="/resources/common/footer.jsp" %>
 
-
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<p>
-						Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights
-						reserved. <br />Design: <a href="https://templatemo.com"
-							target="_blank" title="free CSS templates">TemplateMo</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
 	<script src="/resources/vendor/jquery/jquery.min.js"></script>
 	<div id="script"></div>
 	<script>
