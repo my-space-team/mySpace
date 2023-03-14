@@ -19,4 +19,6 @@ public interface OrderMapper {
 
 	public OrderVO findOrderByIdx(int orderIdx);
 
+	public List<OrderVO> findOrderByMemberIdx(int memberIdx);
+
 }
