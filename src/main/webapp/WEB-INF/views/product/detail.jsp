@@ -42,7 +42,7 @@
 							<button id="cart" style="width: 150px; height: 30px;" type="submit" class="btn btn-info">장바구니</button>
 						</form> 
 						
-							<button id="purchase" style="width: 150px; height: 30px;" class="btn btn-light" onclick="gogo()">구매하기</button><hr>		
+							<button id="purchase" style="width: 150px; height: 30px;" class="btn btn-light">구매하기</button><hr>		
 						
 				 <div style="background-color: lightgray; height: 80px; border-radius: 15%; width: 280px;">
 				 ${product.name }
@@ -129,16 +129,15 @@
       $("#header").load("../../resources/common/header.html");
       
       
-      
       var url_string = window.location.href;
 	  var url = new URL(url_string);
 	  var param1 = url.searchParams.get("idx");
 		console.log(param1);
 		
-		function gogo() {
+      $("#purchase").on("click",function() {
 			location.href = '/order/pay?idx=' + param1;
-		}
-      
+			console.log("고고실행합니다");
+		});
     });
     
     
