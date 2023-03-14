@@ -11,7 +11,11 @@
 }
 </style>
 <body>
-	<%@ include file="/WEB-INF/views/header.jsp"%>
+<<<<<<< HEAD
+	<%@ include file="/resources/common/header.jsp"%>
+=======
+	<%@ include file="/resources/common/header.jsp" %>
+>>>>>>> origin/youngoh
 
 	<div class="container">
 		<div class="col-lg-12">
@@ -33,27 +37,30 @@
 							<tbody>
 								<tr>
 									<th scope="col">배송지</th>
-									<th scope="col">First</th>
+									<th scope="col">${order2.address}</th>
 								</tr>
 								<tr>
 									<th scope="row">주문자</th>
-									<td>Mark</td>
+									<td>${order2.deliveryName}</td>
 								</tr>
 								<tr>
 									<th scope="row">주문상품</th>
-									<td>Jacob</td>
+									<c:forEach items="${orderProductList}" var="orderProduct">
+										<td>${orderProduct.cartProduct.product.name}</td>
+									</c:forEach>
+									
 								</tr>
 								<tr>
 									<th scope="row">결제수단</th>
-									<td>Jacob</td>
+									<td>${order2.payment}</td>
 								</tr>
 								<tr>
 									<th scope="row">총결제금액</th>
-									<td>Jacob</td>
+									<td>${order2.price}</td>
 								</tr>
 								<tr>
 									<th scope="row">주문일자</th>
-									<td>Jacob</td>
+									<td>${order2.state}</td>
 								</tr>
 							</tbody>
 						</table>

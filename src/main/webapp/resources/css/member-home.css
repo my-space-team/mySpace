@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box !important;
+}
+
+.myh4 {
+    font-size: 25px;
+}
+
+dialog {
+    background-color: #27292a; 
+    background-size: cover;
+    width: 30%;
+    min-height: 500px;
+    margin: auto;
+    border-radius: 23px;
+    padding: 80px 60px;
+    border-color: #1EDDFF;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+label {
+    color: white;
+}

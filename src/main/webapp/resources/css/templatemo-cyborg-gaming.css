@@ -225,7 +225,7 @@ section {
 .heading-section h4 em {
   color: #fff;
   font-style: normal;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 /* 
@@ -1621,7 +1621,7 @@ Profile Style
 
 .clips .item  {
   border-radius: 23px;
-  padding: 30px 15px;
+  padding: 30px 40px;
   background-color: #27292a;
   margin-bottom: 30px;
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kosa.project.domain.CartProductVO;
+import com.kosa.project.domain.ProductVO;
 import com.kosa.project.mapper.CartProductMapper;
 
 import lombok.AllArgsConstructor;
@@ -25,6 +26,23 @@ public class CartProductServiceImpl implements CartProductService {
 		mapper.addProduct(cartProduct);
 
 	}
+	
+	
+//	@Override
+//	public void addProduct(CartProductVO cartProduct) {
+//	    int productIdx = cartProduct.getProduct().getIdx();
+//	    ProductVO product = mapper.getProduct(productIdx);
+//	    cartProduct.setProduct(product);
+//	    
+//	    CartProductVO existingProduct = mapper.read(cartProduct.getCart().getIdx(), productIdx);
+//	    if (existingProduct != null) {
+//	        existingProduct.setAmount(existingProduct.getAmount() + 1);
+//	        mapper.update(existingProduct);
+//	    } else {
+//	        cartProduct.setAmount(1);
+//	        mapper.addProduct(cartProduct);
+//	    }
+//	}
 
 	@Override
 	public boolean update(CartProductVO cartProduct) {
@@ -49,12 +67,14 @@ public class CartProductServiceImpl implements CartProductService {
 		return mapper.getList(idx);
 	}
 
-	@Override
-	public CartProductVO get(int idx) {
-		
-		log.info("get........." + idx);
-		return mapper.read(idx);
-	}
+	
+
+//	@Override
+//	public CartProductVO get(int idx) {
+//		
+//		log.info("get........." + idx);
+//		return mapper.read(idx);
+//	}
 
 	
 

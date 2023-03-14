@@ -72,6 +72,24 @@
 		
 	</insert>
 
+	<!-- productIdx 값으로 그 product의 상품 정보를  조회 
+	<select id="getProduct" parameterType="int"
+		resultMap="productMap">
+		SELECT *
+		FROM product
+		WHERE idx = #{idx }
+	</select>-->
+	
+	<!--  같은 상품 있는 경우 amount 1증가 
+	<update id="updateProductAmount"
+		parameterType="com.kosa.project.domain.CartProductVO">
+		UPDATE cart_product 
+		SET amount = amount + 1 WHERE cart_idx = 1 
+		AND product_idx = #{product.idx}
+	</update> -->
+
+	
+
 	<!-- 장바구니 상품 삭제 -->
 	<delete id="delete">
 		delete from cart_product where idx = #{idx}
@@ -83,8 +101,8 @@
 		where idx = #{idx}
 	</update>
 
-	<select id="read"
+	<!-- <select id="read"
 		resultType="com.kosa.project.domain.CartProductVO">
 		select * from cart_product where idx = #{idx}
-	</select>
+	</select> -->
 </mapper>

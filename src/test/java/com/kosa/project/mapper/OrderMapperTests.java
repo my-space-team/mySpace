@@ -1,5 +1,7 @@
 package com.kosa.project.mapper;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +24,13 @@ public class OrderMapperTests {
 	
 	@Test
 	public void test() {
-
 		/*CartProductVO order = (CartProductVO) mapper.getcartList(1); 
 		log.info(order);*/
+		//MemberVO member = membermapper.read();
 		
-		MemberVO member = membermapper.find(1);
-		System.out.println(member);
-
+	//mapper.orderProductList().forEach(order -> log.info(order));
+		mapper.getOrderList(1);
+		
 	}
 	
 }

@@ -44,7 +44,7 @@ public class CartProductController {
 	    model.addAttribute("list", service.getList(idx));
 	    return "list"; 
 	}
-	
+//	
 //	@PostMapping("/add")
 //	public void addProduct(@RequestBody CartProductVO cartProduct) {
 //		service.addProduct(cartProduct);
@@ -60,17 +60,19 @@ public class CartProductController {
 		pvo.setIdx(productIdx);
 		CartProductVO cvo = new CartProductVO();
 		cvo.setProduct(pvo);
+		
 		service.addProduct(cvo);
+		
 	    return "redirect:/product/detail?idx=" + productIdx;
 	}
 	
 	
-	@GetMapping("/get")
-	public void get(@RequestParam("idx") int idx, Model model) {
-		
-		log.info("/get");
-		model.addAttribute("cartProduct", service.get(idx));
-	}
+//	@GetMapping("/get")
+//	public void get(@RequestParam("idx") int idx, Model model) {
+//		
+//		log.info("/get");
+//		model.addAttribute("cartProduct", service.get(idx));
+//	}
 	
 	
 	

@@ -16,7 +16,6 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class ProductController {
 
-	
 	@Autowired
 	private ProductService productService;
 	
@@ -26,6 +25,7 @@ public class ProductController {
 	
 
 
+	
 	@GetMapping("/product/detail")
 	public ModelAndView godetail(int idx) {
 		ModelAndView mv = new ModelAndView();
