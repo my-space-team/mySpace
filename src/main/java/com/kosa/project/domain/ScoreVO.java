@@ -10,7 +10,6 @@ public class ScoreVO {
 	private int design;
 	private int price;
 	private int delivery;
-	private String content;
 	
 	private int total;
 	
