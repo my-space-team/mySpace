@@ -31,7 +31,7 @@
             <!-- ***** Search End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li><a href="#" class="active">쇼핑</a></li>
+              <li><a href="/">쇼핑</a></li>
               <li><a href="/cart/list?idx=1">장바구니</a></li>
               <li><a href="/member/register">회원가입</a></li>
               <li>
