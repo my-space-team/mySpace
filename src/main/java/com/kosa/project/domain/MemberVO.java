@@ -25,4 +25,7 @@ public class MemberVO {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth;
+    
+    private CartVO cart;
+    
 }
