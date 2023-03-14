@@ -42,37 +42,19 @@ public class CartProductController {
 	@Autowired
 	private CartService cartService;
 
-	// @GetMapping("/list")
-	// public void list(Model model) {
-	//
-	// log.info("list");
-	// model.addAttribute("list", service.getList());
-	//
-	// }
-
 	@GetMapping("/list")
 	public String list(Principal principal, Model model) {
 		if (principal == null) {
 			return "redirect:/memberLogin";
 		}
-
 		MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
 		log.info("list");
 		model.addAttribute("list", service.getList(cartService.findCartByMemberIdx(findMember.getIdx())));
 		return "list";
 	}
-	//
-	// @PostMapping("/add")
-	// public void addProduct(@RequestBody CartProductVO cartProduct) {
-	// service.addProduct(cartProduct);
-	//
-	//
-	// }
 
 	@PostMapping("/add")
 	public String addProduct(Principal principal, @RequestParam("product.idx") int productIdx, Model model) {
-		// ProductVO findProduct = productService.getProduct(idx);
-		// cartProduct.setProduct(findProduct);
 		if (principal == null) {
 			return "redirect:/memberLogin";
 		}
@@ -86,13 +68,6 @@ public class CartProductController {
 		return "redirect:/product/detail?idx=" + productIdx;
 	}
 
-	// @GetMapping("/get")
-	// public void get(@RequestParam("idx") int idx, Model model) {
-	//
-	// log.info("/get");
-	// model.addAttribute("cartProduct", service.get(idx));
-	// }
-
 	@PostMapping("/update")
 	public String update(Principal principal, CartProductVO cartProduct) {
 		if (principal == null) {
@@ -104,15 +79,9 @@ public class CartProductController {
 	}
 
 	@PostMapping("/delete")
-	public String delete(Principal principal, @RequestParam("idx") int idx
-	// ,RedirectAttributes rttr
-	) {
+	public String delete(Principal principal, @RequestParam("idx") int idx) {
 		service.delete(idx);
-		// if (service.delete(idx)) {
-		// rttr.addFlashAttribute("result", "success");
-		// }
 		MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
 		return "redirect:/cart/list?idx=" + findMember.getIdx();
 	}
-
 }

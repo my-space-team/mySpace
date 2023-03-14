@@ -37,25 +37,14 @@
 				<span>배송상품정보 참고</span><br><hr>
 				<img alt="" src="/resources/asset/images/brandimg.png" style="width: 30px; height: 30px;">
 				<span>${product.brand.name }</span><br><br>
-				
 				<span><b>주문금액 </b></span>
 				<span style="float: right;"><b><fmt:formatNumber value="${product.price }" pattern="#,###원"/></b></span><br><br>
-				
-				
-				<!-- <button id="cart" style="width: 150px; height: 30px;" type="button"
-				 class="btn btn-info">장바구니</button> -->
-				 
-						<form method="post" action="../cart/add" style="width: 210px;">
-							<input type="hidden" name="product.idx" value="${product.idx}" /> <input
-								type="hidden" name="${_csrf.parameterName }"
-								value="${_csrf.token }" />
-							<button id="cart" style="width: 180px; height: 30px; color: white" type="submit" class="btn btn-info">장바구니</button>
-						</form> 
-						<div style="padding-bottom: 200px; top: 560px; position: absolute; right: 500px;">
-						<button id="purchase" style="width: 180px; height: 30px; float: right;"
-				 class="btn btn-light" onclick="gogo()">구매하기</button></div>
-				
-					
+				<form method="post" action="../cart/add" style="width: 210px;">
+					<input type="hidden" name="product.idx" value="${product.idx}" /> <input
+						type="hidden" name="${_csrf.parameterName }"
+						value="${_csrf.token }" />
+					<button id="cart" style="width: 180px; height: 30px; color: white" type="submit" class="btn btn-info">장바구니</button>
+				</form> 
 			</div>
 		</div>
 	</div>
@@ -75,26 +64,26 @@
  
   	</div>
   	<br><br>
-  					<c:forEach var="rlist" items="${reviewlist }">
-  						<img src="../../resources/asset/images/reviewprofile.png" style="width: 26px; height: 26px;">
-										<span style="display: inline-block; margin-bottom: 10px;">${rlist.review.member.name}</span><br>
-										총점 <input value="${rlist.total}" type="hidden" name="total"><span style="display: inline-block; margin-bottom: 10px;" id="total" name="total" >
-										${rlist.total}
-										</span><br>
-										내구성 ${rlist.durability}&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;  
-										가격 ${rlist.price }<br>
-										디자인 ${rlist.design }&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; 
-										배송 ${rlist.delivery }<br><br>
-										<div>
-										<div style="background: lightgray; border: 1px solid #F3F3F3; width: 3px;height: 25px;"></div>
-										<b style="position: relative; bottom: 25px; left: 10px;"> ${rlist.review.product.name }</b><br>
-										</div>
-										<%-- <c:if test="${rlist.review.image!=null }">
-										<img src="${rlist.review.image }">
-										</c:if> --%>
-										  ${rlist.review.content}
-										 <br> <hr style="width: 800px;"><br>
-									</c:forEach>
+			<c:forEach var="rlist" items="${reviewlist }">
+				<img src="../../resources/asset/images/reviewprofile.png" style="width: 26px; height: 26px;">
+								<span style="display: inline-block; margin-bottom: 10px;">${rlist.review.member.name}</span><br>
+								총점 <input value="${rlist.total}" type="hidden" name="total"><span style="display: inline-block; margin-bottom: 10px;" id="total" name="total" >
+								${rlist.total}
+								</span><br>
+								내구성 ${rlist.durability}&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;  
+								가격 ${rlist.price }<br>
+								디자인 ${rlist.design }&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; 
+								배송 ${rlist.delivery }<br><br>
+								<div>
+								<div style="background: lightgray; border: 1px solid #F3F3F3; width: 3px;height: 25px;"></div>
+								<b style="position: relative; bottom: 25px; left: 10px;"> ${rlist.review.product.name }</b><br>
+								</div>
+								<%-- <c:if test="${rlist.review.image!=null }">
+								<img src="${rlist.review.image }">
+								</c:if> --%>
+									${rlist.review.content}
+									<br> <hr style="width: 800px;"><br>
+							</c:forEach>
   
   </div>
   <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div>

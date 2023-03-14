@@ -20,9 +20,7 @@
 				<div class="heading-section">
 					<h4>주문/결제</h4>
 				</div>
-
 				<!-- 주문결제내용 -->
-
 				<div class="container">
 					<div class="row">
 
@@ -31,7 +29,6 @@
 							<h5 style="color: #404040;">배송지</h5>
 							<hr style="border: solid 2px black;">
 							<div class="mb-3 row">
-
 								<label for="staticEmail" class="col-sm-2 col-form-label">이름</label>
 								<div class="col-sm-8">
 									<input id="dil-name" name="dil-name" type="text" class="form-control" placeholder="이름"
@@ -56,7 +53,6 @@
 								</select>
 							</div>
 						</div>
-
 						<!-- 결제금액 -->
 						<div class="col-4">
 							<h5 style="color: #404040;">결제금액</h5>
@@ -99,8 +95,6 @@
 									onclick="submitForm()">결제하기</button>
 							</div>
 						</div>
-
-
 						<!-- 주문자정보가져오기 -->
 						<div style="padding: 60px 0px;">
 							<div class="col-7">
@@ -111,15 +105,15 @@
 									<label for="staticEmail" class="col-sm-2 col-form-label">주문자명
 									</label>
 									<div class="col-sm-8">
-										<span>${member.name }</span>
+										<span>${member.name}</span>
 									</div>
 									<label for="staticEmail" class="col-sm-2 col-form-label">이메일</label>
 									<div class="col-sm-8">
-										<span>${member.email }</span>
+										<span>${member.email}</span>
 									</div>
 									<label for="staticEmail" class="col-sm-2 col-form-label">전화번호</label>
 									<div class="col-sm-8">
-										<span>${member.phone }</span>
+										<span>${member.phone}</span>
 									</div>
 								</div>
 							</div>

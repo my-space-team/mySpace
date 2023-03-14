@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.kosa.project.domain.CartProductVO;
-import com.kosa.project.domain.CategoryVO;
 import com.kosa.project.domain.MemberVO;
 import com.kosa.project.domain.OrderVO;
 import com.kosa.project.domain.ProductVO;
@@ -57,17 +56,19 @@ public class OrderController {
         if (principal == null)
             return "memberLogin";
 
+        MemberVO loginMember = memberService.findMemberByLoginId(principal.getName());
+
         String referer = request.getHeader("referer");
         int cartIdx = cartProduct.getIdx();
-        int memberIdx = member.getIdx();
         int productIdx = product.getIdx();
 
         if (referer.contains("product")) {
             Integer.parseInt(request.getParameter("idx"));
-            model.addAttribute("member", memberService.find(memberIdx));
+            model.addAttribute("member", loginMember);
             model.addAttribute("productList", productService.getProduct(productIdx));
         } else {
             Integer.parseInt(request.getParameter("idx"));
+            model.addAttribute("member", loginMember);
             model.addAttribute("cartProductlist", cartProductService.getList(cartIdx));
         }
         return "order/pay";
@@ -94,7 +95,6 @@ public class OrderController {
         orderVo.get("idx");
         log.info("----------> " + orderVo.get("idx"));
 
-        // OrderVO order = orderService.read((int) orderVo.get("idx"));
         OrderVO order = orderService.findOrderByIdx((int) orderVo.get("idx"));
         log.info(order);
         model.addAttribute("order", order);

@@ -5,8 +5,11 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-<!-- head 추가 -->
-<%@ include file="/resources/common/common_head.jsp" %>
+	<head>
+		<!-- head 추가 -->
+		<%@ include file="/resources/common/common_head.jsp" %>
+		<link rel="stylesheet" href="/resources/css/member-home.css">
+	</head>
 <body>
 	<!-- header 추가 -->
 	<%@ include file="/resources/common/header.jsp" %>

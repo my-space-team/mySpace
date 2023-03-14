@@ -87,19 +87,7 @@
 										</c:forEach>
 										
 									</table>
-									<div class="order_btn_area">
-										<button type="button" class="btn btn-outline-Secondary btn-sm"
-											name="partOrderBtn">선택주문</button>
-										<button type="button" class="btn btn-outline-Secondary btn-sm"
-											name="allOrderBtn">전체주문</button>
-
-									</div>
-
-
 								</div>
-
-
-
 								<div class="col-4" style="float: right">
 									<div style="">
 										<div class="row mb-3">

@@ -3,6 +3,8 @@ package com.kosa.project.domain;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 @Data
@@ -11,6 +13,8 @@ public class OrderVO {
     private int price;
     private int deliveryPrice;
     private String payment;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date state;
     private int memberIdx;
     private int cartIdx;
