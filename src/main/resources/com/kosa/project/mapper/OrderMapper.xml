@@ -112,18 +112,6 @@
 		WHERE ROWNUM= 1
 	</select>
 
-	<select id="getcartList" parameterType="int" resultMap="orderMap"> 
-	select 
-		m.name as name1, m.email , m.phone , 
-		p.name as name2, p.price, br.name as name3, cp.amount 
-		from cart c, cart_product cp, product p, brand br, member m 
-		where c.idx = cp.cart_idx 
-		and c.member_idx = m.idx 
-		and cp.product_idx = p.idx 
-		and p.brand_idx=br.idx 
-		and m.idx=#{idx} 
-	</select> 
-
 	<!-- 총상품금액, 배송비, 총결제금액 계산하기 이건 굳이 여기서 안해도 된다고 함 -->
 	<!-- <select id="read" parameterType="int" resultMap="orderMap">
 		

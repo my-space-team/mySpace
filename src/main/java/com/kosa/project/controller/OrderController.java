@@ -56,32 +56,69 @@ public class OrderController {
     @Autowired
     private ProductService productService;
     
+    //이게원본
+//    @GetMapping("/pay")
+//    public String getcartList(Model model, @ModelAttribute("member") MemberVO member, 
+//            @ModelAttribute("cartProduct") CartProductVO cartProduct,
+//            @ModelAttribute("product") ProductVO product,HttpServletRequest request,
+//            RedirectAttributes rttr) {
+//    	int cartIdx = cartProduct.getIdx();
+//    	//int cartIdx1=cartProduct.getCart().getIdx();
+//        int memberIdx = member.getIdx();
+//        int productIdx=product.getIdx();
+//        model.addAttribute("member", memberService.find(memberIdx));
+//        //model.addAttribute("cartProductlist", cartProductService.getList(memberIdx));
+//    	model.addAttribute("cartProductlist", cartProductService.getList(cartIdx));
+//        model.addAttribute("productList", productService.getProduct(productIdx));
+//        return "order/pay" ;
+//    }
+    
+    //수정1
+//    @GetMapping("/pay")
+//    public String getcartList(Model model, @ModelAttribute("member") MemberVO member, 
+//          @ModelAttribute("cartProduct") CartProductVO cartProduct,
+//          @ModelAttribute("product") ProductVO product,HttpServletRequest request) {
+//    	int cartIdx = cartProduct.getIdx();
+//        int memberIdx = member.getIdx();
+//        int productIdx=product.getIdx();
+//        model.addAttribute("member", memberService.find(memberIdx));
+//    	model.addAttribute("cartProductlist", cartProductService.getList(cartIdx));
+//        model.addAttribute("productList", productService.getProduct(productIdx));
+//        return "order/pay" ;
+//    }
+    
+    //http://localhost:8081/product/detail?idx=40
+    
+    //수정2
     @GetMapping("/pay")
-    public String getcartList(Model model, @ModelAttribute("member") MemberVO member, 
-            @ModelAttribute("cartProduct") CartProductVO cartProduct,
-            @ModelAttribute("product") ProductVO product,HttpServletRequest request,
-            RedirectAttributes rttr) {
-    	int cartIdx = cartProduct.getIdx();
-    	//int cartIdx1=cartProduct.getCart().getIdx();
-        int memberIdx = member.getIdx();
-        int productIdx=product.getIdx();
-        model.addAttribute("member", memberService.find(memberIdx));
-        //model.addAttribute("cartProductlist", cartProductService.getList(memberIdx));
-    	model.addAttribute("cartProductlist", cartProductService.getList(cartIdx));
-        model.addAttribute("productList", productService.getProduct(productIdx));
-        return "order/pay" ;
+    public String getcartList(HttpServletRequest request, Model model,
+    		@ModelAttribute("member") MemberVO member, 
+    		@ModelAttribute("cartProduct") CartProductVO cartProduct,
+    		@ModelAttribute("product") ProductVO product) {
+       
+       
+       String referer = request.getHeader("referer");
+       Integer idx = Integer.parseInt(request.getParameter("idx"));
+       int cartIdx = cartProduct.getIdx();
+       int memberIdx = member.getIdx();
+       int productIdx=product.getIdx();
+       
+       //이전 페이지가 상품일경우
+       if (referer.contains("product")) {
+    	  Integer.parseInt(request.getParameter("idx"));
+          model.addAttribute("member", memberService.find(memberIdx));
+          model.addAttribute("productList", productService.getProduct(productIdx));   
+       } else {
+          //이전 페이지가 카트일경우
+    	   Integer.parseInt(request.getParameter("idx"));
+          model.addAttribute("cartProductlist", cartProductService.getList(cartIdx));   
+       }
+       return "order/pay" ;
+       
     }
     
-//    @GetMapping("/pay")
-//    public String getcartList(Model model, @ModelAttribute("member") MemberVO member,
-//                              RedirectAttributes rttr, @RequestParam("idx") int idx) {
-//        CartProductVO cartProduct = cartProductService.find(idx);
-//        CartVO cart = cartService.find(cartProduct.getCart().getIdx());
-//        int memberIdx = member.getIdx();
-//        model.addAttribute("member", memberService.find(memberIdx));
-//        model.addAttribute("cartProductlist", cartProductService.getList(cart.getIdx()));
-//        return "order/pay?idx=" + idx;
-//    }
+    
+    
 	
 	 @GetMapping("/add") 
 	 public String addDeliveryInfo(HttpServletRequest request,Model model) { 
