@@ -2,20 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kosa.project.mapper.OrderMapper">
 
-<!-- 	<resultMap type="com.kosa.project.domain.OrderVO"
+	<resultMap type="com.kosa.project.domain.OrderVO"
 		id="orderMap">
 		<id column="idx" property="idx" />
 		<result column="price" property="price" />
 		<result column="delivery_price" property="deliveryPrice" />
 		<result column="payment" property="payment" />
 		<result column="regdate" property="state" />
+		<result column="delivery_name" property="deliveryName" />
+		<result column="address_name" property="addressName" />
+		<result column="address" property="address" />
+		<result column="delivery_request" property="deliveryRequest" />
 		<collection property="member" resultMap="memberMap" />
 		<collection property="cart" resultMap="cartMap" />
-		<collection property="delivery" resultMap="deliveryMap" />
 		<collection property="cartProduct"
 			resultMap="cartProductMap" />
 	</resultMap>
-
+	
 	<resultMap type="com.kosa.project.domain.MemberVO"
 		id="memberMap">
 		<id column="idx" property="idx" />
@@ -28,20 +31,10 @@
 	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.CartVO" id="cartMap">
-		<id column="idx" property="idx" />
+		<id column="c.idx" property="idx" />
 		<collection property="member" resultMap="memberMap" />
 	</resultMap>
 
-	<resultMap type="com.kosa.project.domain.DeliveryVO"
-		id="deliveryMap">
-		<id column="idx" property="idx" />
-		<result column="address_name" property="addressName" />
-		<result column="delivery_name" property="deliveryName" />
-		<result column="address" property="address" />
-		<result column="delivery_phone" property="deliveryPhone" />
-		<result column="delivery_request" property="deliveryRequest" />
-		<collection property="member" resultMap="memberMap" />
-	</resultMap>
 
 	<resultMap type="com.kosa.project.domain.CartProductVO"
 		id="cartProductMap">
@@ -76,52 +69,49 @@
 		<result column="name3" property="name" />
 		<result column="phone" property="phone" />
 		<result column="manager" property="manager" />
-	</resultMap> -->
-	
-	
- 	<resultMap type="com.kosa.project.domain.OrderVO" id="orderMap">
-		<id column="o.idx" property="idx" />
-		<result column="payment" property="payment" />
-		<result column="price" property="price" />
-		<result column="delivery_price" property="deliveryPrice" />
-		<result column="regdate" property="state" />
-		<association property="cart" resultMap="cartMap" />
-	</resultMap>
-	
- 	<resultMap type="com.kosa.project.domain.CartVO" id="cartMap">
-		<result column="c.idx" property="idx" />
-		<association property="member" resultMap="memberMap"/>
-		<association property="cartProduct" resultMap="cartProductMap"/>
-	</resultMap>
-	
-	 <resultMap type="com.kosa.project.domain.MemberVO" id="memberMap">
-		<result column="m.idx" property="idx" />
-		<result column="m.login_id" property="loginId" />
-		<result column="m.password" property="password" />
-		<result column="m.name" property="name" />
-		<result column="m.email" property="email" />
-		<result column="m.phone" property="phone" />
-		<result column="m.birth" property="birth" />
-	</resultMap>
-	
-	 <resultMap type ="com.kosa.project.domain.CartProductVO" id="cartProductMap">
-		<result column = "cp.idx" property = "idx"/>
-		<result column = "cp.amount" property = "amount"/>
-		<collection property="product" resultMap ="productMap"/>
-	</resultMap>
-	
- 	<resultMap type = "com.kosa.project.domain.ProductVO" id = "productMap">
-		<id column="p.idx" property="idx" />
-		<result column="p.name" property="name" />
-		<result column="p.price" property="price" />
-		<result column="p.image_url" property="imageURL" />
-		<result column="p.image" property="imageUpload" />
-	</resultMap>
+	</resultMap> 
 	
 	
 	
 
 	<!-- 주문내역에 보여질 정보들 : 주문자정보, 카트상품정보 -->
+
+	<select id="getcartList" parameterType="int" resultMap="orderMap">
+		select
+		m.name as name1, m.email , m.phone ,
+		p.name as name2, p.price, br.name as name3, cp.amount
+		from cart c, cart_product cp, product p, brand br, member m
+		where c.idx = cp.cart_idx
+		and c.member_idx = m.idx
+		and cp.product_idx = p.idx
+		and p.brand_idx=br.idx
+		and c.idx=#{idx}
+	</select>
+	
+	<!-- 주문상품리스트 -->
+	<select id="orderProductList" parameterType="int" resultMap="orderMap">
+		select p.name 
+        from order2 o, cart c, cart_product cp, product p
+        where o.cart_idx = c.idx 
+        and c.idx = cp.cart_idx 
+        and cp.product_idx =p.idx
+        and o.idx=(SELECT MAX(idx)
+                  FROM order2)
+	</select>
+
+	<insert id="insert" parameterType="map">
+		insert into order2 (idx, member_idx, cart_idx, payment, price,
+		delivery_price, regdate, delivery_name, address_name, address, delivery_request)
+		values(order2_seq.nextval,	#{memberIdx},#{cartIdx},#{payment},#{totalPrice},#{dilPrice},sysdate,#{dilName}, #{dilPlace},#{dilAddress},#{dilSelect} )
+
+	</insert>
+
+	<select id="read" parameterType="int" resultMap="orderMap">
+		SELECT * FROM
+		(SELECT * FROM order2 ORDER BY regdate DESC)
+		WHERE ROWNUM= 1
+	</select>
+
 	<select id="getcartList" parameterType="int" resultMap="orderMap"> 
 	select 
 		m.name as name1, m.email , m.phone , 

@@ -20,5 +20,6 @@ public class OrderVO {
     private String deliveryRequest;
     private MemberVO member;
     private CartVO cart;
+    private CartProductVO cartProduct;
     
 }

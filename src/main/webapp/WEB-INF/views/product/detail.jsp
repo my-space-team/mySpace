@@ -37,14 +37,13 @@
 				 class="btn btn-info">장바구니</button> -->
 				 
 						<form method="post" action="../cart/add">
-							<input type="hidden" name="product.idx" value="${product.idx}" /> <input
-								type="hidden" name="${_csrf.parameterName }"
-								value="${_csrf.token }" />
+							<input type="hidden" name="product.idx" value="${product.idx}" /> 
+							<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }" />
 							<button id="cart" style="width: 150px; height: 30px;" type="submit" class="btn btn-info">장바구니</button>
 						</form> 
 						
-						<button id="purchase" style="width: 150px; height: 30px;"
-				 class="btn btn-light">구매하기</button><hr>
+							<button id="purchase" style="width: 150px; height: 30px;" class="btn btn-light" onclick="gogo()">구매하기</button><hr>		
+						
 				 <div style="background-color: lightgray; height: 80px; border-radius: 15%; width: 280px;">
 				 ${product.name }
 				 </div>
@@ -128,6 +127,22 @@
       $("head").load("../../resources/common/common_head.html");
       $("#script").load("../../resources/common/include_script.html");
       $("#header").load("../../resources/common/header.html");
+      
+     
+      
+      $(".item").click(function(){
+    	  let idx = $(this).find("button").val(); 
+    	  location.href = '/order/pay?idx=' + idx;
+      });
+      
+      var url_string = window.location.href;
+	  var url = new URL(url_string);
+	  var param1 = url.searchParams.get("idx");
+		console.log(param1);
+		
+		function gogo() {
+			location.href = '/order/pay?product_idx=' + param1;
+		}
       
       /* $("#cart").click(function(){
       	location.href="../cart/list?idx=1"; //cart_idx = 1 말하는 건데 수정해야함

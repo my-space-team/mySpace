@@ -27,79 +27,75 @@ import lombok.extern.log4j.Log4j;
 @RequestMapping("/cart/*")
 @AllArgsConstructor
 public class CartProductController {
-	
+
 	@Autowired
 	private CartProductService service;
-	
+
 	@Autowired
 	private ProductService productService;
-	
+
 	@Autowired
 	private MemberService memberService;
 
-//	@GetMapping("/list")
-//	public void list(Model model) {
-//		
-//		log.info("list");
-//		model.addAttribute("list", service.getList());
-//		
-//	}
-	
+	// @GetMapping("/list")
+	// public void list(Model model) {
+	//
+	// log.info("list");
+	// model.addAttribute("list", service.getList());
+	//
+	// }
+
 	@GetMapping("/list")
 	public String list(Principal principal, @RequestParam("idx") int idx, Model model) {
 		MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
-	    log.info("list");
-	    model.addAttribute("list", service.getList(idx));
-	    return "list"; 
+		log.info("list");
+		model.addAttribute("list", service.getList(idx));
+		return "list";
 	}
-//	
-//	@PostMapping("/add")
-//	public void addProduct(@RequestBody CartProductVO cartProduct) {
-//		service.addProduct(cartProduct);
-//		
-//		
-//	}
-	
+	//
+	// @PostMapping("/add")
+	// public void addProduct(@RequestBody CartProductVO cartProduct) {
+	// service.addProduct(cartProduct);
+	//
+	//
+	// }
+
 	@PostMapping("/add")
 	public String addProduct(@RequestParam("product.idx") int productIdx, Model model) {
-//		ProductVO findProduct = productService.getProduct(idx);
-//		cartProduct.setProduct(findProduct);
+		// ProductVO findProduct = productService.getProduct(idx);
+		// cartProduct.setProduct(findProduct);
 		ProductVO pvo = new ProductVO();
 		pvo.setIdx(productIdx);
 		CartProductVO cvo = new CartProductVO();
 		cvo.setProduct(pvo);
-		
+
 		service.addProduct(cvo);
-		
-	    return "redirect:/product/detail?idx=" + productIdx;
-	}
-	
-	
-//	@GetMapping("/get")
-//	public void get(@RequestParam("idx") int idx, Model model) {
-//		
-//		log.info("/get");
-//		model.addAttribute("cartProduct", service.get(idx));
-//	}
-	
-	
-	
-	@PostMapping("/update")
-	public String update(CartProductVO cartProduct) {
-	    service.update(cartProduct);
-	    return "redirect:/cart/list?idx=" + 1;
-	}
-	
-	@PostMapping("/delete")
-	public String delete(@RequestParam("idx") int idx
-			//,RedirectAttributes rttr
-			) {
-		service.delete(idx);
-//		if (service.delete(idx)) {
-//			rttr.addFlashAttribute("result", "success");
-//		}
-		return "redirect:/cart/list?idx=" +1 ;
+
+		return "redirect:/product/detail?idx=" + productIdx;
 	}
 
+	// @GetMapping("/get")
+	// public void get(@RequestParam("idx") int idx, Model model) {
+	//
+	// log.info("/get");
+	// model.addAttribute("cartProduct", service.get(idx));
+	// }
+
+	@PostMapping("/update")
+	public String update(CartProductVO cartProduct) {
+		service.update(cartProduct);
+		return "redirect:/cart/list?idx=" + 1;
+	}
+
+	@PostMapping("/delete")
+	public String delete(@RequestParam("idx") int idx
+	// ,RedirectAttributes rttr
+	) {
+		service.delete(idx);
+		// if (service.delete(idx)) {
+		// rttr.addFlashAttribute("result", "success");
+		// }
+		return "redirect:/cart/list?idx=" + 1;
+	}
 
 }

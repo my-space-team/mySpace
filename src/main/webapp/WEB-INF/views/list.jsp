@@ -2,7 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<<<<<<< HEAD
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+=======
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <html lang="ko">
 <head></head>
 <style type="text/css">
@@ -11,7 +16,7 @@
 }
 </style>
 <body>
-	<%@ include file="/resources/common/header.jsp" %>
+	<%@ include file="/resources/common/header.jsp"%>
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
@@ -20,9 +25,15 @@
 					<!-- ***** Cart Start ***** -->
 					<div class="heading-section">
 						<h4>장바구니</h4>
+
+
+					</div>
+
+
 						
 					</div>
 					
+
 					<div>
 						<div class="row">
 							<div style="display: flex;">
@@ -41,6 +52,7 @@
 										</thead>
 
 										<c:forEach items="${list }" var="cartProduct" varStatus="status">
+
 											<tr>
 												<%-- <td><c:out value="${cartProduct.idx }" /></td> --%>
 												<td scope="row">${status.index + 1}</td>
@@ -49,7 +61,10 @@
 												<td><c:out value="${cartProduct.product.price }" /></td>
 												<td>
 													<form method="post" action="/cart/update">
-														<input type="hidden" name="idx" value="${cartProduct.idx}" /> <input type="hidden" name="${_csrf.parameterName }"
+														<input type="hidden" name="idx" value="${cartProduct.idx}" />
+														<input type="hidden" name="idx1" value="${cartProduct.idx}" />
+
+														<input type="hidden" name="${_csrf.parameterName }"
 															value="${_csrf.token }" />
 														<div class="d-flex align-items-center">
 															<input type="text" class="form-control form-control-sm"
@@ -60,16 +75,20 @@
 														</div>
 													</form>
 												</td>
+
 												<td><c:out value="${cartProduct.product.price * cartProduct.amount}" /></td>
+
 												<td>
-													
+
 													<form method="post" action="/cart/delete">
 														<input type="hidden" name="idx" value="${cartProduct.idx}" />
-														<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
+														<input type="hidden" name="${_csrf.parameterName }"
+															value="${_csrf.token }" />
 														<button type="submit" class="btn btn-outline-danger">삭제</button>
-													</form> 
+													</form>
 												</td>
 										</c:forEach>
+										
 									</table>
 									<div class="order_btn_area">
 										<button type="button" class="btn btn-outline-Secondary btn-sm"
@@ -134,11 +153,13 @@
 											</div>
 										</div>
 
-										<div class="d-grid gap-2 ">
-											<button type="button" class="btn btn-primary"
-												name="allOrderBtn">구매하기</button>
-										</div>
+
+										<button id="purchase-button"
+												class="btn btn-primary" style="width: 350px;" onclick="gogo()">구매하기</button>
+
+
 										
+
 									</div>
 
 								</div>
@@ -151,15 +172,28 @@
 		</div>
 	</div>
 	<!-- footer 삽입 -->
-	<%@ include file="/resources/common/footer.jsp" %>
+	<%@ include file="/resources/common/footer.jsp"%>
 	<script src="/resources/vendor/jquery/jquery.min.js"></script>
 	<div id="script"></div>
 	<script>
-			$(document).ready(function() {
-				$("head").load("/resources/common/common_head.html");
-				$("#script").load("/resources/common/include_script.html");
-			});
-			
-		</script>
+		$(document).ready(function() {
+			$("head").load("/resources/common/common_head.html");
+			$("#script").load("/resources/common/include_script.html");
+		});
+		
+		var url_string = window.location.href;
+		var url = new URL(url_string);
+		var param1 = url.searchParams.get("idx");
+		console.log(param1);
+		
+		function gogo() {
+			location.href = '/order/pay?idx=' + param1;
+		}
+
+		/* $("#purchase-button").click(function(){
+			  let idx = $(this).val(); 
+			  location.href = '/order/pay?idx=' + idx;
+			}); */
+	</script>
 </body>
 </html>
