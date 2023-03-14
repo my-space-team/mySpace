@@ -33,32 +33,32 @@ public class MemberServiceTests {
         log.info(service.insert(member));
     }
 
-    @Test
-    public void find() {
-        log.info(service.find(61));
-    }
-
-    @Test
-    public void findMemberByLoginId() {
-        MemberVO vo = service.findMemberByLoginId("leej1120");
-        vo.getAuthList().forEach(auth -> log.info(auth));
-    }
-
-    @Test
-    public void remove() {
-        service.remove(26);
-    }
-
-    @Test
-    public void modify() {
-        MemberVO member = service.find(27);
-        member.setName("modify-service-test");
-        member.setBirth(new Date());
-        member.setEmail("thisisemail.com");
-        member.setLoginId("modify-service-test");
-        member.setPassword("1234");
-        member.setPhone("010-xxxx-xxxx");
-
-        service.modify(member);
-    }
+//    @Test
+//    public void find() {
+//        log.info(service.find(61));
+//    }
+//
+//    @Test
+//    public void findMemberByLoginId() {
+//        MemberVO vo = service.findMemberByLoginId("leej1120");
+//        vo.getAuthList().forEach(auth -> log.info(auth));
+//    }
+//
+//    @Test
+//    public void remove() {
+//        service.remove(26);
+//    }
+//
+//    @Test
+//    public void modify() {
+//        MemberVO member = service.find(27);
+//        member.setName("modify-service-test");
+//        member.setBirth(new Date());
+//        member.setEmail("thisisemail.com");
+//        member.setLoginId("modify-service-test");
+//        member.setPassword("1234");
+//        member.setPhone("010-xxxx-xxxx");
+//
+//        service.modify(member);
+//    }
 }

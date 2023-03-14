@@ -1,5 +1,7 @@
 package com.kosa.project.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kosa.project.domain.CartProductVO;
+import com.kosa.project.domain.MemberVO;
 import com.kosa.project.domain.ProductVO;
 import com.kosa.project.service.CartProductService;
+import com.kosa.project.service.MemberService;
 import com.kosa.project.service.ProductService;
 
 import lombok.AllArgsConstructor;
@@ -29,6 +33,9 @@ public class CartProductController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private MemberService memberService;
 
 //	@GetMapping("/list")
 //	public void list(Model model) {
@@ -39,7 +46,8 @@ public class CartProductController {
 //	}
 	
 	@GetMapping("/list")
-	public String list(@RequestParam("idx") int idx, Model model) {
+	public String list(Principal principal, @RequestParam("idx") int idx, Model model) {
+		MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
 	    log.info("list");
 	    model.addAttribute("list", service.getList(idx));
 	    return "list"; 

@@ -4,10 +4,18 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 import com.kosa.project.domain.CartProductVO;
+import com.kosa.project.domain.CartVO;
+import com.kosa.project.domain.MemberVO;
 
 public interface CartMapper {
 	
-	@Select("select * from cart_product where idx > 0")
-	public List<CartProductVO> getList();
+	
+	public List<CartVO> getList(int idx);
+	
+	public void createCart(MemberVO member);
+	
+	public int delete(int idx);
+	
+	public int update(CartVO cart);
 
 }
