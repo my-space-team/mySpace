@@ -112,12 +112,7 @@
       $("#script").load("/resources/common/include_script.html");
       $("#header").load("/resources/common/header.html");
       
-     
       
-      $(".item").click(function(){
-    	  let idx = $(this).find("button").val(); 
-    	  location.href = '/order/pay?idx=' + idx;
-      });
       
       var url_string = window.location.href;
 	  var url = new URL(url_string);
@@ -125,7 +120,7 @@
 		console.log(param1);
 		
 		function gogo() {
-			location.href = '/order/pay?product_idx=' + param1;
+			location.href = '/order/pay?idx=' + param1;
 		}
       
       /* $("#cart").click(function(){
