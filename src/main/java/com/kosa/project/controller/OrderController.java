@@ -75,17 +75,6 @@ public class OrderController {
         return "order/pay" ;
     }
     
-    
-
-
-
-
-
-
-    
-    
-    
-    
 //    @GetMapping("/pay")
 //    public String getcartList(Model model, @ModelAttribute("member") MemberVO member,
 //                              RedirectAttributes rttr, @RequestParam("idx") int idx) {
