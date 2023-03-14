@@ -51,7 +51,7 @@
 								value="${_csrf.token }" />
 							<button id="cart" style="width: 180px; height: 30px; color: white" type="submit" class="btn btn-info">장바구니</button>
 						</form> 
-						<div style="margin-bottom: 100px;">
+						<div style="padding-bottom: 200px; top: 560px; position: absolute; right: 500px;">
 						<button id="purchase" style="width: 180px; height: 30px; float: right;"
 				 class="btn btn-light">구매하기</button></div>
 				
@@ -120,7 +120,7 @@
      
    	 
     */
-    var arr=new Array();
+   
 
    let allAvg=($("[name=total]").map(function(){return this.value}).get());	//각각의 평점
   	// alert(allTotal);
