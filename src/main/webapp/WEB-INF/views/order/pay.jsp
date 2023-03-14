@@ -265,21 +265,10 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- footer 삽입 -->
+	<%@ include file="/resources/common/footer.jsp" %>
 
-
-	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<p>
-						Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights
-						reserved. <br />Design: <a href="https://templatemo.com"
-							target="_blank" title="free CSS templates">TemplateMo</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
 	<script src="/resources/vendor/jquery/jquery.min.js"></script>
 	<div id="script"></div>
 	<script>

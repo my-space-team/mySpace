@@ -52,6 +52,10 @@ public class CartProductController {
 
 	@GetMapping("/list")
 	public String list(Principal principal, @RequestParam("idx") int idx, Model model) {
+		if (principal == null) {
+			return "redirect:/memberLogin";
+		}
+
 		MemberVO findMember = memberService.findMemberByLoginId(principal.getName());
 		log.info("list");
 		model.addAttribute("list", service.getList(findMember.getIdx()));

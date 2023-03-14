@@ -3,6 +3,7 @@ package com.kosa.project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.kosa.project.domain.AuthVO;
 import com.kosa.project.domain.CartVO;
@@ -26,12 +27,13 @@ public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private AuthMapper authMapper;
-	
+
 	@Autowired
 	private CartMapper cartMapper;
 
 	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+	@Transactional
 	@Override
 	public MemberVO insert(MemberVO vo) {
 		vo.setPassword(encoder.encode(vo.getPassword()));
@@ -39,11 +41,11 @@ public class MemberServiceImpl implements MemberService {
 		AuthVO auth = new AuthVO(vo.getLoginId(), "MEMBER");
 		authMapper.insert(auth);
 		MemberVO dbMember = memberMapper.find(vo.getIdx());
-		
+
 		CartVO cart = new CartVO();
 		cart.setMember(dbMember);
 		cartMapper.createCart(cart);
-		
+
 		log.info("------>service----->insert" + dbMember);
 		return dbMember;
 	}
@@ -58,6 +60,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.delete(idx);
 	}
 
+	@Transactional
 	@Override
 	public int modify(MemberVO vo) {
 		vo.setPassword(encoder.encode(vo.getPassword()));

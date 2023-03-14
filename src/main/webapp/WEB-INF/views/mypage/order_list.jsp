@@ -6,8 +6,6 @@
 <html lang="ko">
 <head>
 </head>
-
-
 <body>
 <div id="header"></div>
   <div class="order-container">
