@@ -82,12 +82,11 @@
                                 </div>
                                 <div class="item">
                                     <ul>
-                                    <li><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/164393265025235969.jpg?gif=1&w=850&h=850&c=c&webp=1" alt="" class="templatemo-item"><h4 style="font-size: 17px; margin-left: 15px;">쿠르보 테이블 07<span style="margin-left: 10px; color: #1EDDFF;">찰스퍼니처</span></h4></li>
+                                    <li><img src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/164393265025235969.jpg?gif=1&w=850&h=850&c=c&webp=1" alt="" class="templatemo-item"><h4 style="font-size: 17px; margin-left: 15px;"><span style="margin-left: 10px; color: #1EDDFF;">찰스퍼니처</span></h4></li>
                                     <li><h4>카테고리</h4><span>테이블, 식탁, 책상</span></li>
                                     <li><h4>상품가격</h4><span>1,800,000원</span></li>
-                                    <li><h4>주문수량</h4><span>1개</span></li>
+                                    <li><h4>주문수량</h4><span>3개</span></li>
                                     <li><h4>주문일자</h4><span>2022.03.13</span></li>
-                                    <!-- <li><div class="main-border-button border-no-active"><a href="#">Donwloaded</a></div></li> -->
                                     </ul>
                                 </div>
                                 <div class="item last-item">

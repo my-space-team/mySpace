@@ -21,15 +21,18 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class OrderMapperServiceImpl implements OrderMapperService {
 	
-	@Autowired
+	@Autowired 
 	private OrderMapper mapper;
-	
+		
 	@Override
 	public List<OrderVO> getOrderList(int member) {
+		
 		
 		System.out.println(member);
 		System.out.println(mapper.getOrderList(member));
 		return mapper.getOrderList(member);
+		
+		
 	}
 
 }
