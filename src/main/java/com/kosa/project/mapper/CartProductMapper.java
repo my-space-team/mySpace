@@ -1,5 +1,6 @@
 package com.kosa.project.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.kosa.project.domain.CartProductVO;
@@ -10,7 +11,7 @@ public interface CartProductMapper {
 	//@Select("select * from cart_product where idx > 0")
 	public List<CartProductVO> getList(int idx);
 	
-	public void addProduct(CartProductVO cartProduct); //상품 담기
+	public void addProduct(HashMap map); //상품 담기
 	
 	public int delete(int idx);
 	

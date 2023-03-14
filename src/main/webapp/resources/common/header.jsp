@@ -33,7 +33,7 @@
             <ul class="nav">
               <li><a href="#" class="active">Home</a></li>
               <li><a href="#">Shopping</a></li>
-              <li><a href="#">Details</a></li>
+              <li><a href="/cart/list">장바구니</a></li>
               <li><a href="/member/register">회원가입</a></li>
               <li>
                 <a href="/mypage/home">프로필 <img src="/resources/asset/images/profile_images.webp" alt=""/></a>

@@ -2,13 +2,14 @@ package com.kosa.project.service;
 
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.kosa.project.domain.CartProductVO;
 
 
 public interface CartProductService {
-	public void addProduct(CartProductVO cartProduct); 
+	public void addProduct(HashMap map); 
 	
 	public boolean update(CartProductVO cartProduct);
 	
