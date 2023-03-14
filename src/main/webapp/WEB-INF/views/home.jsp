@@ -49,7 +49,7 @@
                     	<div class="col-lg-3 col-sm-6" style="width: 22%;">
 	                        <div class="item">
 		                    	<img src="${product.imageURL}" alt="" />
-		                     	<h4><span style="font-size: 70%;">${product.name}</span>
+		                     	<h4><span style="font-size: 1.2em;">${product.name}</span>
 		                     	<input type="hidden" value="${product.idx}" readonly/>
 		                     	</h4>
 			                     	<!-- <ul>
@@ -77,7 +77,7 @@
           	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
           	<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
           </form>
-          <div style="display: flex; justify-content: space-around; font-size: 20px;">
+          <div style="display: flex; justify-content: space-between;; font-size: 20px; width: 200px; margin: 0 auto; color: black;">
           <ul>
           	<c:if test="${pageMaker.prev }">
           		<li class="paginate_button previous">
