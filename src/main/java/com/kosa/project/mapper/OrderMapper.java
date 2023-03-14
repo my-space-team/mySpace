@@ -13,4 +13,7 @@ public interface OrderMapper {
 	public OrderVO read();
 	
 	public List<OrderVO> orderProductList();
+	
+	public List<OrderVO> getOrderList(int member);
+	
 }

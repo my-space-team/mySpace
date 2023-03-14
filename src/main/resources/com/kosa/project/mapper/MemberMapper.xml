@@ -50,12 +50,10 @@
 	
 	<update id="update">
 		UPDATE MEMBER SET
-		login_id = #{loginId},
+		name = #{name},
 		password = #{password},
-		name= #{name},
 		email = #{email},
-		phone = #{phone},
-		birth = sysdate
+		phone = #{phone}
 		WHERE idx = #{idx}
 	</update>
 </mapper>

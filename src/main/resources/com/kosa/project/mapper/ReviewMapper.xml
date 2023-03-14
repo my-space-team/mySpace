@@ -37,12 +37,12 @@
 	
 	<insert id="insertReview"> 
 		INSERT INTO review
-    		VALUES(#{review.idx}, #{review.member.idx}, #{review.product.idx}, #{review.order.idx}, #{review.content});
+    		VALUES(1, #{review.member.idx}, #{review.product.idx}, #{review.order.idx}, #{review.content});
 	</insert>
 	
 	<insert id="insertScore"> 
 		INSERT INTO score
-    		VALUES(#{idx}, #{durability}, #{design}, #{price}, #{delivery});
+    		VALUES(1, #{durability}, #{design}, #{price}, #{delivery});
 	</insert>
 	
 	<select id="getMemberReviewList" resultMap="scoreMap">

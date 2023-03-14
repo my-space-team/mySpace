@@ -52,12 +52,9 @@ public class OrderController {
     
     @Autowired
     private CartProductService cartProductService;
-    
+
     @Autowired
     private ProductService productService;
-    
-      
-    
     
     @GetMapping("/pay")
     public String getcartList(Model model, @ModelAttribute("member") MemberVO member, 
@@ -101,7 +98,7 @@ public class OrderController {
 		orderService.insert(orderVo);
 		System.out.println(orderVo);
 		
-		/*ÁÖ¹®Á¤º¸*/
+		/*ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	    OrderVO order = orderService.read(); 
 	    model.addAttribute("order2", order);
 	    
@@ -114,6 +111,7 @@ public class OrderController {
 	    });
 	    System.out.println(vo.toString());
  	    model.addAttribute("orderProductList", vo);
+
 		
 		return "order/confirm";
 	}
@@ -129,4 +127,6 @@ public class OrderController {
     public String confirm() {
         return "order/confirm";
     }
+    
+    
 }

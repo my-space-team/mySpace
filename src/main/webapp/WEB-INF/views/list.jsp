@@ -2,8 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<<<<<<< HEAD
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
+=======
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <html lang="ko">
 <head></head>
 <style type="text/css">
@@ -22,7 +26,13 @@
 					<div class="heading-section">
 						<h4>장바구니</h4>
 
+
 					</div>
+
+
+						
+					</div>
+					
 
 					<div>
 						<div class="row">
@@ -41,8 +51,8 @@
 											</tr>
 										</thead>
 
-										<c:forEach items="${list }" var="cartProduct"
-											varStatus="status">
+										<c:forEach items="${list }" var="cartProduct" varStatus="status">
+
 											<tr>
 												<%-- <td><c:out value="${cartProduct.idx }" /></td> --%>
 												<td scope="row">${status.index + 1}</td>
@@ -65,8 +75,9 @@
 														</div>
 													</form>
 												</td>
-												<td><c:out
-														value="${cartProduct.product.price * cartProduct.amount}" /></td>
+
+												<td><c:out value="${cartProduct.product.price * cartProduct.amount}" /></td>
+
 												<td>
 
 													<form method="post" action="/cart/delete">
@@ -142,12 +153,12 @@
 											</div>
 										</div>
 
-										<!-- <div class="d-grid gap-2">
-											<button id="purchase-button" type="submit"
-												class="btn btn-primary" style="width: 350px;">구매하기</button>
-										</div> -->
+
 										<button id="purchase-button"
 												class="btn btn-primary" style="width: 350px;" onclick="gogo()">구매하기</button>
+
+
+										
 
 									</div>
 

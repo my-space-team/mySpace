@@ -52,9 +52,11 @@ public class MemberREST {
     @PostMapping("/update")
     public ResponseEntity<MemberVO> update(MemberVO member) {
         try {
-            int dbMemberIdx = memberService.modify(member);
-            if (memberService.find(dbMemberIdx) != null) {
-                return new ResponseEntity<MemberVO>(memberService.find(dbMemberIdx), HttpStatus.OK);
+            memberService.modify(member);
+            MemberVO dbMember = memberService.find(member.getIdx());
+            log.info("----------> /REST/member method:update = " + dbMember);
+            if (dbMember != null) {
+                return new ResponseEntity<MemberVO>(dbMember, HttpStatus.OK);
             }
         } catch (Exception e) {
             log.error(e.getMessage());
