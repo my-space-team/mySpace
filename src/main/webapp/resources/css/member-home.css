@@ -25,3 +25,24 @@ dialog::backdrop {
 label {
     color: white;
 }
+
+
+.item ul li a h4 {
+	font-size: 17px;
+	margin-left: 15px;
+}
+
+.review-insert {
+	margin-top: 35px;
+	width: 110px;
+	height: 45px;
+	border-radius: 20px;
+	background-color: #1EDDFF;
+	color: white;
+	border: 1px solid #1EDDFF;
+}
+
+.review-insert:hover {
+    background-color: #fff;
+    color: #1EDDFF;
+}

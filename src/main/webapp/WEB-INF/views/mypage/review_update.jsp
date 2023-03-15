@@ -18,7 +18,7 @@
       <div class="review-box">
         <div>
             <div class="review-data">
-              <div class="product-img"><img src="<%-- ${product.imageURL } --%>" alt=""></div>
+              <div class="product-img"><img src="${reviewScore.review.product.imageURL }" alt=""></div>
               	<div class="product-name">
 	               	<span>${reviewScore.review.product.name}</span>
 	               	<div class="review-score">
@@ -86,14 +86,12 @@
 			$("#script").load("/resources/common/include_script.html");
 			$("#header").load("/resources/common/header.html");
 	      
-/* 	      	let member = Number('<sec:authentication property="principal.member.idx"/>');
+	      	let member = Number('<sec:authentication property="principal.member.idx"/>');
 	      	console.log(member);
-	      	if(!(Number($("input[name=member_idx]" ).val()) == member)){
-	    	 	alert("잘못된 경로입니다.");
-	    	 	location.href = "/"; 
-	      	} */
+
 	      
-	      	$('#submit').click(function(){  
+	      	$('#submit').click(function(event){  
+	      		event.preventDefault();
 				$.ajax({
 					type:'post', 
 					url:'/REST/review/update', 

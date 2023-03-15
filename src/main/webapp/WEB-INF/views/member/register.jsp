@@ -5,8 +5,16 @@
 
 <!DOCTYPE html>
 <html lang="ko">
-<!-- head 추가 -->
-<%@ include file="/resources/common/common_head.jsp" %>
+	<head>
+		<!-- head 추가 -->
+		<%@ include file="/resources/common/common_head.jsp" %>
+		<!-- <link rel="stylesheet" href="/resources/css/member-home.css"> -->
+		<style>
+			* {
+				--bs-gutter-x: 0rem;
+			}
+	</style>
+	</head>
 <body>
 	<!-- header 추가 -->
 	<%@ include file="/resources/common/header.jsp" %>
@@ -14,7 +22,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="page-content">
-					<div class="main-banner">
+					<div class="login-banner">
 						<div class="row">
 							<div class="header-text" style="text-align: center;">
 								<h6>환영합니다!</h6>

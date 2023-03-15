@@ -36,13 +36,13 @@
 	</resultMap>
 
 	
-	<insert id="insertReview"> 
+	<insert id="insertReview" parameterType="HashMap"> 
 		INSERT INTO review
-    		VALUES(review_seq.nextval, #{member_idx}, #{product_idx}, #{order_idx}, #{content}, null)
+    		VALUES(review_seq.nextval, #{memberIdx}, #{productIdx}, #{orderIdx}, #{content}, null)
    		
 	</insert>
 	
-	<insert id="insertScore"> 
+	<insert id="insertScore" parameterType="HashMap"> 
 		<selectKey keyProperty="review_idx" resultType="Integer" order="BEFORE">
     		SELECT review_seq.currval FROM DUAL
     	</selectKey>
@@ -68,6 +68,18 @@
 				WHERE 
 					m.idx = r.member_idx AND p.idx = r.product_idx AND o.idx = r.order_idx AND r.idx = s.review_idx 
 					AND r.idx = #{reviewIdx}
+	</select>
+	
+	<select id="reviewDuplicate" parameterType="HashMap" resultMap="scoreMap">
+		SELECT r.idx AS "r.idx", m.idx AS "m.idx", p.idx AS "p.idx", o.idx AS "o.idx", s.idx AS "s.idx", 
+				content, p.name AS "p.name", p.price AS "p.price", p.image_URL AS "p.imageURL",
+				s.durability AS "s.durability", s.design AS "s.design", s.price AS "s.price", s.delivery AS "s.delivery"
+			FROM score s, review r, member m, product p, order2 o
+				WHERE 
+					m.idx = r.member_idx AND p.idx = r.product_idx AND o.idx = r.order_idx AND r.idx = s.review_idx 
+					AND r.member_idx = #{memberIdx}
+					AND r.product_idx = #{productIdx}
+					AND r.order_idx = #{orderIdx}
 	</select>
 	
 	<update id="updateReview">

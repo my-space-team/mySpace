@@ -14,6 +14,7 @@
             $(document).on("click", ".js-add", $member.add);
             $(document).on("click", ".js-update", $member.update);
             $(document).on("click", "#dialog", $member.on);
+            
         },
     
         add : function(event){
@@ -61,8 +62,10 @@
         on : function(event){
                 event.preventDefault();
                 dialog.showModal();
-            }
+        }
+        
     }
     
     $member.init();
+
 </script>

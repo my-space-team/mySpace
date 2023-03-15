@@ -17,6 +17,11 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public int insertReview(HashMap reviewForm) {
+
+		System.out.println(reviewMapper.reviewDuplicate(reviewForm));
+		if (reviewMapper.reviewDuplicate(reviewForm) != null) {
+			return 0;
+		}
 		return reviewMapper.insertReview(reviewForm) == 1 && reviewMapper.insertScore(reviewForm) == 1
 				? 1
 				: 0;

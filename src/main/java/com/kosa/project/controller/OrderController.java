@@ -94,7 +94,6 @@ public class OrderController {
         orderVo.get("idx");
         log.info("----------> " + orderVo.get("idx"));
 
-        // OrderVO order = orderService.read((int) orderVo.get("idx"));
         OrderVO order = orderService.findOrderByIdx((int) orderVo.get("idx"));
         log.info(order);
         model.addAttribute("order", order);

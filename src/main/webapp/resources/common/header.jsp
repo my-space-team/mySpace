@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
@@ -9,31 +10,43 @@
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="/" class="logo">
-              <img src="/resources/asset/images/myspace_logo.png" alt="" />
+            <a href="/" class="logo" style="width: 190px; height: 90px;">
+              <img style="width: 100%; height: 100%;" src="/resources/asset/images/myspace_logo.png" alt="" />
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Search End ***** -->
-            <div class="search-input">
-              <form id="search" action="/">
-                <svg style="position: absolute; top: 15px; left: 15px; width: 18px; height: 18px;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-                <input
-                  type="text"
-                  placeholder="쇼핑검색"
-                  id="searchText"
-                  name="searchKeyword"
-                  onkeypress="handle"
-                />
-              </form>
+            
+            <div class="search-input" style="display: flex; height: 100%; ">
+            	<form id="search" action="/">
+            	<div style="">
+	                <div style="width: 35px; height: 35px; position: absolute; top: 28px; left: 9px;">
+	                	<img style="width: 100%; height: 100%;" src="/resources/asset/images/search_icon.png" />
+	                </div>
+	                <div>
+		                <input style="margin: 0; margin-top: 20px;"
+		                  type="text"
+		                  placeholder="쇼핑검색"
+		                  id="searchText"
+		                  name="searchKeyword"
+		                  onkeypress="handle"
+		                />
+	                </div>
+                </div>        
+                </form>      
             </div>
+
             <!-- ***** Search End ***** -->
             <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li><a href="#" class="active">쇼핑</a></li>
-              <li><a href="/cart/list?idx=1">장바구니</a></li>
-              <li><a href="/member/register">회원가입</a></li>
+
+            <ul class="nav" style="display:flex; align-items: center;">
+              <li><a href="/" class="active">쇼핑</a></li>
+              <li><a href="/cart/list">장바구니</a></li>
+              <sec:authorize access="isAnonymous()">
+           	  <li><a href="/member/register">회원가입</a></li>
+           	  </sec:authorize>
+           	  <sec:authorize access="isAuthenticated()">
+           	  <li><a href="/logout">로그아웃</a></li>
+           	  </sec:authorize>
               <li>
                 <a href="/mypage/home">프로필 <img src="/resources/asset/images/profile_images.webp" alt=""/></a>
               </li>

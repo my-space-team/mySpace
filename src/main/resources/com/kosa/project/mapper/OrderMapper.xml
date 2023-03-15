@@ -4,7 +4,7 @@
 
 	<!-- orderMap -->
 	<resultMap type="com.kosa.project.domain.OrderVO" id="orderMap">
-		<id column="o.idx" property="idx" />
+		<id column="o.id" property="idx" />
 		<result column="price" property="price" />
 		<result column="delivery_price" property="deliveryPrice" />
 		<result column="payment" property="payment" />
@@ -34,6 +34,15 @@
 		FROM order2 o, cart c, cart_product p
 		WHERE o.cart_idx = c.idx AND c.idx = p.cart_idx
 		AND o.idx = #{idx}
+	</select>
+
+	<!-- findOrderByMemberIdx -->
+	<select id="findOrderByMemberIdx" resultMap="orderMap">
+		SELECT o.idx as "o.id", price, delivery_price, payment, regdate, delivery_name, address_name,
+		address, delivery_request, c.idx as "c.id", p.idx as "p.id"
+		FROM order2 o, cart c, cart_product p
+		WHERE o.cart_idx = c.idx AND c.idx = p.cart_idx
+		AND c.member_idx = #{memberIdx}
 	</select>
 
 
